@@ -15,6 +15,7 @@ import java.util.Queue;
 import metadata.Constants;
 import metadata.GameRequestTable;
 import model.Player;
+import model.Location;
 import networking.request.GameRequest;
 import networking.response.GameResponse;
 import utility.DataReader;
@@ -39,6 +40,7 @@ public class GameClient implements Runnable {
     private Queue<GameResponse> updates; // Temporarily store responses for client
     // Other Variables
     private Player player;
+    private Location location;
 
     /**
      * Initialize the GameClient using the client socket and creating both input
@@ -161,6 +163,14 @@ public class GameClient implements Runnable {
 
     public Player setPlayer(Player player) {
         return this.player = player;
+    }
+    
+    public Location getLocation(){
+        return location;
+    }
+    
+    public Location setLocation(float x, float y){
+        return location.setCoordinates(x, y);
     }
 
     public boolean addResponseForUpdate(GameResponse response) {

@@ -10,6 +10,9 @@ public class Constants {
     public final static short SMSG_AUTH = 201;
     public final static short CMSG_HEARTBEAT = 102;
     public final static short SMSG_HEARTBEAT = 202;
+    
+    public final static short CMSG_LOCATION = 105;
+    public final static short SMSG_LOCATION = 205;
 
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
