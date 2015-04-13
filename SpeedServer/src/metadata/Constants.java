@@ -15,10 +15,10 @@ public class Constants {
     public final static short SMSG_GAMEOVER = 203;
     public final static short CMSG_OPPONENTDATA = 104;
     public final static short SMSG_OPPONENTDATA = 204;
-    public final static short CMSG_LOOKINGFOROPPONENT = 105;
-    public final static short SMSG_LOOKINGFOROPPONENT = 205;
-    public final static short CMSG_LOCATION = 106;
-    public final static short SMSG_LOCATION = 206;
+    public final static short CMSG_LOOKING_FOR_OPPONENT = 105;
+    public final static short SMSG_LOOKING_FOR_OPPONENT = 205;
+    public final static short CMSG_IN_GAME_HEARTBEAT = 106;
+    public final static short SMSG_IN_GAME_HEARTBEAT = 206;
 
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;

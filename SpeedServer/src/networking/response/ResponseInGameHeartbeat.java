@@ -14,13 +14,13 @@ import utility.GamePacket;
  *
  * @author markfavis
  */
-public class ResponseOpponentData extends GameResponse{
+public class ResponseInGameHeartbeat extends GameResponse{
     
     private int opponentX;
     private int opponentY;
     private int opponentDistanceTraveled;
     
-    public ResponseOpponentData(){
+    public ResponseInGameHeartbeat(){
         responseCode = Constants.SMSG_OPPONENTDATA;
     }
 

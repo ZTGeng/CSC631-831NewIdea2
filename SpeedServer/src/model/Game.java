@@ -16,6 +16,10 @@ public class Game {
     private String player1SessionID;
     private String player2SessionID;
     
+    public Game(){
+        
+    }
+    
     public Game(int gameID, String player1, String player2){
         this.uniqueGameInstanceID = gameID;
         player1SessionID = player1;

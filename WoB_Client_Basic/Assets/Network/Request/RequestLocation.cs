@@ -2,9 +2,9 @@ using UnityEngine;
 
 using System;
 
-public class RequestLocation : NetworkRequest {
+public class RequestInGameHeartbeat : NetworkRequest {
 
-	public RequestLocation() {
+	public RequestInGameHeartbeat() {
 		request_id = Constants.CMSG_LOCATION;
 	}
 	

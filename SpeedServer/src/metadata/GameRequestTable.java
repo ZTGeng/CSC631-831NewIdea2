@@ -24,11 +24,10 @@ public class GameRequestTable {
         add(Constants.CMSG_AUTH, "RequestLogin");
         add(Constants.CMSG_HEARTBEAT, "RequestHeartbeat");
 
-        add(Constants.CMSG_LOCATION, "RequestLocation");
-
         add(Constants.CMSG_GAMEOVER, "RequestGameover");
         add(Constants.CMSG_OPPONENTDATA, "RequestOpponentData");
-        add(Constants.CMSG_LOOKINGFOROPPONENT, "RequestLookingForOpponent");
+        add(Constants.CMSG_LOOKING_FOR_OPPONENT, "RequestLookingForOpponent");
+        add(Constants.CMSG_IN_GAME_HEARTBEAT, "RequestInGameHeartbeat");
 
     }
 
