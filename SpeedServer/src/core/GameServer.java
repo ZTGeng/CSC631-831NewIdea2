@@ -22,6 +22,7 @@ import metadata.GameRequestTable;
 import model.AnimalType;
 import model.PlantType;
 import model.Player;
+import model.Game;
 import model.SpeciesType;
 import utility.ConfFileParser;
 import utility.Log;
@@ -46,7 +47,9 @@ public class GameServer {
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
-
+    private Game game;
+    
+    
     /**
      * Create the GameServer by setting up the request types and creating a
      * connection with the database.
@@ -65,6 +68,9 @@ public class GameServer {
         initialize();
         // Thread Pool for Clients
         clientThreadPool = Executors.newCachedThreadPool();
+        
+        //Hardcoded for testing a protype of a game
+        game = new Game();
     }
 
     public static GameServer getInstance() {

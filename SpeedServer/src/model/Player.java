@@ -14,9 +14,11 @@ public class Player {
     private String username;
     private String password;
     private GameClient client; // References GameClient instance
+    private String opponentClientSessionID;
 
     public Player(int player_id) {
         this.player_id = player_id;
+        opponentClientSessionID = "No opponent set";
     }
 
     public int getID() {
@@ -49,5 +51,19 @@ public class Player {
 
     public GameClient setClient(GameClient client) {
         return this.client = client;
+    }
+
+    /**
+     * @return the opponentClientSessionID
+     */
+    public String getOpponentClientSessionID() {
+        return opponentClientSessionID;
+    }
+
+    /**
+     * @param opponentClientSessionID the opponentClientSessionID to set
+     */
+    public void setOpponentClientSessionID(String opponentClientSessionID) {
+        this.opponentClientSessionID = opponentClientSessionID;
     }
 }
