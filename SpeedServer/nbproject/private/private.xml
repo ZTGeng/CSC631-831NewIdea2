@@ -3,7 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/markfavis/Dropbox/SFSU/CSC%20631%20-%20Multiplayer%20Game%20Development/SpeedServer/src/core/GameServer.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestOpponentData.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseLogin.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseOpponentData.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestLogin.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/model/Player.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestLookingForOpponent.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/metadata/GameRequestTable.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestHeartbeat.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseLookingForOpponent.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/core/GameClient.java</file>
+            <file>file:/Users/markfavis/school%20projects/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
         </group>
     </open-files>
 </project-private>
