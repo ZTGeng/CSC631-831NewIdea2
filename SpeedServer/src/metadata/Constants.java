@@ -10,6 +10,10 @@ public class Constants {
     public final static short SMSG_AUTH = 201;
     public final static short CMSG_HEARTBEAT = 102;
     public final static short SMSG_HEARTBEAT = 202;
+    public final static short CMSG_GAMEOVER = 103;
+    public final static short SMSG_GAMEOVER = 203;
+    public final static short CMSG_OPPONENTDATA = 104;
+    public final static short SMSG_OPPONENTDATA = 204;
 
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
