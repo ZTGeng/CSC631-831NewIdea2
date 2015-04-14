@@ -57,7 +57,6 @@ public class Running : MonoBehaviour {
 		RequestHeartbeat rh = new RequestHeartbeat ();
 		rh.send (player1.transform.position.x, player1.transform.position.y);
 		cManager.send (rh);
-		Debug.Log (player1.transform.position);
 		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		HeartBeat();
 		flag = true;
