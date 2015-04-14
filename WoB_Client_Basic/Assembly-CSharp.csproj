@@ -59,7 +59,6 @@
      <Compile Include="Assets\Network\Response\ResponseLogin.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
      <Compile Include="Assets\Scripts\ExtendedEventArgs.cs" />
-     <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\MessageQueue.cs" />
      <Compile Include="Assets\Scripts\ReadyScene\ButtonLogic.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\GameCamera.cs" />

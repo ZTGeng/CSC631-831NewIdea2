@@ -8,7 +8,11 @@ public class RequestHeartbeat : NetworkRequest {
 		request_id = Constants.CMSG_HEARTBEAT;
 	}
 	
-	public void send() {
+	public void send(float x,float y) {
+	
 	    packet = new GamePacket(request_id);
+		packet.addFloat32 (x);
+		packet.addFloat32 (y);
+
 	}
 }

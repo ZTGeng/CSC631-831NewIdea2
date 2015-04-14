@@ -29,5 +29,6 @@ public class RequestHeartbeat extends GameRequest {
                 Log.println_e(ex.getMessage());
             }
         }
+    
     }
 }

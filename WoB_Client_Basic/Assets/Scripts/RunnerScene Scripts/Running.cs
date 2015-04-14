@@ -6,10 +6,31 @@ public class Running : MonoBehaviour {
 	public GameObject player1;
 	public GameObject player2;
 	private bool flag = true;
+	private ConnectionManager cManager;
+
+	void Awake() {
+		DontDestroyOnLoad(gameObject);
+		
+		gameObject.AddComponent("MessageQueue");
+		gameObject.AddComponent("ConnectionManager");
+		
+	}
+	
+	// Use this for initialization
+	void Start () {
+		
+	   cManager = gameObject.GetComponent<ConnectionManager>();
+		
+		if (cManager) {
+			cManager.setupSocket();
+			
+		}
+	}
 
 	public void RunOnce () {
 
 		//Debug.Log("After!!!!!!!!");
+	  
 
 		player1 = GameObject.Find("Player_sprite(Clone)");
 		player2 = GameObject.Find("Player_sprite_2(Clone)");
@@ -33,6 +54,9 @@ public class Running : MonoBehaviour {
 		flag = false;
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
+		RequestHeartbeat rh = new RequestHeartbeat ();
+		rh.send (player1.transform.position.x, player1.transform.position.y);
+		cManager.send (rh);
 		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		HeartBeat();
 		flag = true;

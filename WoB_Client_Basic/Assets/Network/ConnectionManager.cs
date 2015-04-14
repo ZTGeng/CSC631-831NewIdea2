@@ -15,7 +15,7 @@ public class ConnectionManager : MonoBehaviour {
 	private bool socketReady = false;
 	
 	void Awake() {
-		mainObject = GameObject.Find("MainObject");
+		mainObject= GameObject.Find("GameLogic");
 	}
 	
 	// Use this for initialization
@@ -90,9 +90,9 @@ public class ConnectionManager : MonoBehaviour {
 		byte[] bytes = packet.getBytes();
 		theStream.Write(bytes, 0, bytes.Length);
 
-		if (request.request_id != Constants.CMSG_HEARTBEAT) {
+		//if (request.request_id != Constants.CMSG_HEARTBEAT) {
 			Debug.Log("Sent Request No. " + request.request_id + " [" + request.ToString() + "]");
-		}
+		//}
 	}
 
 	// Update is called once per frame
