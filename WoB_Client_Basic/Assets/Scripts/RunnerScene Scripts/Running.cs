@@ -33,7 +33,7 @@ public class Running : MonoBehaviour {
 		flag = false;
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
-		//Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
+		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		HeartBeat();
 		flag = true;
 	}
