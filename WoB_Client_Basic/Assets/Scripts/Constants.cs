@@ -10,10 +10,6 @@ public class Constants {
 	public static readonly short SMSG_AUTH = 201;
     public static readonly short CMSG_HEARTBEAT = 102;
     public static readonly short SMSG_HEARTBEAT = 202;
-	public static readonly short CMSG_PLAYER = 103;
-	public static readonly short SMSG_PLAYER = 203;
-	public static readonly short CMSG_TEST = 104;
-	public static readonly short SMSG_TEST = 204;
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";
