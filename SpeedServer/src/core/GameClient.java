@@ -39,6 +39,10 @@ public class GameClient implements Runnable {
     private Queue<GameResponse> updates; // Temporarily store responses for client
     // Other Variables
     private Player player;
+    private Player opponent;
+    private int x;
+    private int y;
+    private int distanceTraveled;
 
     /**
      * Initialize the GameClient using the client socket and creating both input
@@ -162,7 +166,39 @@ public class GameClient implements Runnable {
     public Player setPlayer(Player player) {
         return this.player = player;
     }
+    
+    public Player getOpponent() {
+        return opponent;
+    }
 
+    public Player setOpponent(Player opponent) {
+        return this.opponent = opponent;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
+    public int setX(int x) {
+        return this.x = x;
+    }
+
+    public int setY(int y) {
+        return this.y = y;
+    }
+    
+    public int getDistanceTraveled() {
+        return distanceTraveled;
+    }
+    
+    public int setDistanceTraveled(int distanceTraveled) {
+        return this.distanceTraveled = distanceTraveled;
+    }
+    
     public boolean addResponseForUpdate(GameResponse response) {
         return updates.add(response);
     }
