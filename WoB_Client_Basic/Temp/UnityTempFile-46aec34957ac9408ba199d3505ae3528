@@ -57,6 +57,7 @@
 'Assets/Network/Request/RequestPlayer.cs'
 'Assets/Network/Request/RequestTest.cs'
 'Assets/Network/Response/NetworkResponse.cs'
+'Assets/Network/Response/ResponseInGameHeartbeat.cs'
 'Assets/Network/Response/ResponseLogin.cs'
 'Assets/Network/Response/ResponsePlayer.cs'
 'Assets/Network/Response/ResponseTest.cs'

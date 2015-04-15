@@ -60,6 +60,7 @@
      <Compile Include="Assets\Network\Request\RequestPlayer.cs" />
      <Compile Include="Assets\Network\Request\RequestTest.cs" />
      <Compile Include="Assets\Network\Response\NetworkResponse.cs" />
+     <Compile Include="Assets\Network\Response\ResponseInGameHeartbeat.cs" />
      <Compile Include="Assets\Network\Response\ResponseLogin.cs" />
      <Compile Include="Assets\Network\Response\ResponsePlayer.cs" />
      <Compile Include="Assets\Network\Response\ResponseTest.cs" />
