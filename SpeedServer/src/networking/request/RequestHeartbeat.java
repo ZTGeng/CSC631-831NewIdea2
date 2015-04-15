@@ -5,7 +5,6 @@ import java.io.IOException;
 
 // Other Imports
 import networking.response.GameResponse;
-import utility.DataReader;
 import utility.Log;
 
 /**
@@ -13,19 +12,12 @@ import utility.Log;
  * the client. Also used to keep the connection alive.
  */
 public class RequestHeartbeat extends GameRequest {
-    
-    private int playerX;
-    private int playerY;
-    private int playerDistanceTraveled;
 
     public RequestHeartbeat() {
     }
 
     @Override
     public void parse() throws IOException {
-        playerX = DataReader.readInt(dataInput);
-        playerY = DataReader.readInt(dataInput);
-        playerDistanceTraveled = DataReader.readInt(dataInput);
     }
 
     @Override
