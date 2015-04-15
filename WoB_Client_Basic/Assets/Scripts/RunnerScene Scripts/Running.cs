@@ -8,13 +8,7 @@ public class Running : MonoBehaviour {
 	private bool flag = true;
 	private ConnectionManager cManager;
 
-	void Awake() {
-		DontDestroyOnLoad(gameObject);
-		
-		gameObject.AddComponent("MessageQueue");
-		gameObject.AddComponent("ConnectionManager");
-		
-	}
+
 	
 	// Use this for initialization
 	void Start () {
