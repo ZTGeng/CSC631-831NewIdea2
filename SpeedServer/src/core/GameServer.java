@@ -17,9 +17,11 @@ import java.util.concurrent.Executors;
 import configuration.GameServerConf;
 import dataAccessLayer.DAO;
 import dataAccessLayer.SpeciesDAO;
+import java.util.AbstractMap;
 import metadata.Constants;
 import metadata.GameRequestTable;
 import model.AnimalType;
+import model.Game;
 import model.PlantType;
 import model.Player;
 import model.SpeciesType;
@@ -46,7 +48,12 @@ public class GameServer {
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
+    private Map<Integer, Game> activeGames = new HashMap<Integer, Game>(); // Game ID -> Game
 
+    // TODO remove hard code
+    // replace with dynamic code
+    private static Game game1 = new Game(1,"empty","empty");
+    
     /**
      * Create the GameServer by setting up the request types and creating a
      * connection with the database.
@@ -174,6 +181,15 @@ public class GameServer {
                     addToActiveThreads(client);
                     // Initiate the client
                     clientThreadPool.submit(client);
+                    
+                    // TODO
+                    // Remove HardCode Replace with dynamic code
+                    if(game1.getPlayer1SessionID().equals("empty")){
+                        game1.setPlayer1SessionID(session_id);
+                    }
+                    else if(game1.getPlayer2SessionID().equals("empty")){
+                        game1.setPlayer2SessionID(session_id);
+                    }
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
