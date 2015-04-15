@@ -15,10 +15,10 @@ import utility.Log;
  */
 public class RequestInGameHeartbeat extends GameRequest {
     
-    private int playerX;
-    private int playerY;
-    private int playerDistanceTraveled;
-    private short gameover;
+    private float playerX;
+    private float playerY;
+    private float playerDistanceTraveled;
+    private boolean gameover;
     private ResponseInGameHeartbeat responseInGameHeartbeat;
 
     public RequestInGameHeartbeat() {
@@ -29,8 +29,8 @@ public class RequestInGameHeartbeat extends GameRequest {
     public void parse() throws IOException {
         playerX = DataReader.readInt(dataInput);
         playerY = DataReader.readInt(dataInput);
-        gameover = DataReader.readShort(dataInput);
-        playerDistanceTraveled = DataReader.readInt(dataInput);
+        gameover = DataReader.readBoolean(dataInput);
+        playerDistanceTraveled = DataReader.readFloat(dataInput);
     }
 
     @Override
@@ -39,5 +39,9 @@ public class RequestInGameHeartbeat extends GameRequest {
         client.setY(playerX);
         responseInGameHeartbeat.setOpponentX(client.getOpponent().getClient().getX());
         responseInGameHeartbeat.setOpponentY(client.getOpponent().getClient().getY());
+        responseInGameHeartbeat.setGameover(client.getOpponent().getClient().getGameove());
+        responseInGameHeartbeat.setOpponentDistanceTraveled(client.getOpponent().getClient().getDistanceTraveled());
+        
+        responseInGameHeartbeat.setStatus((short) 0);
     }
 }

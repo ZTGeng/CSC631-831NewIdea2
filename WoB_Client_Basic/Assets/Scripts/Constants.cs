@@ -16,6 +16,8 @@ public class Constants {
 	public static readonly short SMSG_TEST = 204;
 	public static readonly short CMSG_LOCATION = 105;
 	public static readonly short SMSG_LOCATION = 205;
+	public static readonly short CMSG_IN_GAME_HEARTBEAT = 106;
+	public static readonly short SMSG_IN_GAME_HEARTBEAT = 206;
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";

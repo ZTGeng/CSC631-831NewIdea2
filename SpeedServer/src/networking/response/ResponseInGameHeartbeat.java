@@ -14,45 +14,62 @@ import utility.GamePacket;
  *
  * @author markfavis
  */
-public class ResponseInGameHeartbeat extends GameResponse{
-    
-    private int opponentX;
-    private int opponentY;
-    private int opponentDistanceTraveled;
-    
-    public ResponseInGameHeartbeat(){
+public class ResponseInGameHeartbeat extends GameResponse {
+
+    private short status;
+    private float opponentX;
+    private float opponentY;
+    private float opponentDistanceTraveled;
+    private boolean gameover;
+
+    public ResponseInGameHeartbeat() {
         responseCode = Constants.SMSG_OPPONENTDATA;
     }
 
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-        packet.addInt32(opponentX);
-        packet.addInt32(opponentY);
-        packet.addInt32(opponentDistanceTraveled);
+        packet.addShort16(status);
 
+        if (status == 0) {
+            packet.addFloat(opponentX);
+            packet.addFloat(opponentY);
+            packet.addBoolean(gameover);
+            packet.addFloat(opponentDistanceTraveled);            
+        }
+        
         return packet.getBytes();
     }
 
     /**
      * @param opponentX the opponentX to set
      */
-    public void setOpponentX(int opponentX) {
+    public void setOpponentX(float opponentX) {
         this.opponentX = opponentX;
     }
 
     /**
      * @param opponentY the opponentY to set
      */
-    public void setOpponentY(int opponentY) {
+    public void setOpponentY(float opponentY) {
         this.opponentY = opponentY;
     }
 
     /**
      * @param opponentDistanceTraveled the opponentDistanceTraveled to set
      */
-    public void setOpponentDistanceTraveled(int opponentDistanceTraveled) {
+    public void setOpponentDistanceTraveled(float opponentDistanceTraveled) {
         this.opponentDistanceTraveled = opponentDistanceTraveled;
     }
     
+    /**
+     * @param opponentDistanceTraveled the opponentDistanceTraveled to set
+     */
+    public void setGameover(boolean gameover) {
+        this.gameover = gameover;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
+    }
 }

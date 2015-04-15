@@ -15,6 +15,7 @@ public class NetworkRequestTable {
 		add(Constants.CMSG_HEARTBEAT, "RequestHeartbeat");
 		add (Constants.CMSG_PLAYER, "RequestPlayer");
 		add (Constants.CMSG_TEST, "RequestTest");
+		add (Constants.CMSG_IN_GAME_HEARTBEAT, "RequestInGameHeartbeat");
 	}
 	
 	public static void add(short request_id, string name) {
