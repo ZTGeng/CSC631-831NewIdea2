@@ -46,16 +46,15 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < 20; i++)
         {
             tempEnd += 62.9f;
-           Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+          // Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+			//map = Instantiate(Resources.Load("Box")) as GameObject;
 
-
-
-            //Instantiate(Resources.Load("Prefabs/map/MapVariation1", typeof(GameObject)), new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity) as GameObject;
+            map = Instantiate(Resources.Load("Prefabs/map/MapVariation1"), new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity) as GameObject;
         }
 
         endPoint = tempEnd - 62.9f;
 
-        Instantiate(endFlag, new Vector3(tempEnd, 0.507454f, 0), Quaternion.identity);
+       // Instantiate(endFlag, new Vector3(tempEnd, 0.507454f, 0), Quaternion.identity);
     } 
 
 	private void PlaceItem(GameObject itemType, Vector2 vect) {
