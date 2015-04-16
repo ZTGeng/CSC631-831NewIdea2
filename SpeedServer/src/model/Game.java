@@ -10,11 +10,16 @@ package model;
  *
  * @author markfavis
  */
+import core.GameClient;
+   
 public class Game {
     
     private int uniqueGameInstanceID;
     private String player1SessionID;
     private String player2SessionID;
+    private GameClient player1;
+    private GameClient player2;
+    
     
     public Game(){
         
@@ -60,12 +65,30 @@ public class Game {
     public void setPlayer1SessionID(String player1SessionID) {
         this.player1SessionID = player1SessionID;
     }
+    
+    public void setPlayer1GameClient(GameClient client) {
+        player1 = client;
+    }
 
     /**
      * @param player2SessionID the player2SessionID to set
      */
     public void setPlayer2SessionID(String player2SessionID) {
         this.player2SessionID = player2SessionID;
+    }
+    
+    public void setPlayer2GameClient(GameClient client) {
+        player2 = client;
+        setOpponentInClients();
+    }
+    
+    /*
+    Used to set the opponents in the clients who's playerIDs match 
+    player#SessionIDs only after the second Player has been set.
+    */
+    private void setOpponentInClients(){
+        player1.setOpponent(player2.getPlayer());
+        player2.setOpponent(player1.getPlayer());
     }
     
     

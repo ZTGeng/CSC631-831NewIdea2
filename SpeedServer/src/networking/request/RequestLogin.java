@@ -45,15 +45,16 @@ public class RequestLogin extends GameRequest {
         if (version.compareTo(Constants.CLIENT_VERSION) >= 0) {
             if (!user_id.isEmpty()) {
                 // Verification Needed
-                if(user_id.equals("mark")){
-                    if(password.equals("mark")){
+                //Hardcoded for testing purposes
+                if(user_id.equals("1")){
+                    if(password.equals("1")){
                         player = new Player(1);
                         player.setUsername(user_id);
                         player.setPassword(password);
                     }
                 }
-                else if(user_id.equals("michael")){
-                    if(password.equals("michael")){
+                else if(user_id.equals("2")){
+                    if(password.equals("2")){
                         player = new Player(2);
                         player.setUsername(user_id);
                         player.setPassword(password);

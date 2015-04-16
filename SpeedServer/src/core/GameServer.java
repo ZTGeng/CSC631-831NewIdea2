@@ -192,9 +192,11 @@ public class GameServer {
                     // Remove HardCode Replace with dynamic code
                     if(game1.getPlayer1SessionID().equals("empty")){
                         game1.setPlayer1SessionID(session_id);
+                        game1.setPlayer1GameClient(client);
                     }
                     else if(game1.getPlayer2SessionID().equals("empty")){
                         game1.setPlayer2SessionID(session_id);
+                        game1.setPlayer1GameClient(client);
                     }
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
