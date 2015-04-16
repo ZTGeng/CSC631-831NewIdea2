@@ -14,6 +14,7 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_AUTH, "ResponseLogin");
 		add (Constants.SMSG_PLAYER, "ResponsePlayer");
 		add (Constants.SMSG_TEST, "ResponseTest");
+		add (Constants.SMSG_IN_GAME_HEARTBEAT, "ResponseInGameHeartbeat");
 	}
 	
 	public static void add(short response_id, string name) {
