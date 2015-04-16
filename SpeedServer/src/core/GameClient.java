@@ -20,6 +20,8 @@ import networking.response.GameResponse;
 import utility.DataReader;
 import utility.Log;
 
+import model.Game;
+
 /**
  * The GameClient class is an extension of the Thread class that represents an
  * individual client. Not only does this class holds the connection between the
