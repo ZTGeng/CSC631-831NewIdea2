@@ -7,6 +7,7 @@
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/model/Game.java</file>
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/response/GameResponse.java</file>
+            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestInGameHeartbeat.java</file>
         </group>
     </open-files>
 </project-private>
