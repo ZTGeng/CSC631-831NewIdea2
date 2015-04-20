@@ -44,9 +44,28 @@ public class RequestLogin extends GameRequest {
         // Checks if the connecting client meets the minimum version required
         if (version.compareTo(Constants.CLIENT_VERSION) >= 0) {
             if (!user_id.isEmpty()) {
+<<<<<<< HEAD
                 player = new Player(Integer.parseInt(user_id));
             	player.setUsername(user_id);
             	player.setPassword(password);
+=======
+                // Verification Needed
+                //Hardcoded for testing purposes
+                if(user_id.equals("1")){
+                    if(password.equals("1")){
+                        player = new Player(1);
+                        player.setUsername(user_id);
+                        player.setPassword(password);
+                    }
+                }
+                else if(user_id.equals("2")){
+                    if(password.equals("2")){
+                        player = new Player(2);
+                        player.setUsername(user_id);
+                        player.setPassword(password);
+                    }
+                }
+>>>>>>> michael
             }
 
             if (player == null) {
