@@ -31,6 +31,7 @@ public class Running : MonoBehaviour {
 //		if (player1 != null) {
 //			Debug.Log("found " + player1.transform.position);
 //		}
+		GameObject response = GameObject.Find ("");
 
 	}
 
@@ -48,9 +49,9 @@ public class Running : MonoBehaviour {
 		flag = false;
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
-		RequestHeartbeat rh = new RequestHeartbeat ();
-		//rh.send (player1.transform.position.x, player1.transform.position.y);
-		cManager.send (rh);
+		//RequestHeartbeat rh = new RequestHeartbeat ();
+		//rh.send (player1.transform.position.x, player1.transform.position.y,0);
+		//cManager.send (rh);
 		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		HeartBeat();
 		flag = true;
