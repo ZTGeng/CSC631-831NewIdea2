@@ -40,9 +40,10 @@ public class GameClient implements Runnable {
     // Other Variables
     private Player player;
     private Player opponent;
-    private int x;
-    private int y;
-    private int distanceTraveled;
+    private float x;
+    private float y;
+    private float distanceTraveled;
+    private short gameover;
 
     /**
      * Initialize the GameClient using the client socket and creating both input
@@ -175,28 +176,36 @@ public class GameClient implements Runnable {
         return this.opponent = opponent;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
     
-    public int setX(int x) {
+    public float setX(float x) {
         return this.x = x;
     }
 
-    public int setY(int y) {
+    public float setY(float y) {
         return this.y = y;
     }
     
-    public int getDistanceTraveled() {
+    public float getDistanceTraveled() {
         return distanceTraveled;
     }
     
-    public int setDistanceTraveled(int distanceTraveled) {
+    public float setDistanceTraveled(float distanceTraveled) {
         return this.distanceTraveled = distanceTraveled;
+    }
+    
+    public short getGameover() {
+        return gameover;
+    }
+    
+    public short setGameover(short gameover) {
+        return this.gameover = gameover;
     }
     
     public boolean addResponseForUpdate(GameResponse response) {
