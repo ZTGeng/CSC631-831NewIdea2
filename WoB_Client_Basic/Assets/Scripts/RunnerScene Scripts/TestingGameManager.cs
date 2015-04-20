@@ -36,7 +36,7 @@ public class TestingGameManager : MonoBehaviour {
 	}
 	
 	private void SpawnPlayer() {
-		cam.SetTarget(( Instantiate (player1, Vector3.zero, Quaternion.identity) as GameObject).transform);
+		cam.SetTarget(( Instantiate (player1, new Vector3(-19f, 0f,0f), Quaternion.identity) as GameObject).transform);
 	}
 	
 	private void SpawnMap()
@@ -48,17 +48,14 @@ public class TestingGameManager : MonoBehaviour {
 		}
 
 		float tempEnd = 20;
-		for (int i = 0; i < 20; i++)
+        int mapUnitLength = 2;
+		for (int i = 0; i < mapUnitLength; i++)
 		{
-			tempEnd += 62.9f;
-			//Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
-			
-			// Random.Range (min, max) min is inclusive max is exclusive
+            tempEnd += 62.9f;
 			Instantiate(MapVars[Random.Range (0,0)], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 		}
 		
 		endPoint = tempEnd - 62.9f;
-		
 		Instantiate(endFlag, new Vector3(endPoint, 0.507454f, 0), Quaternion.identity);
 	} 
 	

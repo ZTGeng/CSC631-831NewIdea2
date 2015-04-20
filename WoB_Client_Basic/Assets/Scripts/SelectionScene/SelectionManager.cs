@@ -6,6 +6,8 @@ public class SelectionManager : MonoBehaviour {
 
 	private GameObject gObj;
 	private GameObject[] speciesButtons;
+    private GameObject submit;
+    private int spot1, spot2;
 
 	// Use this for initialization
 	void Start () {
@@ -18,52 +20,19 @@ public class SelectionManager : MonoBehaviour {
 		cs.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 		GraphicRaycaster gRay = gObj.AddComponent<GraphicRaycaster> ();
 
+        //Button stored by position
+        spot1 = 0;
+        spot2 = 1;
+
 		//Initialize Buttons
 		initButtons ();
-
-
-
-
 	}
 
 	private void initButtons(){
-		speciesButtons = new GameObject[5];
 
-		/*
-		 * Species buttons
-		 */
-		for (int i = 0; i < 2; i++) {
-
-			speciesButtons [i] = new GameObject ();
-
-			// Naming button and setting as child of canvas
-			speciesButtons [i].name = "Species" + i;
-			speciesButtons [i].transform.parent = gObj.transform;
-
-			//Placing the Button on the canvas
-			RectTransform RectTrans = speciesButtons [i].AddComponent<RectTransform> ();
-			RectTrans.anchoredPosition = new Vector2 (0f, 0f);
-			RectTrans.sizeDelta = new Vector2 (100, 100);
-			RectTrans.localPosition = new Vector3 (-140f * (Mathf.Pow(-1f, i)), 0f, 0f);
-			RectTrans.localScale = new Vector3 (3f, 3f, 1f);
-
-			//Setting a transition (ColorTint) on mouseClick
-			Button s = speciesButtons [i].AddComponent<Button> ();
-			s.transition = Selectable.Transition.ColorTint;
-
-			//Setting the button image
-			Image image = speciesButtons [i].AddComponent<Image> ();
-			Sprite temp = Resources.Load <Sprite> ("Prefabs/UI/speciesButton");
-			image.preserveAspect = true;
-
-			if (temp != null){
-				image.sprite = temp;
-				s.targetGraphic = image;
-			}else 
-				Debug.LogError ("Sprite is null");
-
-
-		}
+        initSpeciesButtons();
+        setButtonActive(spot1);
+        setButtonActive(spot2);
 
 		/*
 		 * BACK BUTTON
@@ -87,6 +56,8 @@ public class SelectionManager : MonoBehaviour {
 		But.targetGraphic = img;
 		img.preserveAspect = true;
 
+        But.onClick.AddListener(() => previous());
+
 		/*
 		 * NEXT BUTTON
 		 */
@@ -108,20 +79,198 @@ public class SelectionManager : MonoBehaviour {
 		img2.sprite = t2;
 		But2.targetGraphic = img2;
 		img2.preserveAspect = true;
-		
-	}
-	
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+        But2.onClick.AddListener(() => next());
+
+        /*
+         * Submit Button
+         */
+        submit = new GameObject();
+        submit.name = "forwardButton";
+        submit.transform.parent = gObj.transform;
+
+        RectTransform RT3 = submit.AddComponent<RectTransform>();
+        RT3.anchoredPosition = new Vector2(0f, 0f);
+        RT3.sizeDelta = new Vector2(100, 25);
+        RT3.localPosition = new Vector3(0f, -225f, 0f);
+        RT3.localScale = new Vector3(3f, 3f, 1f);
+
+        Button But3 = submit.AddComponent<Button>();
+        But3.transition = Selectable.Transition.ColorTint;
+
+        Image img3 = submit.AddComponent<Image>();
+        Sprite t3 = Resources.Load<Sprite>("Prefabs/UI/playButton");
+        img3.sprite = t3;
+        But3.targetGraphic = img3;
+        img3.preserveAspect = true;
+
+        But3.onClick.AddListener(() => goToRunnerScene());
+
+        submit.SetActive(false);
+
 	}
 
+    void initSpeciesButtons()
+    {
+        speciesButtons = new GameObject[5];
+
+        /*
+         * Species buttons
+         */
+        for (int i = 0; i < 5; i++)
+        {
+            speciesButtons[i] = new GameObject();
+
+            // Naming button and setting as child of canvas
+            speciesButtons[i].name = "Species " + i;
+            speciesButtons[i].transform.parent = gObj.transform;
+
+            //Placing the Button on the canvas
+            RectTransform RectTrans = speciesButtons[i].AddComponent<RectTransform>();
+            RectTrans.anchoredPosition = new Vector2(0f, 0f);
+            RectTrans.sizeDelta = new Vector2(100, 100);
+            RectTrans.localScale = new Vector3(3f, 3f, 1f);
+
+            //Setting a transition (ColorTint) on mouseClick
+            Button s = speciesButtons[i].AddComponent<Button>();
+            s.transition = Selectable.Transition.ColorTint;
+
+            //Setting the button image
+            Image image = speciesButtons[i].AddComponent<Image>();
+            Sprite temp = Resources.Load<Sprite>("Prefabs/UI/speciesButton");
+            image.preserveAspect = true;
+
+            if (temp != null)
+            {
+                image.sprite = temp;
+                s.targetGraphic = image;
+            }
+            else
+                Debug.LogError("Sprite is null");
+
+            switch(i){
+                case 0:
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[0]));
+                    break;
+                case 1:
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[1]));
+                    break;
+                case 2:
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[2]));
+                    break;
+                case 3:
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[3]));
+                    break;
+                case 4:
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[4]));
+                    break;
+            }
+
+            speciesButtons[i].SetActive(false);
+        }
+    }
+
+    void setButtonActive(int num)
+    {
+
+        if (num == 5)
+        {
+
+            submit.SetActive(true);
+
+            return;
+        }
+
+        //Placing the Button on the canvas
+        //Drawing one the proper coordinates
+        RectTransform RectTrans = speciesButtons[num].GetComponent<RectTransform>();
+        if (num == spot1)
+            RectTrans.localPosition = new Vector3(-140f, 0f, 0f);
+        else
+            RectTrans.localPosition = new Vector3(140f, 0f, 0f);
+
+        speciesButtons[num].SetActive(true);
+    }
+
+    void setButtonInactive(int num)
+    {
+        if (num == 5)
+            submit.SetActive(false);
+        else
+            speciesButtons[num].SetActive(false);
+    }
+
 	void next(){
-	
+        
+        int temp1, temp2;
+        temp1 = spot1;
+        temp2 = spot2;
+
+        Debug.Log("Next has been called");
+        
+        if (spot2 == 4)
+        {
+            spot2 = 0;
+            spot1 = 4;
+        }
+        else if (spot1 == 4)
+        {
+            spot1 = 0;
+            spot2 = 1;
+        }
+        else
+        {
+            spot1 += 1;
+            spot2 += 1;
+        }
+
+        //Set the correct buttons to active
+        setButtonInactive(temp1);
+        setButtonInactive(temp2);
+        setButtonActive(spot1);
+        setButtonActive(spot2);
 	}
 
 	void previous(){
-	
+
+        int temp1, temp2;
+        temp1 = spot1;
+        temp2 = spot2;
+
+        Debug.Log("Previous has been called");
+
+        if (spot2 == 0)
+        {
+            spot2 = 4;
+            spot1 = 3;
+        }
+        else if (spot1 == 0)
+        {
+            spot1 = 4;
+            spot2 = 0;
+        }
+        else
+        {
+            spot1 -= 1;
+            spot2 -= 1;
+        }
+
+        //Set the correct buttons to active
+        setButtonInactive(temp1);
+        setButtonInactive(temp2);
+        setButtonActive(spot1);
+        setButtonActive(spot2);
 	}
+
+    void selectSpecies(GameObject species)
+    {
+        Debug.Log(species);
+
+        setButtonActive(5);
+    }
+
+    void goToRunnerScene()
+    {
+        Application.LoadLevel("RunnerScene");
+    }
 }

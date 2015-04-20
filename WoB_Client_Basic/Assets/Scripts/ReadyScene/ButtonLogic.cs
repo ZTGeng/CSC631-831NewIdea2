@@ -8,7 +8,7 @@ public class ButtonLogic : MonoBehaviour {
 
 	public void Ready(){
 		//for now just go to the game scene
-		Application.LoadLevel ("RunnerScene");
+		Application.LoadLevel ("SelectionScene");
 	}
 
 }
