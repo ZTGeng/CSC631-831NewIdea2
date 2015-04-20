@@ -14,11 +14,13 @@ import utility.Log;
  */
 public class RequestHeartbeat extends GameRequest {
     
-    private int playerX;
-    private int playerY;
-    private int playerDistanceTraveled;
+    private float playerX;
+    private float playerY;
+    private float playerDistanceTraveled;
+    private short gameover;
 
     public RequestHeartbeat() {
+        
     }
 
     @Override
@@ -26,6 +28,7 @@ public class RequestHeartbeat extends GameRequest {
         playerX = DataReader.readInt(dataInput);
         playerY = DataReader.readInt(dataInput);
         playerDistanceTraveled = DataReader.readInt(dataInput);
+        gameover =  DataReader.readShort(dataInput);
     }
 
     @Override

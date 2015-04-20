@@ -14,46 +14,49 @@ import core.GameClient;
 public class Game {
     
 //    private 
+    private int uniqueGameInstanceID;
     private short shortPlayersInGame;
-    private GameClient player1;
-    private GameClient player2;
+    private GameClient client1;
+    private GameClient client2;
+    private short state;
     
     public Game(){
         shortPlayersInGame = 0;
+        state = 0;
     }
    
     public Game(GameClient player1, GameClient player2){
-        this.player1 = player1;
-        this.player2 = player2;
+        this.client1 = player1;
+        this.client2 = player2;
     }
 
     /**
-     * @return the player1
+     * @return the client1
      */
-    public GameClient getPlayer1() {
-        return player1;
+    public GameClient getClient1() {
+        return client1;
     }
 
     /**
-     * @return the player2
+     * @return the client2
      */
-    public GameClient getPlayer2() {
-        return player2;
+    public GameClient getClient2() {
+        return client2;
     }
 
     /**
-     * @param player1 the player1 to set
+     * @param client1 the client1 to set
      */
-    public void setPlayer1(GameClient player1) {
-        this.player1 = player1;
+    public void setClient1(GameClient client1) {
+        this.client1 = client1;
         shortPlayersInGame++;
     }
 
     /**
-     * @param player2 the player2 to set
+     * @param client2 the client2 to set
      */
-    public void setPlayer2(GameClient player2) {
-        this.player2 = player2;
+    public void setClient2(GameClient client2) {
+        this.client2 = client2;
         shortPlayersInGame++;
     }
     
@@ -61,7 +64,18 @@ public class Game {
         return shortPlayersInGame;
     }
     
+    public void setOpponentsOfGame(){
+        client1.setOpponent(client2.getPlayer());
+        client2.setOpponent(client1.getPlayer());
+    }
     
+    public void setStateOn(){
+        state = 1;
+    }
+    
+    public void setStateOff(){
+        state = 0;
+    }
 }
 //
 //package model;
@@ -79,17 +93,17 @@ public class Game {
 //public class Game {
 //    
 //    private int uniqueGameInstanceID;
-//    private String player1;
-//    private String player2;
+//    private String client1;
+//    private String client2;
 //    
 //    public Game(){
 //        
 //    }
 //    
-//    public Game(int gameID, String player1, String player2){
+//    public Game(int gameID, String client1, String client2){
 //        this.uniqueGameInstanceID = gameID;
-//        player1 = player1;
-//        player2 = player2;
+//        client1 = client1;
+//        client2 = client2;
 //    }
 //
 //    /**
@@ -100,17 +114,17 @@ public class Game {
 //    }
 //
 //    /**
-//     * @return the player1
+//     * @return the client1
 //     */
 //    public String getPlayer1SessionID() {
-//        return player1;
+//        return client1;
 //    }
 //
 //    /**
-//     * @return the player2
+//     * @return the client2
 //     */
 //    public String getPlayer2SessionID() {
-//        return player2;
+//        return client2;
 //    }
 //
 //    /**
@@ -121,17 +135,17 @@ public class Game {
 //    }
 //
 //    /**
-//     * @param player1 the player1 to set
+//     * @param client1 the client1 to set
 //     */
-//    public void setPlayer1SessionID(String player1) {
-//        this.player1 = player1;
+//    public void setPlayer1SessionID(String client1) {
+//        this.client1 = client1;
 //    }
 //
 //    /**
-//     * @param player2 the player2 to set
+//     * @param client2 the client2 to set
 //     */
-//    public void setPlayer2SessionID(String player2) {
-//        this.player2 = player2;
+//    public void setPlayer2SessionID(String client2) {
+//        this.client2 = client2;
 //    }
 //    
 //    

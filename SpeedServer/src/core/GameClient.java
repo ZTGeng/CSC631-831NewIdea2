@@ -204,6 +204,7 @@ public class GameClient implements Runnable {
     }
 
     public void send(GameResponse response) throws IOException {
+        Log.printf(response.toString());
         outputStream.write(response.constructResponseInBytes());
     }
 

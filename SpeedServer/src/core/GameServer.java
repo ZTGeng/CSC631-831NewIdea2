@@ -47,8 +47,8 @@ public class GameServer {
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
-    private Game game;
-    
+    // GameManager that is responsible for setting up a single game.
+    GameManager gameManager;
     
     /**
      * Create the GameServer by setting up the request types and creating a
@@ -69,8 +69,11 @@ public class GameServer {
         // Thread Pool for Clients
         clientThreadPool = Executors.newCachedThreadPool();
         
+        // Instantiate the GameManager
+        gameManager = new GameManager();
+        
         //Hardcoded for testing a protype of a game
-        game = new Game();
+//        game = new Game();
     }
 
     public static GameServer getInstance() {
@@ -180,6 +183,8 @@ public class GameServer {
                     addToActiveThreads(client);
                     // Initiate the client
                     clientThreadPool.submit(client);
+                    // Add client to the GamesManager
+                    gameManager.addClientToGame(client);
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
