@@ -49,10 +49,6 @@ public class GameServer {
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
-<<<<<<< HEAD
-    private Game game;
-    
-=======
     private Game game;    
 
     private Map<Integer, Game> activeGames = new HashMap<Integer, Game>(); // Game ID -> Game
@@ -60,7 +56,6 @@ public class GameServer {
     // TODO remove hard code
     // replace with dynamic code
     private static Game game1 = new Game(1,"empty","empty");
->>>>>>> michael
     
     /**
      * Create the GameServer by setting up the request types and creating a

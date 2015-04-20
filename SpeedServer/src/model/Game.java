@@ -10,22 +10,16 @@ package model;
  *
  * @author markfavis
  */
-<<<<<<< HEAD
-=======
 import core.GameClient;
    
->>>>>>> michael
 public class Game {
     
     private int uniqueGameInstanceID;
     private String player1SessionID;
     private String player2SessionID;
-<<<<<<< HEAD
-=======
     private GameClient player1;
     private GameClient player2;
     
->>>>>>> michael
     
     public Game(){
         
@@ -71,13 +65,10 @@ public class Game {
     public void setPlayer1SessionID(String player1SessionID) {
         this.player1SessionID = player1SessionID;
     }
-<<<<<<< HEAD
-=======
     
     public void setPlayer1GameClient(GameClient client) {
         player1 = client;
     }
->>>>>>> michael
 
     /**
      * @param player2SessionID the player2SessionID to set
@@ -86,8 +77,6 @@ public class Game {
         this.player2SessionID = player2SessionID;
     }
     
-<<<<<<< HEAD
-=======
     public void setPlayer2GameClient(GameClient client) {
         player2 = client;
         setOpponentInClients();
@@ -102,6 +91,5 @@ public class Game {
         player2.setOpponent(player1.getPlayer());
     }
     
->>>>>>> michael
     
 }
