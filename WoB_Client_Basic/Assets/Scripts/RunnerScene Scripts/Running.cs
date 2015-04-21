@@ -55,7 +55,7 @@ public class Running : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
 		RequestHeartbeat rh = new RequestHeartbeat ();
-		rh.send (player1.transform.position.x, player1.transform.position.y, 0, 0);
+		rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
 		cManager.send (rh);
 //		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		//HeartBeat();

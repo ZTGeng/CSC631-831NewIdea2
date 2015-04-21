@@ -3,9 +3,9 @@ using System.Collections;
 
 
 public class ResponseHeartbeatEventArgs : ExtendedEventArgs {
-	public float opponentX { get; set; }
-	public float opponenty { get; set; }
-	public float opponentDistanceTraveled  { get; set; }
+	public int opponentX { get; set; }
+	public int opponenty { get; set; }
+	public int opponentDistanceTraveled  { get; set; }
 	public short opponentGameover { get; set; }
 
 
@@ -17,7 +17,7 @@ public class ResponseHeartbeatEventArgs : ExtendedEventArgs {
 public class ResponseHeartbeat : NetworkResponse {
 	private GameObject gameObject;
 	private Running running;
-	private float opponentX,opponentY,opponentDistanceTraveled;
+	private int opponentX,opponentY,opponentDistanceTraveled;
 	private short opponentGameover;
 
 	public ResponseHeartbeat() {
@@ -27,9 +27,9 @@ public class ResponseHeartbeat : NetworkResponse {
 
 	public override void parse() {
 
-		opponentX = DataReader.ReadFloat (dataStream);
-		opponentY = DataReader.ReadFloat (dataStream);
-		opponentDistanceTraveled = DataReader.ReadFloat (dataStream);
+		opponentX = DataReader.ReadInt (dataStream);
+		opponentY = DataReader.ReadInt (dataStream);
+		opponentDistanceTraveled = DataReader.ReadInt (dataStream);
 		opponentGameover = DataReader.ReadShort (dataStream);
 
 

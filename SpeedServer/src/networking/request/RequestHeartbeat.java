@@ -15,9 +15,9 @@ import utility.Log;
  */
 public class RequestHeartbeat extends GameRequest {
     
-    private float playerX;
-    private float playerY;
-    private float playerDistanceTraveled;
+    private int playerX;
+    private int playerY;
+    private int playerDistanceTraveled;
     private short gameover;
     private ResponseHeartbeat responseHeartbeat;
 

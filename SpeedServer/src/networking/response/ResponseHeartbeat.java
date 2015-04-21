@@ -16,9 +16,9 @@ import utility.GamePacket;
  */
 public class ResponseHeartbeat extends GameResponse{
     
-    private float opponentX;
-    private float opponentY;
-    private float opponentDistanceTraveled;
+    private int opponentX;
+    private int opponentY;
+    private int opponentDistanceTraveled;
     private short gameover;
     
     public ResponseHeartbeat(){
@@ -28,9 +28,9 @@ public class ResponseHeartbeat extends GameResponse{
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-        packet.addFloat(opponentX);
-        packet.addFloat(opponentY);
-        packet.addFloat(opponentDistanceTraveled);
+        packet.addInt32(opponentX);
+        packet.addInt32(opponentY);
+        packet.addInt32(opponentDistanceTraveled);
         packet.addShort16(gameover);
 
         return packet.getBytes();
@@ -39,21 +39,21 @@ public class ResponseHeartbeat extends GameResponse{
     /**
      * @param opponentX the opponentX to set
      */
-    public void setOpponentX(float opponentX) {
+    public void setOpponentX(int opponentX) {
         this.opponentX = opponentX;
     }
 
     /**
      * @param opponentY the opponentY to set
      */
-    public void setOpponentY(float opponentY) {
+    public void setOpponentY(int opponentY) {
         this.opponentY = opponentY;
     }
 
     /**
      * @param opponentDistanceTraveled the opponentDistanceTraveled to set
      */
-    public void setOpponentDistanceTraveled(float opponentDistanceTraveled) {
+    public void setOpponentDistanceTraveled(int opponentDistanceTraveled) {
         this.opponentDistanceTraveled = opponentDistanceTraveled;
     }
     

@@ -40,9 +40,9 @@ public class GameClient implements Runnable {
     // Other Variables
     private Player player;
     private Player opponent;
-    private float x;
-    private float y;
-    private float distanceTraveled;
+    private int x;
+    private int y;
+    private int distanceTraveled;
     private short gameover;
 
     /**
@@ -176,27 +176,27 @@ public class GameClient implements Runnable {
         return this.opponent = opponent;
     }
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
     
-    public float setX(float x) {
+    public int setX(int x) {
         return this.x = x;
     }
 
-    public float setY(float y) {
+    public int setY(int y) {
         return this.y = y;
     }
     
-    public float getDistanceTraveled() {
+    public int getDistanceTraveled() {
         return distanceTraveled;
     }
     
-    public float setDistanceTraveled(float distanceTraveled) {
+    public int setDistanceTraveled(int distanceTraveled) {
         return this.distanceTraveled = distanceTraveled;
     }
     
