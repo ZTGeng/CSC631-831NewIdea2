@@ -12,6 +12,8 @@ public class NetworkResponseTable {
 		responseTable = new Dictionary<short, Type>();
 		
 		add(Constants.SMSG_AUTH, "ResponseLogin");
+		add(Constants.SMSG_HEARTBEAT, "ResponseHeartbeat");
+		add(Constants.SMSG_GAME_STATE, "ResponseGameState");
 	}
 	
 	public static void add(short response_id, string name) {

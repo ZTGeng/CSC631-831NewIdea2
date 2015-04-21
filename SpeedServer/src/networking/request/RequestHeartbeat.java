@@ -5,6 +5,7 @@ import java.io.IOException;
 
 // Other Imports
 import networking.response.GameResponse;
+import networking.response.ResponseHeartbeat;
 import utility.DataReader;
 import utility.Log;
 
@@ -14,6 +15,7 @@ import utility.Log;
  */
 public class RequestHeartbeat extends GameRequest {
     
+<<<<<<< HEAD
     private float playerX;
     private float playerY;
     private float playerDistanceTraveled;
@@ -21,6 +23,16 @@ public class RequestHeartbeat extends GameRequest {
 
     public RequestHeartbeat() {
         
+=======
+    private int playerX;
+    private int playerY;
+    private int playerDistanceTraveled;
+    private short gameover;
+    private ResponseHeartbeat responseHeartbeat;
+
+    public RequestHeartbeat() {
+        responses.add(responseHeartbeat = new ResponseHeartbeat());
+>>>>>>> origin/socket
     }
 
     @Override
@@ -33,12 +45,15 @@ public class RequestHeartbeat extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
-        for (GameResponse response : client.getUpdates()) {
-            try {
-                client.send(response);
-            } catch (IOException ex) {
-                Log.println_e(ex.getMessage());
-            }
-        }
+        // Update this client's game data.
+        client.setX(playerX);
+        client.setY(playerY);
+        client.setDistanceTraveled(playerDistanceTraveled);
+        client.setGameover(gameover);
+        // For sending this players data to the client of this player's opponent
+        responseHeartbeat.setOpponentX(client.getOpponent().getClient().getX());
+        responseHeartbeat.setOpponentY(client.getOpponent().getClient().getY());
+        responseHeartbeat.setOpponentDistanceTraveled(client.getOpponent().getClient().getDistanceTraveled());
+        responseHeartbeat.setOpponentGameover(client.getOpponent().getClient().getGameover());
     }
 }

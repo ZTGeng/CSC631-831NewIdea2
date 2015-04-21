@@ -43,6 +43,8 @@ public class GameClient implements Runnable {
     private int x;
     private int y;
     private int distanceTraveled;
+    private short gameover;
+    private short gameState;
 
     /**
      * Initialize the GameClient using the client socket and creating both input
@@ -197,6 +199,22 @@ public class GameClient implements Runnable {
     
     public int setDistanceTraveled(int distanceTraveled) {
         return this.distanceTraveled = distanceTraveled;
+    }
+    
+    public short getGameover() {
+        return gameover;
+    }
+    
+    public short setGameover(short gameover) {
+        return this.gameover = gameover;
+    }
+    
+    public short getGameState() {
+        return gameState;
+    }
+    
+    public short setGameState(short gameState) {
+        return this.gameState = gameState;
     }
     
     public boolean addResponseForUpdate(GameResponse response) {

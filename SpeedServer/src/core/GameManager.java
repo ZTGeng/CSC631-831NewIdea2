@@ -17,7 +17,11 @@ import utility.Log;
 public class GameManager {
     
     protected List<Game> games;
+<<<<<<< HEAD
 //    protected HashMap<Games> games
+=======
+//    protected HashMap<Games> games  // this is the preferred collection of games
+>>>>>>> origin/socket
     protected short numberOfGamesBeingPlayed;
     
     private final short MAX_NUMBER_OF_PLAYERS = 2;

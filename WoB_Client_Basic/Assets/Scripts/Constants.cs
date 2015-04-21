@@ -20,7 +20,8 @@ public class Constants {
 	public static readonly short SMSG_LOOKING_FOR_OPPONENT = 205;
 	public static readonly short CMSG_IN_GAME_HEARTBEAT = 106;
 	public static readonly short SMSG_IN_GAME_HEARTBEAT = 206;
-
+	public static readonly short CMSG_GAME_STATE = 107;
+	public static readonly short SMSG_GAME_STATE = 207;
 
 	
 	// Other

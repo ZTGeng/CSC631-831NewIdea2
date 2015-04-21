@@ -81,6 +81,9 @@ public class DataReader {
      */
     public static float readFloat(DataInputStream in) throws IOException {
         if (in.available() > 0) {
+//            float x = Float.intBitsToFloat(Integer.reverseBytes(Float.floatToIntBits(in.readFloat())));
+//            Log.printf("x = " + x);
+//            return Float.intBitsToFloat(Integer.reverseBytes(Float.floatToIntBits(in.readFloat())));
             return Float.intBitsToFloat(Integer.reverseBytes(in.readInt()));
         }
 

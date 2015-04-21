@@ -40,7 +40,7 @@ public class Running : MonoBehaviour {
 
 	}
 
-	private void Player2Move(Vector2 newVect) {
+	public void Player2Move(Vector2 newVect) {
 		player2.transform.position = newVect;
 	}
 
@@ -54,9 +54,15 @@ public class Running : MonoBehaviour {
 		flag = false;
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
+<<<<<<< HEAD
 //		RequestHeartbeat rh = new RequestHeartbeat ();
 //		rh.send (player1.transform.position.x, player1.transform.position.y);
 //		cManager.send (rh);
+=======
+		RequestHeartbeat rh = new RequestHeartbeat ();
+		rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
+		cManager.send (rh);
+>>>>>>> origin/socket
 //		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		//HeartBeat();
 		flag = true;
