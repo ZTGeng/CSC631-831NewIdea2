@@ -14,29 +14,29 @@ import utility.GamePacket;
  *
  * @author markfavis
  */
-public class ResponseInGameHeartbeat extends GameResponse {
+public class ResponseHeartbeat extends GameResponse {
 
-    private short status;
+  //  private short status;
     private float opponentX;
     private float opponentY;
     private float opponentDistanceTraveled;
     private boolean gameover;
 
-    public ResponseInGameHeartbeat() {
+    public ResponseHeartbeat() {
         responseCode = Constants.SMSG_OPPONENTDATA;
     }
 
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-        packet.addShort16(status);
+      //  packet.addShort16(status);
 
-        if (status == 0) {
+       // if (status == 0) {
             packet.addFloat(opponentX);
             packet.addFloat(opponentY);
             packet.addBoolean(gameover);
             packet.addFloat(opponentDistanceTraveled);            
-        }
+      //  }
         
         return packet.getBytes();
     }
@@ -70,6 +70,6 @@ public class ResponseInGameHeartbeat extends GameResponse {
     }
 
     public void setStatus(short status) {
-        this.status = status;
+       // this.status = status;
     }
 }

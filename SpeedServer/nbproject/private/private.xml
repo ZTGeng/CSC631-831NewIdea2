@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseInGameHeartbeat.java</file>
+            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestLogin.java</file>
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestHeartbeat.java</file>
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
-            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/request/GameRequest.java</file>
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/model/Game.java</file>
+            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/response/GameResponse.java</file>
-            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestInGameHeartbeat.java</file>
+            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseHeartbeat.java</file>
+            <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/core/GameClient.java</file>
         </group>
     </open-files>
 </project-private>

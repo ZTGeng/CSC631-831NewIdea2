@@ -54,10 +54,9 @@
      <Compile Include="Assets\Network\NetworkResponseTable.cs" />
      <Compile Include="Assets\Network\Request\NetworkRequest.cs" />
      <Compile Include="Assets\Network\Request\RequestHeartbeat.cs" />
-     <Compile Include="Assets\Network\Request\RequestInGameHeartbeat.cs" />
      <Compile Include="Assets\Network\Request\RequestLogin.cs" />
      <Compile Include="Assets\Network\Response\NetworkResponse.cs" />
-     <Compile Include="Assets\Network\Response\ResponseInGameHeartbeat.cs" />
+     <Compile Include="Assets\Network\Response\ResponseHeartbeat.cs" />
      <Compile Include="Assets\Network\Response\ResponseLogin.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
      <Compile Include="Assets\Scripts\ExtendedEventArgs.cs" />
