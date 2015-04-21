@@ -35,6 +35,11 @@ public class ConnectionManager : MonoBehaviour {
 			socketReady = true;
 			
 			Debug.Log("Connected");
+
+			RequestLogin login = new RequestLogin();
+			//Hardcoded login only for testing purposes.
+			send(login.send("2","2"));
+
 		} catch (Exception e) {
 			Debug.Log("Socket error: " + e);
 		}

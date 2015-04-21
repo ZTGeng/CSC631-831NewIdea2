@@ -17,11 +17,9 @@ import java.util.concurrent.Executors;
 import configuration.GameServerConf;
 import dataAccessLayer.DAO;
 import dataAccessLayer.SpeciesDAO;
-import java.util.AbstractMap;
 import metadata.Constants;
 import metadata.GameRequestTable;
 import model.AnimalType;
-import model.Game;
 import model.PlantType;
 import model.Player;
 import model.Game;
@@ -49,13 +47,8 @@ public class GameServer {
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
-    private Game game;    
-
-    private Map<Integer, Game> activeGames = new HashMap<Integer, Game>(); // Game ID -> Game
-
-    // TODO remove hard code
-    // replace with dynamic code
-    private static Game game1 = new Game(1,"empty","empty");
+    // GameManager that is responsible for setting up a single game.
+    GameManager gameManager;
     
     /**
      * Create the GameServer by setting up the request types and creating a
@@ -76,8 +69,11 @@ public class GameServer {
         // Thread Pool for Clients
         clientThreadPool = Executors.newCachedThreadPool();
         
+        // Instantiate the GameManager
+        gameManager = new GameManager();
+        
         //Hardcoded for testing a protype of a game
-        game = new Game();
+//        game = new Game();
     }
 
     public static GameServer getInstance() {
@@ -187,17 +183,8 @@ public class GameServer {
                     addToActiveThreads(client);
                     // Initiate the client
                     clientThreadPool.submit(client);
-                    
-                    // TODO
-                    // Remove HardCode Replace with dynamic code
-                    if(game1.getPlayer1SessionID().equals("empty")){
-                        game1.setPlayer1SessionID(session_id);
-                        game1.setPlayer1GameClient(client);
-                    }
-                    else if(game1.getPlayer2SessionID().equals("empty")){
-                        game1.setPlayer2SessionID(session_id);
-                        game1.setPlayer1GameClient(client);
-                    }
+                    // Add client to the GamesManager
+                    gameManager.addClientToGame(client);
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }

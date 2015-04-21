@@ -10,6 +10,18 @@ public class Constants {
 	public static readonly short SMSG_AUTH = 201;
     public static readonly short CMSG_HEARTBEAT = 102;
     public static readonly short SMSG_HEARTBEAT = 202;
+
+	public static readonly short CMSG_GAMEOVER = 103;
+	public static readonly short SMSG_GAMEOVER = 203;
+
+	public static readonly short CMSG_OPPONENTDATA = 104;
+	public static readonly short SMSG_OPPONENTDATA = 204;
+	public static readonly short CMSG_LOOKING_FOR_OPPONENT = 105;
+	public static readonly short SMSG_LOOKING_FOR_OPPONENT = 205;
+	public static readonly short CMSG_IN_GAME_HEARTBEAT = 106;
+	public static readonly short SMSG_IN_GAME_HEARTBEAT = 206;
+
+
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";

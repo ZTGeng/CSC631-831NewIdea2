@@ -5,7 +5,6 @@ import java.io.IOException;
 
 // Other Imports
 import networking.response.GameResponse;
-import networking.response.ResponseHeartbeat;
 import utility.DataReader;
 import utility.Log;
 
@@ -14,35 +13,32 @@ import utility.Log;
  * the client. Also used to keep the connection alive.
  */
 public class RequestHeartbeat extends GameRequest {
-
+    
     private float playerX;
     private float playerY;
     private float playerDistanceTraveled;
-    private boolean gameover;
-    private ResponseHeartbeat responseInGameHeartbeat;
+    private short gameover;
 
     public RequestHeartbeat() {
-        responses.add(responseInGameHeartbeat = new ResponseHeartbeat());
+        
     }
 
     @Override
     public void parse() throws IOException {
-        playerX = Float.parseFloat(DataReader.readString(dataInput).trim());
-        playerY = Float.parseFloat(DataReader.readString(dataInput).trim());
-        playerDistanceTraveled = Float.parseFloat(DataReader.readString(dataInput).trim());
-        gameover = DataReader.readBoolean(dataInput);
+        playerX = DataReader.readInt(dataInput);
+        playerY = DataReader.readInt(dataInput);
+        playerDistanceTraveled = DataReader.readInt(dataInput);
+        gameover =  DataReader.readShort(dataInput);
     }
 
     @Override
     public void doBusiness() throws Exception {
-        client.setX(playerX);
-        client.setY(playerX);
-        responseInGameHeartbeat.setOpponentX(client.getOpponent().getClient().getX());
-        responseInGameHeartbeat.setOpponentY(client.getOpponent().getClient().getY());
-        responseInGameHeartbeat.setGameover(client.getOpponent().getClient().getGameove());
-        responseInGameHeartbeat.setOpponentDistanceTraveled(client.getOpponent().getClient().getDistanceTraveled());
-        
-        responseInGameHeartbeat.setStatus((short) 0);
+        for (GameResponse response : client.getUpdates()) {
+            try {
+                client.send(response);
+            } catch (IOException ex) {
+                Log.println_e(ex.getMessage());
+            }
+        }
     }
 }
-

@@ -20,8 +20,6 @@ import networking.response.GameResponse;
 import utility.DataReader;
 import utility.Log;
 
-import model.Game;
-
 /**
  * The GameClient class is an extension of the Thread class that represents an
  * individual client. Not only does this class holds the connection between the
@@ -42,10 +40,9 @@ public class GameClient implements Runnable {
     // Other Variables
     private Player player;
     private Player opponent;
-    private float x;
-    private float y;
-    private float distanceTraveled;
-    private boolean gameover;
+    private int x;
+    private int y;
+    private int distanceTraveled;
 
     /**
      * Initialize the GameClient using the client socket and creating both input
@@ -178,36 +175,28 @@ public class GameClient implements Runnable {
         return this.opponent = opponent;
     }
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
     
-    public float setX(float x) {
+    public int setX(int x) {
         return this.x = x;
     }
 
-    public float setY(float y) {
+    public int setY(int y) {
         return this.y = y;
     }
     
-    public float getDistanceTraveled() {
+    public int getDistanceTraveled() {
         return distanceTraveled;
     }
     
-    public float setDistanceTraveled(float distanceTraveled) {
+    public int setDistanceTraveled(int distanceTraveled) {
         return this.distanceTraveled = distanceTraveled;
-    }
-    
-    public boolean getGameove() {
-        return gameover;
-    }
-    
-    public boolean setGameover(boolean gameover) {
-        return this.gameover = gameover;
     }
     
     public boolean addResponseForUpdate(GameResponse response) {
@@ -215,6 +204,7 @@ public class GameClient implements Runnable {
     }
 
     public void send(GameResponse response) throws IOException {
+        Log.printf(response.toString());
         outputStream.write(response.constructResponseInBytes());
     }
 
