@@ -71,10 +71,14 @@ public class Game {
     
     public void setStateOn(){
         state = 1;
+        client1.setGameState(state);
+        client2.setGameState(state);
     }
     
     public void setStateOff(){
         state = 0;
+        client1.setGameState(state);
+        client2.setGameState(state);
     }
 }
 //

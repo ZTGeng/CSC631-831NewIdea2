@@ -17,6 +17,7 @@ public class NetworkRequestTable {
 		add (Constants.CMSG_IN_GAME_HEARTBEAT, "InGameHeartBeat");
 		add (Constants.CMSG_LOOKING_FOR_OPPONENT, "LookingForOpponent");
 		add (Constants.CMSG_GAMEOVER, "GameOver");
+		add (Constants.CMSG_GAME_STATE, "RequestGameState");
 	
 	}
 	
