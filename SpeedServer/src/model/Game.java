@@ -70,21 +70,15 @@ public class Game {
     }
     
     public void setStateOn(){
-        state = 1;
-<<<<<<< HEAD
-=======
+        state = 1;        
         client1.setGameState(state);
         client2.setGameState(state);
->>>>>>> origin/socket
     }
     
     public void setStateOff(){
         state = 0;
-<<<<<<< HEAD
-=======
         client1.setGameState(state);
         client2.setGameState(state);
->>>>>>> origin/socket
     }
 }
 //

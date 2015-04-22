@@ -15,15 +15,7 @@ import utility.Log;
  */
 public class RequestHeartbeat extends GameRequest {
     
-<<<<<<< HEAD
-    private float playerX;
-    private float playerY;
-    private float playerDistanceTraveled;
-    private short gameover;
 
-    public RequestHeartbeat() {
-        
-=======
     private int playerX;
     private int playerY;
     private int playerDistanceTraveled;
@@ -32,7 +24,6 @@ public class RequestHeartbeat extends GameRequest {
 
     public RequestHeartbeat() {
         responses.add(responseHeartbeat = new ResponseHeartbeat());
->>>>>>> origin/socket
     }
 
     @Override
