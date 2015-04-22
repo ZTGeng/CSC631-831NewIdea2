@@ -19,6 +19,7 @@ public class GameManager {
     protected List<Game> games;
 
 //    protected HashMap<Games> games  // this is the preferred collection of games
+    
     protected short numberOfGamesBeingPlayed;
     
     private final short MAX_NUMBER_OF_PLAYERS = 2;

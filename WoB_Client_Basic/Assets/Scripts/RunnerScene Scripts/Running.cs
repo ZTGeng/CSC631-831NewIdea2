@@ -8,7 +8,7 @@ public class Running : MonoBehaviour {
 	private bool flag = true;
 	private ConnectionManager cManager;
 	private MessageQueue messageQueue;
-
+	private short gameState;
 
 	
 	// Use this for initialization
@@ -54,9 +54,15 @@ public class Running : MonoBehaviour {
 		flag = false;
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
-		RequestHeartbeat rh = new RequestHeartbeat ();
-		rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
-		cManager.send (rh);
+		if (gameState == 0){
+			RequestGameState rg = new RequestGameState ();
+			rg.send ();
+			cManager.send (rg);
+		} else {
+			RequestHeartbeat rh = new RequestHeartbeat ();
+			rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
+			cManager.send (rh);
+		}
 //		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		//HeartBeat();
 		flag = true;
@@ -83,4 +89,8 @@ public class Running : MonoBehaviour {
 		//Debug.Log("outside!!!!!!!!!");
 
 	}
+	public void SetGameStateOn(){
+		gameState = 1;
+	}
+
 }
