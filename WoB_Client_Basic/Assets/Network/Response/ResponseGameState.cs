@@ -25,7 +25,7 @@ public class ResponseGameState : NetworkResponse {
 
 	public ResponseGameState() {
 		gameObject = GameObject.Find("GameLogic");
-		Debug.Log(gameObject.name);
+		//Debug.Log(gameObject.name);
 		running = gameObject.GetComponent<Running>();
 	}
 

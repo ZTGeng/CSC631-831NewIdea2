@@ -14,8 +14,8 @@ import core.GameClient;
 public class Game {
     
 //    private 
-    private int uniqueGameInstanceID;
-    private short shortPlayersInGame;
+    private int uniqueGameInstanceID; // needs to be a string, set up similar to the unqiue_session_ID in gameServer
+    private short shortPlayersInGame;  // number of players in a game
     private GameClient client1;
     private GameClient client2;
     private short state;

@@ -25,6 +25,7 @@ public class Running : MonoBehaviour {
 		}
 
 		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
+		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
 
 	}
 
@@ -75,6 +76,16 @@ public class Running : MonoBehaviour {
 			Constants.USER_ID = args.user_id;
 		} else {
 			Debug.Log("Login Failed");
+		}
+	}
+
+	public void ResponseGameState(ExtendedEventArgs eventArgs) {
+		ResponseLoginEventArgs args = eventArgs as ResponseLoginEventArgs;
+		
+		if (args.status == 0) {
+			Constants.USER_ID = args.user_id;
+		} else {
+			Debug.Log("Response GameState Failed"); // Don't know what comment should be made here
 		}
 	}
 	
