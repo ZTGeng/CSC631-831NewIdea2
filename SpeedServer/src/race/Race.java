@@ -1,5 +1,8 @@
-package model;
+package race;
 import core.GameClient;
+import java.util.Map;
+import java.util.HashMap;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +14,7 @@ import core.GameClient;
  *
  * @author markfavis
  */
-public class Game {
+public class Race {
     
 //    private 
     private int uniqueGameInstanceID; // needs to be a string, set up similar to the unqiue_session_ID in gameServer
@@ -20,14 +23,24 @@ public class Game {
     private GameClient client2;
     private short state;
     
-    public Game(){
+    private Map<Integer, RacePlayer> rPlayers = new HashMap<Integer, RacePlayer>();
+    
+    public Race(){
         shortPlayersInGame = 0;
         state = 0;
     }
    
-    public Game(GameClient player1, GameClient player2){
+    public Race(GameClient player1, GameClient player2){
         this.client1 = player1;
         this.client2 = player2;
+    }
+    
+    public int getID(){
+        return this.uniqueGameInstanceID;
+    }
+    
+    public Map<Integer, RacePlayer> getPlayers() {
+        return rPlayers;
     }
 
     /**
@@ -94,17 +107,17 @@ public class Game {
 // *
 // * @author markfavis
 // */
-//public class Game {
+//public class Race {
 //    
 //    private int uniqueGameInstanceID;
 //    private String client1;
 //    private String client2;
 //    
-//    public Game(){
+//    public Race(){
 //        
 //    }
 //    
-//    public Game(int gameID, String client1, String client2){
+//    public Race(int gameID, String client1, String client2){
 //        this.uniqueGameInstanceID = gameID;
 //        client1 = client1;
 //        client2 = client2;
