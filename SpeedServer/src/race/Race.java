@@ -20,13 +20,15 @@ import model.Player;
 public class Race {
     
 //    private 
-    private int raceID; // needs to be a string, set up similar to the unqiue_session_ID in gameServer
     private Map<Integer, RacePlayer> rPlayers = new HashMap<Integer, RacePlayer>();
+    
+    private int raceID;
+    
     
     
     private short shortPlayersInGame;  // number of players in a game
-    private GameClient client1;
-    private GameClient client2;
+//    private GameClient client1;
+//    private GameClient client2;
     private short state;
     
     
@@ -55,58 +57,58 @@ public class Race {
         return rPlayers;
     }
 
-    /**
-     * @return the client1
-     */
-    public GameClient getClient1() {
-        return client1;
-    }
-
-    /**
-     * @return the client2
-     */
-    public GameClient getClient2() {
-        return client2;
-    }
-
-    /**
-     * @param client1 the client1 to set
-     */
-    public void setClient1(GameClient client1) {
-        this.client1 = client1;
-        shortPlayersInGame++;
-    }
-
-    /**
-     * @param client2 the client2 to set
-     */
-    public void setClient2(GameClient client2) {
-        this.client2 = client2;
-        shortPlayersInGame++;
-    }
-    
-    public short getNumberOfPlayersInGame() {
-        return shortPlayersInGame;
-    }
-    
-    public void setOpponentsOfGame(){
-        client1.setOpponent(client2.getPlayer());
-        client2.setOpponent(client1.getPlayer());
-    }
-    
-    public void setStateOn(){
-        state = 1;        
-        client1.setGameState(state);
-        client2.setGameState(state);
-    }
-    
-    public void setStateOff(){
-        state = 0;
-        client1.setGameState(state);
-        client2.setGameState(state);
-    }
-}
+//    /**
+//     * @return the client1
+//     */
+//    public GameClient getClient1() {
+//        return client1;
+//    }
 //
+//    /**
+//     * @return the client2
+//     */
+//    public GameClient getClient2() {
+//        return client2;
+//    }
+//
+//    /**
+//     * @param client1 the client1 to set
+//     */
+//    public void setClient1(GameClient client1) {
+//        this.client1 = client1;
+//        shortPlayersInGame++;
+//    }
+//
+//    /**
+//     * @param client2 the client2 to set
+//     */
+//    public void setClient2(GameClient client2) {
+//        this.client2 = client2;
+//        shortPlayersInGame++;
+//    }
+//    
+//    public short getNumberOfPlayersInGame() {
+//        return shortPlayersInGame;
+//    }
+//    
+//    public void setOpponentsOfGame(){
+//        client1.setOpponent(client2.getPlayer());
+//        client2.setOpponent(client1.getPlayer());
+//    }
+//    
+//    public void setStateOn(){
+//        state = 1;        
+//        client1.setGameState(state);
+//        client2.setGameState(state);
+//    }
+//    
+//    public void setStateOff(){
+//        state = 0;
+//        client1.setGameState(state);
+//        client2.setGameState(state);
+//    }
+}
+
 //package model;
 //
 ///*
