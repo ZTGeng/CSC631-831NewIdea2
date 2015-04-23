@@ -32,7 +32,7 @@ public class ResponseGameState : NetworkResponse {
 
 		gameState = DataReader.ReadShort (dataStream);
 
-		if (gameState == 1) {
+		if (gameState) {
 			// Change something to cause RequestHeartbeat to be sent
 		}
 	}

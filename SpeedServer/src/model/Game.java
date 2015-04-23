@@ -70,7 +70,7 @@ public class Game {
     }
     
     public void setStateOn(){
-        state = 1;        
+        state = 1;
         client1.setGameState(state);
         client2.setGameState(state);
     }

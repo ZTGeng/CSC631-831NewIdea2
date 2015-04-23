@@ -15,7 +15,6 @@ import utility.Log;
  */
 public class RequestHeartbeat extends GameRequest {
     
-
     private int playerX;
     private int playerY;
     private int playerDistanceTraveled;
