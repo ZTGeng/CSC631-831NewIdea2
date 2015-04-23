@@ -48,14 +48,27 @@ public class RaceManager {
         
         if (players.isEmpty()) {
             players.add(GameServer.getInstance().getActivePlayer(player_id));
+        } else {
+            if (player_id != players.get(0).getID()) {
+                players.add(GameServer.getInstance().getActivePlayer(player_id));
+                race = new Race(players);
+                add(race);
+                players.clear();
+            }
         }
         
         return race;
     }
     
-    Public Race add(Race race){
-            
-        return playerRaceList.put(race.getID, race);
+    public Race add(Race race){
+        for (int id : race.getPlayers().keySet()) {
+            playerRaceList.put(id, race);
+        }
+        return raceList.put(race.getID(), race);
+    }
+    
+    public Race getRaceByPlayerID(int playerID) {
+        return playerRaceList.get(playerID);
     }
 //    //Adds a client to the correct game out of a list of raceList and makes sure there is a game for the client to be added to.
 //    public void addClientToGame(GameClient client) {

@@ -184,8 +184,8 @@ public class GameServer {
                     addToActiveThreads(client);
                     // Initiate the client
                     clientThreadPool.submit(client);
-                    // Add client to the GamesManager
-                    gameManager.addClientToGame(client);
+//                     Add client to the GamesManager
+//                     gameManager.addClientToGame(client);
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }

@@ -2,6 +2,9 @@ package race;
 import core.GameClient;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import model.Player;
+
 
 
 /*
@@ -17,26 +20,35 @@ import java.util.HashMap;
 public class Race {
     
 //    private 
-    private int uniqueGameInstanceID; // needs to be a string, set up similar to the unqiue_session_ID in gameServer
+    private int raceID; // needs to be a string, set up similar to the unqiue_session_ID in gameServer
+    private Map<Integer, RacePlayer> rPlayers = new HashMap<Integer, RacePlayer>();
+    
+    
     private short shortPlayersInGame;  // number of players in a game
     private GameClient client1;
     private GameClient client2;
     private short state;
     
-    private Map<Integer, RacePlayer> rPlayers = new HashMap<Integer, RacePlayer>();
     
-    public Race(){
-        shortPlayersInGame = 0;
-        state = 0;
+    
+    public Race(List<Player> players){
+        
+        raceID =-1;
+        for(Player player: players) {
+            this.rPlayers.put(Integer.valueOf(player.getID()), new RacePlayer(player.getID(), raceID));
+        }
+        
+//        shortPlayersInGame = 0;
+//        state = 0;
     }
    
-    public Race(GameClient player1, GameClient player2){
-        this.client1 = player1;
-        this.client2 = player2;
-    }
+//    public Race(GameClient player1, GameClient player2){
+//        this.client1 = player1;
+//        this.client2 = player2;
+//    }
     
     public int getID(){
-        return this.uniqueGameInstanceID;
+        return this.raceID;
     }
     
     public Map<Integer, RacePlayer> getPlayers() {
