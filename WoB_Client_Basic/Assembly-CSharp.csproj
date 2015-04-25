@@ -46,8 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Login.cs" />
-     <Compile Include="Assets\Main.cs" />
      <Compile Include="Assets\Network\ConnectionManager.cs" />
      <Compile Include="Assets\Network\DataReader.cs" />
      <Compile Include="Assets\Network\GamePacket.cs" />
