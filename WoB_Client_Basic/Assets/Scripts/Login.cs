@@ -52,7 +52,7 @@ public class Login : MonoBehaviour {
 		}
 
 		if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height - 50, 100, 30), "Switch")) {
-			Application.LoadLevel ("TestScene");
+			Application.LoadLevel ("Init Race");
 		}
 	}
 	
