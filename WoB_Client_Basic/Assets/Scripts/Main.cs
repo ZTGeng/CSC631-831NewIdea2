@@ -10,6 +10,9 @@ public class Main : MonoBehaviour {
 		
 		gameObject.AddComponent("MessageQueue");
 		gameObject.AddComponent("ConnectionManager");
+
+		NetworkRequestTable.init();
+		NetworkResponseTable.init();
 		
 		SpeciesTable.initialize();
 	}
