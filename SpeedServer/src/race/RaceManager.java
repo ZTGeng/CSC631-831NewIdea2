@@ -28,7 +28,8 @@ public class RaceManager {
     private Map<Integer, Race> raceList = new HashMap<Integer, Race>(); //RaceID -> race
     private Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
 
-    private List<Player> players = new ArrayList<Player>();
+    
+    private List<Player> players = new ArrayList<Player>(); //used to create a race
     
     protected short numberOfGamesBeingPlayed;
     
@@ -42,7 +43,7 @@ public class RaceManager {
         return manager;
     }
 
-    
+   
     public Race createRace(int player_id) {
         Race race = null;
         
