@@ -30,7 +30,7 @@ public class Login : MonoBehaviour {
 		ConnectionManager cManager = mainObject.GetComponent<ConnectionManager>();
 		
 		if (cManager) {
-			cManager.Send(new RequestSpeciesList());
+//			cManager.Send(new RequestSpeciesList());
 		}
 	}
 	
@@ -90,7 +90,7 @@ public class Login : MonoBehaviour {
 			ConnectionManager cManager = mainObject.GetComponent<ConnectionManager>();
 			
 			if (cManager) {
-				cManager.send(requestLogin(user_id, password));
+				cManager.Send(requestLogin(user_id, password));
 				//Hardcoded RequestTest
 
 			}
