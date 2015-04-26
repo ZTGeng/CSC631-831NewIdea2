@@ -23,6 +23,7 @@ public class Login : MonoBehaviour {
 
 		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
 //		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_SPECIES_LIST, ResponseSpeciesList);
+		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSM_RACE_INIT, ResponseRaceInit);
 	}
 	
 	// Use this for initialization
@@ -51,9 +52,18 @@ public class Login : MonoBehaviour {
 			}
 		}
 
-		if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height - 50, 100, 30), "Switch")) {
-			Application.LoadLevel ("Init Race");
+		if (GUI.Button(new Rect(Screen.width* 1/3  -150, Screen.height - 75, 100, 30), "Join Race")) {
+
 		}
+
+		if (GUI.Button(new Rect(Screen.width* 2/3  -150, Screen.height - 75, 100, 30), "single player")) {
+
+		}
+
+		if (GUI.Button(new Rect(Screen.width* 3/3  -150, Screen.height - 75, 100, 30), "two player")) {
+
+		}
+		
 	}
 	
 	void MakeWindow(int id) {
@@ -73,6 +83,12 @@ public class Login : MonoBehaviour {
 			Submit();
 		}
 
+
+
+		// if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height - 50, 100, 30), "Switch")) {
+		// 	Application.LoadLevel ("Init Race");
+		// }
+
 	}
 	
 	public void Submit() {
@@ -86,18 +102,43 @@ public class Login : MonoBehaviour {
 			Debug.Log("Password Required");
 			GUI.FocusControl("password_field");
 		} else {
-			Debug.Log(mainObject.GetInstanceID());
+//			Debug.Log(mainObject.GetInstanceID());
 			ConnectionManager cManager = mainObject.GetComponent<ConnectionManager>();
 			
 			if (cManager) {
-				cManager.Send(requestLogin(user_id, password));
+				cManager.Send(RequestLogin(user_id, password));
 				//Hardcoded RequestTest
 
 			}
 		}
 	}
+
+	// Join makes an attempt to create and or join an online game.
+	public void Join() {
+		ConnectionManager cManager = mainObject.GetComponent<ConnectionManager>();
+
+		if (cManager) {
+				cManager.Send(RequestRaceInit());
+	}
+
+	public RequestRaceInit RequestRaceInit() {
+		RequestRaceInit request = new RequestRaceInit();
+		request.send(Constants.USER_ID);
+
+		return request;
+	}
+
+	public void ResponseRaceInit(ExtendedEventArgs eventArgs) {
+		ResponseRaceInitEventArgs args = eventArgs as ResponseRaceInitEventArgs;
+
+		if (args.status == 0) {
+			Constants.USER_ID = args.user_id;
+		} else {
+			Debug.Log("Join Failed");
+		}
+	}
 	
-	public RequestLogin requestLogin(string username, string password) {
+	public RequestLogin RequestLogin(string username, string password) {
 		RequestLogin request = new RequestLogin();
 		request.send(username, password);
 		

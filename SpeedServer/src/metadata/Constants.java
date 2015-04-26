@@ -21,7 +21,9 @@ public class Constants {
     public final static short SMSG_IN_GAME_HEARTBEAT = 206;
     public final static short CMSG_GAME_STATE = 107;
     public final static short SMSG_GAME_STATE = 207;
-
+    public final static short CMSG_RACE_INIT = 108;
+    public final static short SMSG_RACE_INIT = 208;
+    
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
     public static final short ORGANISM_TYPE_PLANT = 1;

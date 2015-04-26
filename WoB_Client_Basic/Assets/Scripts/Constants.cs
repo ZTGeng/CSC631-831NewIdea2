@@ -22,7 +22,8 @@ public class Constants {
 	public static readonly short SMSG_IN_GAME_HEARTBEAT = 206;
 	public static readonly short CMSG_GAME_STATE = 107;
 	public static readonly short SMSG_GAME_STATE = 207;
-
+	public static readonly short CMSG_RACE_INIT = 108;
+	public static readonly short SMSG_RACE_INIT = 208;
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";
