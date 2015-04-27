@@ -18,25 +18,33 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		cam = GetComponent<GameCamera> ();
+        
+
+        cam = GetComponent<GameCamera>();
         SpawnMap();
-		SpawnPlayer ();
-		Instantiate (player2, Vector3.zero, Quaternion.identity);
+        SpawnPlayer();
+
+        player2 = Instantiate(player2, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+        player2.name = "Player_sprite_2(Clone)";
+
         raceTime = 0;
-		//Debug.Log("Before!!!!!!!!!");
+        //Debug.Log("Before!!!!!!!!!");
 
-		items = new ArrayList();
-		//repeat until none
-		// item = new GO();
-		// PlaItem(item, xy);
-		// items.Add (items);
+        items = new ArrayList();
+        //repeat until none
+        // item = new GO();
+        // PlaItem(item, xy);
+        // items.Add (items);
 
-		GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
-
+        GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
+  
 	}
 	
 	private void SpawnPlayer() {
-		cam.SetTarget(( Instantiate (player1, Vector3.zero, Quaternion.identity) as GameObject).transform);
+        player1 = Instantiate(player1, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+        cam.SetTarget(player1.transform);
+
+        player1.name = "Player_sprite(Clone)";
 	}
 
     private void SpawnMap()

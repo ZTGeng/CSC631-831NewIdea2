@@ -292,6 +292,6 @@ public class SelectionManager : MonoBehaviour {
 
     void goToRunnerScene()
     {
-        Application.LoadLevel("RunnerScene");
+        Application.LoadLevel("CountdownScene");
     }
 }

@@ -31,8 +31,9 @@ public class TestingGameManager : MonoBehaviour {
 		SpawnPlayer ();
 
 
+        player2 = Instantiate(player2, Vector3.zero, Quaternion.identity) as GameObject;
+        player2.name = "Player_sprite_2(Clone)";
 
-		Instantiate (player2, Vector3.zero, Quaternion.identity);
 		raceTime = 0;
 		//Debug.Log("Before!!!!!!!!!");
 		
@@ -47,7 +48,10 @@ public class TestingGameManager : MonoBehaviour {
 	}
 	
 	private void SpawnPlayer() {
-		cam.SetTarget(( Instantiate (player1, new Vector3(-19f, 0f,0f), Quaternion.identity) as GameObject).transform);
+        player1 = Instantiate (player1, new Vector3(-19f, 0f,0f), Quaternion.identity) as GameObject;
+		cam.SetTarget(player1.transform);
+
+        player1.name = "Player_sprite(Clone)";
 	}
 	
 	private void SpawnMap()
