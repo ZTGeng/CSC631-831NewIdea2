@@ -48,7 +48,8 @@ public class Main : MonoBehaviour {
 			cManager.Send(request);
 		}
 		
-		StartCoroutine(RequestHeartbeat(1f));
+        //originially 1f changed to .1f
+		StartCoroutine(RequestHeartbeat(.001f));
 	}
 	// public GameObject CreateMessageBox(string message) {
 	// 	GameObject messageBox = Instantiate(Resources.Load (Constants.PREFAB_RESOURCES_PATH + "MessageBox")) as GameObject;

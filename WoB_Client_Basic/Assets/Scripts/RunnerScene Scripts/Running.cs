@@ -17,17 +17,17 @@ public class Running : MonoBehaviour {
 		mainObject = GameObject.Find("MainObject");
 
 	   	cManager = mainObject.GetComponent<ConnectionManager>();
-//
-//		NetworkRequestTable.init();
-//		NetworkResponseTable.init();
-//
-//		if (cManager) {
-//			cManager.setupSocket();
-//			
-//		}
-//
-//		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
-//		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
+
+	    NetworkRequestTable.init();
+	    NetworkResponseTable.init();
+
+	    if (cManager) {
+		    cManager.SetupSocket();
+		
+	    }
+
+        gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
+	    gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
 
 	}
 
@@ -94,6 +94,8 @@ public class Running : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        Debug.Log("PLAYER 1 = " + player1.transform.position);
+        Debug.Log("PLAYER 2 = " + player2.transform.position);
 
 		//if (flag) {
 		//	StartCoroutine(Delay());
