@@ -39,6 +39,7 @@ public class ResponseRaceInit : NetworkResponse {
 		
 		if (status == 0) {
 			//battle start, stop sending battle request
+			Debug.Log("response received from server");
 		} else if (status == 1) {
 			//battle not start, continue sending battle request
 			

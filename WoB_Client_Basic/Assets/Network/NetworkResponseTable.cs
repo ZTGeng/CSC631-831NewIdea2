@@ -14,6 +14,7 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_AUTH, "ResponseLogin");
 		add(Constants.SMSG_HEARTBEAT, "ResponseHeartbeat");
 		add(Constants.SMSG_GAME_STATE, "ResponseGameState");
+		add(Constants.SMSG_RACE_INIT, "ResponseRaceInit");
 	}
 	
 	public static void add(short response_id, string name) {
