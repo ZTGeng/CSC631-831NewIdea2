@@ -31,6 +31,11 @@ public class ResponseGameState : NetworkResponse {
 
 	public override void parse() {
 		gameState = DataReader.ReadShort (dataStream);
+
+		if (gameState > 0) {
+			// Change something to cause RequestHeartbeat to be sent
+		}
+
 	}
 
 	public override ExtendedEventArgs process() {

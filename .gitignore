@@ -4,3 +4,4 @@ SpeedServer/.DS_Store
 SpeedServer/nbproject/private/private.properties
 SpeedServer/src/networking/request/RequestLogin.java
 WoB_Client_Basic/Assembly-CSharp.csproj
+/SpeedServer/dist/

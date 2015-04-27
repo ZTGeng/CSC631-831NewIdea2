@@ -56,11 +56,13 @@
      <Compile Include="Assets\Network\Request\RequestGameState.cs" />
      <Compile Include="Assets\Network\Request\RequestHeartbeat.cs" />
      <Compile Include="Assets\Network\Request\RequestInGameHeartbeat.cs" />
+     <Compile Include="Assets\Network\Request\RequestKeyboard.cs" />
      <Compile Include="Assets\Network\Request\RequestLogin.cs" />
      <Compile Include="Assets\Network\Request\RequestRaceInit.cs" />
      <Compile Include="Assets\Network\Response\NetworkResponse.cs" />
      <Compile Include="Assets\Network\Response\ResponseGameState.cs" />
      <Compile Include="Assets\Network\Response\ResponseHeartbeat.cs" />
+     <Compile Include="Assets\Network\Response\ResponseKeyboard.cs" />
      <Compile Include="Assets\Network\Response\ResponseLogin.cs" />
      <Compile Include="Assets\Network\Response\ResponseRaceInit.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
@@ -75,6 +77,7 @@
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlatformActions\ElevatorPlatform.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlatformActions\SpinPlatform.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerController2.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerPhysics.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\Running.cs" />
      <Compile Include="Assets\Scripts\SpeciesData.cs" />
