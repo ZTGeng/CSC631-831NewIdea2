@@ -54,8 +54,9 @@ public class RaceManager {
         } else {
             if (player_id != players.get(0).getID()) {
                 players.add(GameServer.getInstance().getActivePlayer(player_id));
-                race = new Race(players);
+                race = new Race(players, 1);  // fix 2nd parameter
                 add(race);
+                // Respond to Players to load the Runner scene
                 ResponseRaceInit response = new ResponseRaceInit();
                 for(int p_id : race.getPlayers().keySet()) {
                     NetworkManager.addResponseForUser(p_id, response);

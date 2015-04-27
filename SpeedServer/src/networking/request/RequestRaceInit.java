@@ -31,7 +31,7 @@ public class RequestRaceInit extends GameRequest {
     public void doBusiness() throws Exception {
         Race race = RaceManager.getInstance().createRace(player_id);
         
-        Log.println("Trying to start battle: Player: " + player_id);
+        Log.println("Trying to start Race: Player: " + player_id);
         
         if(race != null) {
             ResponseRaceInit response = new ResponseRaceInit();
@@ -39,7 +39,7 @@ public class RequestRaceInit extends GameRequest {
                 NetworkManager.addResponseForUser(p_id, response);
             }
             
-            Log.println("Battle created with players: " + race.getPlayers().keySet().toString());
+            Log.println("Race created with players: " + race.getPlayers().keySet().toString());
         }
     }
     

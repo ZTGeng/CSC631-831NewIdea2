@@ -33,9 +33,9 @@ public class Race {
     
     
     
-    public Race(List<Player> players){
+    public Race(List<Player> players, int raceID){
         
-        raceID =-1;
+        this.raceID =-1;
         for(Player player: players) {
             this.rPlayers.put(Integer.valueOf(player.getID()), new RacePlayer(player.getID(), raceID));
         }
@@ -55,6 +55,17 @@ public class Race {
     
     public Map<Integer, RacePlayer> getPlayers() {
         return rPlayers;
+    }
+    
+    public RacePlayer getOpponent(Player racePlayer){
+        
+        for (RacePlayer player : rPlayers.values()){
+            if(player.getID() != racePlayer.getID()){
+                return player;
+            }
+        }
+        
+        return null; // error
     }
 
 //    /**

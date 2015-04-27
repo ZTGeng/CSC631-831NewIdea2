@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Running : MonoBehaviour {
 
+	public GameObject mainObject;
 	public GameObject player1;
 	public GameObject player2;
 	private bool flag = true;
@@ -13,8 +14,9 @@ public class Running : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
-	   	cManager = gameObject.GetComponent<ConnectionManager>();
+		mainObject = GameObject.Find("MainObject");
+
+	   	cManager = mainObject.GetComponent<ConnectionManager>();
 //
 //		NetworkRequestTable.init();
 //		NetworkResponseTable.init();

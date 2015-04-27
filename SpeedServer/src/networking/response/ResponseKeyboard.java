@@ -20,6 +20,7 @@ public class ResponseKeyboard extends GameResponse{
     public ResponseKeyboard(){
         responseCode = Constants.SMSG_KEYBOARD;
     }
+    
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
         packet.addInt32(keytype);

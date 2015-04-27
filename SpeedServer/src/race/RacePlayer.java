@@ -11,6 +11,10 @@ import model.Player;
  */
 public class RacePlayer extends Player {
 
+    private int raceID;
+    private int status;
+    private RacePlayer opponent;
+
     // For the database
     private int x;
     private int y;
@@ -30,9 +34,17 @@ public class RacePlayer extends Player {
     
     public RacePlayer(int player_id, int raceID){
         super(player_id);
+        this.raceID = raceID;
         
     }
 
+    public int getRaceID() {
+        return raceID;
+    }
+
+    public void setRaceID(int raceID){
+        this.raceID = raceID;
+    }
 //    public RacePlayer getOpponent() {
 //        return opponent;
 //    }
@@ -163,6 +175,20 @@ public class RacePlayer extends Player {
      */
     public void setBoosts(int boosts) {
         this.boosts = boosts;
+    }
+
+    /**
+     * @return the opponent
+     */
+    public RacePlayer getOpponent() {
+        return opponent;
+    }
+
+    /**
+     * @param opponent the opponent to set
+     */
+    public void setOpponent(RacePlayer opponent) {
+        this.opponent = opponent;
     }
     
 }

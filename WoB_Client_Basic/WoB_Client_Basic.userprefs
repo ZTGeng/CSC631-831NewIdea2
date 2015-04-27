@@ -1,21 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RunnerScene Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Network/Request/RequestKeyboard.cs">
     <Files>
-      <File FileName="Assets/Scripts/Login.cs" Line="84" Column="4" />
-      <File FileName="Assets/Scripts/Main.cs" Line="27" Column="1" />
-      <File FileName="Assets/Network/Request/RequestLogin.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/Request/RequestRaceInit.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Constants.cs" Line="46" Column="2" />
-      <File FileName="Assets/Network/Response/ResponseRaceInit.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RunnerScene Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/ConnectionManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RunnerScene Scripts/PlayerPhysics.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/NetworkResponseTable.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/RunnerScene Scripts/Running.cs" Line="94" Column="3" />
+      <File FileName="Assets/Network/NetworkResponseTable.cs" Line="16" Column="55" />
       <File FileName="Assets/Network/NetworkRequestTable.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/Response/ResponseHeartbeat.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/Request/RequestHeartbeat.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MessageQueue.cs" Line="1" Column="1" />
+      <File FileName="Assets/Network/Response/ResponseKeyboard.cs" Line="1" Column="1" />
+      <File FileName="Assets/Network/Request/RequestKeyboard.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
