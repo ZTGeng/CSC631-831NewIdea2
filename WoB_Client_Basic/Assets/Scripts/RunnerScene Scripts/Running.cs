@@ -14,18 +14,18 @@ public class Running : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-	   	cManager = gameObject.GetComponent<ConnectionManager>();
-
-		NetworkRequestTable.init();
-		NetworkResponseTable.init();
-
-		if (cManager) {
-			cManager.setupSocket();
-			
-		}
-
-		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
-		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
+//	   	cManager = gameObject.GetComponent<ConnectionManager>();
+//
+//		NetworkRequestTable.init();
+//		NetworkResponseTable.init();
+//
+//		if (cManager) {
+//			cManager.setupSocket();
+//			
+//		}
+//
+//		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
+//		gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
 
 	}
 
@@ -55,15 +55,15 @@ public class Running : MonoBehaviour {
 		flag = false;
 		yield return new WaitForSeconds(0.1f);
 		//Debug.Log("inside!!!!!!!!!");
-		if (gameState == 0){
-			RequestGameState rg = new RequestGameState ();
-			rg.send ();
-			cManager.send (rg);
-		} else {
-			RequestHeartbeat rh = new RequestHeartbeat ();
-			rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
-			cManager.send (rh);
-		}
+//		if (gameState == 0){
+//			RequestGameState rg = new RequestGameState ();
+//			rg.send ();
+//			cManager.send (rg);
+//		} else {
+//			RequestHeartbeat rh = new RequestHeartbeat ();
+//			rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
+//			cManager.send (rh);
+//		}
 //		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		//HeartBeat();
 		flag = true;

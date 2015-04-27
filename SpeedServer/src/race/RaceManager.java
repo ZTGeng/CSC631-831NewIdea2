@@ -9,11 +9,13 @@ import core.GameClient;
 import java.util.HashMap;
 import utility.Log;
 import core.GameServer;
+import core.NetworkManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import model.Player;
+import networking.response.ResponseRaceInit;
 
 /**
  *
@@ -54,6 +56,10 @@ public class RaceManager {
                 players.add(GameServer.getInstance().getActivePlayer(player_id));
                 race = new Race(players);
                 add(race);
+                ResponseRaceInit response = new ResponseRaceInit();
+                for(int p_id : race.getPlayers().keySet()) {
+                    NetworkManager.addResponseForUser(p_id, response);
+                }
                 players.clear();
             }
         }
