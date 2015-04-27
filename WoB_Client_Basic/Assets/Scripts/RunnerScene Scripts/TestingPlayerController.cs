@@ -43,25 +43,26 @@ public class TestingPlayerController : MonoBehaviour
 
             if (!playerPhysics.grounded)
                 wallJumped = false;
-
         }
 
         targetSpeed = direction * speed;
         currentSpeed = IncrementTowards(currentSpeed, targetSpeed, acceleration);
 
-        //anim.speed = currentSpeed;
+		//Animation code
+		anim.SetFloat ("speed", currentSpeed);
 
         // Check if on ground then jump
-        if (playerPhysics.grounded)
-        {
-            amountToMove.y = 0;
+        if (playerPhysics.grounded) {
+			amountToMove.y = 0;
+			anim.SetBool ("jumping", false);	
 
-            // Jump
-            if (Input.GetButtonDown("Jump"))
-            {
-                amountToMove.y = jumpHeight;
-            }
-        }
+			// Jump
+			if (Input.GetButtonDown ("Jump")) {
+				amountToMove.y = jumpHeight;
+			}
+		} else if(!playerPhysics.grounded){
+			anim.SetBool ("jumping", true);			
+		}
 
         // Wall jump
         if (!playerPhysics.grounded && playerPhysics.movementStopped && targetSpeed != 0)
@@ -107,28 +108,41 @@ public class TestingPlayerController : MonoBehaviour
                 switch (vKey)
                 {
                     case KeyCode.LeftArrow:
-                        Debug.Log("LeftArrow pressed");
+						if(currentSpeed > 0)
+						{
+							targetSpeed *= -.6f;
+							currentSpeed *= -.6f;
+						}
+						anim.SetInteger("facing", 1);
                         return -1;
-                        break;
+				
                     case KeyCode.RightArrow:
-                        Debug.Log("RightArrow pressed");
+						if(currentSpeed < 0)
+						{
+							targetSpeed *= -.6f;
+							currentSpeed *= -.6f;
+						}
+						anim.SetInteger ("facing", 0);
                         return 1;
-                        break;
+
                     case KeyCode.UpArrow:
+						//GameObject test = GameObject.Find("AfricanWildDog(Clone)");
+                        //TestingPlayerController temp = test.GetComponent<TestingPlayerController>();
+                        //temp.acceleration = 1000;
+                        //temp.speed = 500;
                         
-                        GameObject test = GameObject.Find("testingPlayer(Clone)");
-                        TestingPlayerController temp = test.GetComponent<TestingPlayerController>();
-                        temp.acceleration = 1000;
-                        temp.speed = 500;
-                        return 0;
+						return 0;
                         break;
-                    case KeyCode.DownArrow:
+
+                    case KeyCode.DownArrow:   
+						//GameObject test2 = GameObject.Find("AfricanWildDog(Clone)");
+                        //TestingPlayerController temp2 = test2.GetComponent<TestingPlayerController>();
+                        //temp2.acceleration = 32;
+                        //temp2.speed = 8;
                         
-                        GameObject test2 = GameObject.Find("testingPlayer(Clone)");
-                        TestingPlayerController temp2 = test2.GetComponent<TestingPlayerController>();
-                        temp2.acceleration = 32;
-                        temp2.speed = 8;
-                        return 0;
+						targetSpeed = 0;
+						currentSpeed = 0;
+						return 0;
                         break;
 
                 }

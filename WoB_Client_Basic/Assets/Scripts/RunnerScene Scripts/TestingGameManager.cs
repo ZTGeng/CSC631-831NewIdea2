@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class TestingGameManager : MonoBehaviour {
 	
 	public GameObject player1;
 	public GameObject player2;
-	public GameObject map;
 	public GameObject endFlag;
 	public GameObject item1;
+	public Canvas canvas;
+
+
 	public ArrayList items;
 	private GameCamera cam;
 	private float raceTime;
@@ -17,10 +21,17 @@ public class TestingGameManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+
+		//Testing countdown
+		Countdown ();
+
 		cam = GetComponent<GameCamera> ();
 		SpawnMap();
+
 		SpawnPlayer ();
+
+
+
 		Instantiate (player2, Vector3.zero, Quaternion.identity);
 		raceTime = 0;
 		//Debug.Log("Before!!!!!!!!!");
@@ -42,17 +53,16 @@ public class TestingGameManager : MonoBehaviour {
 	private void SpawnMap()
 	{
 		GameObject[] MapVars = new GameObject[10];
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			MapVars[i] = Resources.Load("Prefabs/Maps/MapVariation_" + i) as GameObject;
-			Debug.Log("Map Variation added to array");
 		}
 
 		float tempEnd = 20;
-        int mapUnitLength = 2;
+        int mapUnitLength = 1;
 		for (int i = 0; i < mapUnitLength; i++)
 		{
             tempEnd += 62.9f;
-			Instantiate(MapVars[Random.Range (0,0)], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+			Instantiate(MapVars[Random.Range (0,2)], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 		}
 		
 		endPoint = tempEnd - 62.9f;
@@ -62,4 +72,14 @@ public class TestingGameManager : MonoBehaviour {
 	private void PlaceItem(GameObject itemType, Vector2 vect) {
 		Instantiate (itemType, Vector3.zero, Quaternion.identity);
 	}
+
+	private void Countdown(){
+		//Logic for game countdown
+
+		GameObject temp = Resources.Load<GameObject> ("Art/Animations/Numbers/num0");
+		temp.transform.localScale = new Vector3 (3f, 3f, 1f);
+		Instantiate (temp, new Vector3(-19f, -2.5f,0f), Quaternion.identity);
+
+	}
+
 }

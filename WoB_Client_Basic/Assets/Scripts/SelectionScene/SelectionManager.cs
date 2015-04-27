@@ -6,6 +6,7 @@ public class SelectionManager : MonoBehaviour {
 
 	private GameObject gObj;
 	private GameObject[] speciesButtons;
+	private GameObject[] buttonImages;
     private GameObject submit;
     private int spot1, spot2;
 
@@ -113,6 +114,7 @@ public class SelectionManager : MonoBehaviour {
     void initSpeciesButtons()
     {
         speciesButtons = new GameObject[5];
+		buttonImages = new GameObject[5];
 
         /*
          * Species buttons
@@ -120,35 +122,52 @@ public class SelectionManager : MonoBehaviour {
         for (int i = 0; i < 5; i++)
         {
             speciesButtons[i] = new GameObject();
+			buttonImages[i] = new GameObject();
 
             // Naming button and setting as child of canvas
             speciesButtons[i].name = "Species " + i;
+			buttonImages[i].name = "Avatar " + i;
             speciesButtons[i].transform.parent = gObj.transform;
+			buttonImages[i].transform.parent = speciesButtons[i].transform;
 
-            //Placing the Button on the canvas
+            //Species button :: Placing the Button on the canvas
             RectTransform RectTrans = speciesButtons[i].AddComponent<RectTransform>();
             RectTrans.anchoredPosition = new Vector2(0f, 0f);
             RectTrans.sizeDelta = new Vector2(100, 100);
             RectTrans.localScale = new Vector3(3f, 3f, 1f);
 
-            //Setting a transition (ColorTint) on mouseClick
+			//Button Image :: Placing the image inside the  button
+			RectTransform rT = buttonImages[i].AddComponent<RectTransform>();
+			rT.anchoredPosition = new Vector2(0f, 0f);
+			rT.sizeDelta = new Vector2(37, 30);
+			rT.localScale = new Vector3(1f, 1f, 1f);
+			
+			//Setting a transition (ColorTint) on mouseClick
             Button s = speciesButtons[i].AddComponent<Button>();
             s.transition = Selectable.Transition.ColorTint;
 
-            //Setting the button image
+            //Species Button :: Setting the button image
             Image image = speciesButtons[i].AddComponent<Image>();
             Sprite temp = Resources.Load<Sprite>("Prefabs/UI/speciesButton");
             image.preserveAspect = true;
 
-            if (temp != null)
+			//Species Button :: Setting the button image
+			Image img = buttonImages[i].AddComponent<Image>();
+			Sprite t = Resources.Load<Sprite>("Art/Avatars/avatar" + i);
+			img.preserveAspect = true;
+			
+			if (temp != null && t != null)
             {
                 image.sprite = temp;
                 s.targetGraphic = image;
+
+				img.sprite = t;
+
             }
             else
                 Debug.LogError("Sprite is null");
-
-            switch(i){
+			
+			switch(i){
                 case 0:
                     s.onClick.AddListener(() => selectSpecies(speciesButtons[0]));
                     break;
@@ -265,8 +284,10 @@ public class SelectionManager : MonoBehaviour {
     void selectSpecies(GameObject species)
     {
         Debug.Log(species);
+		setButtonActive(5);
 
-        setButtonActive(5);
+		//Pass selected species information to the game manager
+		//lets the game manager know which species to initialize
     }
 
     void goToRunnerScene()

@@ -24,6 +24,14 @@ TextureImporter:
     21300038: AfricanWildDog_anim_19
     21300040: AfricanWildDog_anim_20
     21300042: AfricanWildDog_anim_21
+    21300044: AfricanWildDog_anim_22
+    21300046: AfricanWildDog_anim_23
+    21300048: AfricanWildDog_anim_24
+    21300050: AfricanWildDog_anim_25
+    21300052: AfricanWildDog_anim_26
+    21300054: AfricanWildDog_anim_27
+    21300056: AfricanWildDog_anim_28
+    21300058: AfricanWildDog_anim_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -46,7 +54,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -62,231 +70,307 @@ TextureImporter:
   spritePixelsToUnits: 16
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings:
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    compressionQuality: 50
+  buildTargetSettings: []
   spriteSheet:
     sprites:
     - name: AfricanWildDog_anim_0
       rect:
         serializedVersion: 2
         x: 4
-        y: 59
+        y: 88
         width: 39
         height: 28
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_1
       rect:
         serializedVersion: 2
         x: 56
-        y: 59
+        y: 88
         width: 39
         height: 25
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_2
       rect:
         serializedVersion: 2
         x: 103
-        y: 59
+        y: 88
         width: 42
         height: 24
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_3
       rect:
         serializedVersion: 2
         x: 151
-        y: 59
+        y: 88
         width: 43
         height: 23
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_4
       rect:
         serializedVersion: 2
         x: 200
-        y: 61
+        y: 90
         width: 45
         height: 23
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_5
       rect:
         serializedVersion: 2
         x: 247
-        y: 61
+        y: 90
         width: 46
         height: 23
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_6
       rect:
         serializedVersion: 2
         x: 298
-        y: 59
+        y: 88
         width: 40
         height: 27
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_7
       rect:
         serializedVersion: 2
         x: 348
-        y: 59
+        y: 88
         width: 38
         height: 28
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_8
       rect:
         serializedVersion: 2
         x: 7
-        y: 29
+        y: 58
         width: 38
         height: 28
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_9
       rect:
         serializedVersion: 2
         x: 55
-        y: 29
+        y: 58
         width: 40
         height: 27
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_10
       rect:
         serializedVersion: 2
         x: 100
-        y: 31
+        y: 60
         width: 46
         height: 23
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_11
       rect:
         serializedVersion: 2
         x: 148
-        y: 31
+        y: 60
         width: 45
         height: 23
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_12
       rect:
         serializedVersion: 2
         x: 199
-        y: 29
+        y: 58
         width: 43
         height: 23
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_13
       rect:
         serializedVersion: 2
         x: 248
-        y: 29
+        y: 58
         width: 42
         height: 24
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_14
       rect:
         serializedVersion: 2
         x: 298
-        y: 29
+        y: 58
         width: 39
         height: 25
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_15
       rect:
         serializedVersion: 2
         x: 350
-        y: 29
+        y: 58
         width: 39
         height: 28
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_16
       rect:
         serializedVersion: 2
         x: 6
-        y: 0
+        y: 29
         width: 43
         height: 24
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_17
       rect:
         serializedVersion: 2
         x: 54
-        y: 0
+        y: 29
         width: 43
         height: 24
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_18
       rect:
         serializedVersion: 2
         x: 99
-        y: 0
+        y: 29
         width: 45
         height: 22
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_19
       rect:
         serializedVersion: 2
         x: 152
-        y: 0
+        y: 29
         width: 45
         height: 22
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_20
       rect:
         serializedVersion: 2
         x: 199
-        y: 0
+        y: 29
         width: 43
         height: 24
-      alignment: 0
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: AfricanWildDog_anim_21
       rect:
         serializedVersion: 2
         x: 247
-        y: 0
+        y: 29
         width: 43
         height: 24
-      alignment: 0
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_22
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 40
+        height: 27
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_23
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 3
+        width: 46
+        height: 23
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_24
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 3
+        width: 48
+        height: 23
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_25
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 2
+        width: 45
+        height: 23
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_26
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 2
+        width: 45
+        height: 23
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_27
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 3
+        width: 48
+        height: 23
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_28
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 3
+        width: 46
+        height: 23
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AfricanWildDog_anim_29
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 40
+        height: 27
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
