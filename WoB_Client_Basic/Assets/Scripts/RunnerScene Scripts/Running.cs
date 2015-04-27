@@ -14,7 +14,7 @@ public class Running : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-//	   	cManager = gameObject.GetComponent<ConnectionManager>();
+	   	cManager = gameObject.GetComponent<ConnectionManager>();
 //
 //		NetworkRequestTable.init();
 //		NetworkResponseTable.init();
@@ -92,6 +92,7 @@ public class Running : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
 		//if (flag) {
 		//	StartCoroutine(Delay());
 		//}
@@ -152,14 +153,9 @@ public class Running : MonoBehaviour {
 			cManager.Send (rk);
 			
 		}
-		
-
-
-
-
-
 
 	}
+
 	public void SetGameStateOn(){
 		gameState = 1;
 	}
