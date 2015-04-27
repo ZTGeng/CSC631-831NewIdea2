@@ -23,7 +23,7 @@ public class Login : MonoBehaviour {
 
 		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
 //		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_SPECIES_LIST, ResponseSpeciesList);
-		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSM_RACE_INIT, ResponseRaceInit);
+		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RACE_INIT, ResponseRaceInit);
 	}
 	
 	// Use this for initialization
@@ -53,7 +53,7 @@ public class Login : MonoBehaviour {
 		}
 
 		if (GUI.Button(new Rect(Screen.width* 1/3  -150, Screen.height - 75, 100, 30), "Join Race")) {
-
+			Join();
 		}
 
 		if (GUI.Button(new Rect(Screen.width* 2/3  -150, Screen.height - 75, 100, 30), "single player")) {
@@ -119,11 +119,12 @@ public class Login : MonoBehaviour {
 
 		if (cManager) {
 				cManager.Send(RequestRaceInit());
+		}
 	}
 
 	public RequestRaceInit RequestRaceInit() {
 		RequestRaceInit request = new RequestRaceInit();
-		request.send(Constants.USER_ID);
+		request.Send(Constants.USER_ID);
 
 		return request;
 	}
@@ -132,9 +133,9 @@ public class Login : MonoBehaviour {
 		ResponseRaceInitEventArgs args = eventArgs as ResponseRaceInitEventArgs;
 
 		if (args.status == 0) {
-			Constants.USER_ID = args.user_id;
+			Application.LoadLevel("ReadyScene");
 		} else {
-			Debug.Log("Join Failed");
+			Join();
 		}
 	}
 	

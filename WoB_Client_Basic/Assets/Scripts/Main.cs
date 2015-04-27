@@ -14,7 +14,7 @@ public class Main : MonoBehaviour {
 		NetworkRequestTable.init();
 		NetworkResponseTable.init();
 		
-		SpeciesTable.initialize();
+		//SpeciesTable.initialize();
 	}
 	
 	// Use this for initialization

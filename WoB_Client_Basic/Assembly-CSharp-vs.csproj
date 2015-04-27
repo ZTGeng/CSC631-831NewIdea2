@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\MessageQueue.cs" />
      <Compile Include="Assets\Scripts\ReadyScene\ButtonLogic.cs" />
+     <Compile Include="Assets\Scripts\ReadyScene\RacePrep.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\GameCamera.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlatformActions\ElevatorPlatform.cs" />

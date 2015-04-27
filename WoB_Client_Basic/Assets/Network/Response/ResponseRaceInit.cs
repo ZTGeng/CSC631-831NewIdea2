@@ -3,19 +3,19 @@ using UnityEngine;
 
 using System;
 
-public class ResponseRaceStartEventArgs : ExtendedEventArgs {
+public class ResponseRaceInitEventArgs : ExtendedEventArgs {
 	public short status { get; set; }
 	
-	public ResponseRaceStartEventArgs() {
+	public ResponseRaceInitEventArgs() {
 		event_id = Constants.SMSG_RACE_INIT;
 	}
 }
 
-public class ResponseRaceStart : NetworkResponse {
+public class ResponseRaceInit : NetworkResponse {
 	
 	private short status;//start a battle: 0; wait for a battle: 1
 	
-	public ResponseRaceStart() {
+	public ResponseRaceInit() {
 	}
 	
 	public override void parse() {
@@ -32,9 +32,9 @@ public class ResponseRaceStart : NetworkResponse {
 	}
 	
 	public override ExtendedEventArgs process() {
-		ResponseRaceStartEventArgs args = null;
+		ResponseRaceInitEventArgs args = null;
 		
-		args = new ResponseRaceStartEventArgs();
+		args = new ResponseRaceInitEventArgs();
 		args.status = status;
 		
 		if (status == 0) {
