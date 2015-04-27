@@ -22,7 +22,8 @@ import metadata.GameRequestTable;
 import model.AnimalType;
 import model.PlantType;
 import model.Player;
-import model.Game;
+import race.Race;
+import race.RaceManager;
 import model.SpeciesType;
 import utility.ConfFileParser;
 import utility.Log;
@@ -47,8 +48,8 @@ public class GameServer {
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
-    private Game game;
-    
+    // RaceManager that is responsible for setting up a single game.
+    RaceManager gameManager;
     
     /**
      * Create the GameServer by setting up the request types and creating a
@@ -69,8 +70,11 @@ public class GameServer {
         // Thread Pool for Clients
         clientThreadPool = Executors.newCachedThreadPool();
         
+        // Instantiate the RaceManager
+        gameManager = new RaceManager();
+        
         //Hardcoded for testing a protype of a game
-        game = new Game();
+//        game = new Race();
     }
 
     public static GameServer getInstance() {
@@ -180,6 +184,8 @@ public class GameServer {
                     addToActiveThreads(client);
                     // Initiate the client
                     clientThreadPool.submit(client);
+//                     Add client to the GamesManager
+//                     gameManager.addClientToGame(client);
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
@@ -277,7 +283,7 @@ public class GameServer {
     }
 
     /**
-     * Initiates the Game Server by configuring and running it. Restarts
+     * Initiates the Race Server by configuring and running it. Restarts
      * whenever it crashes.
      *
      * @param args contains additional launching parameters
