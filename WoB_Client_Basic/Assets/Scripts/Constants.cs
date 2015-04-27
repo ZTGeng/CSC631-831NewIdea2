@@ -23,6 +23,9 @@ public class Constants {
 	public static readonly short CMSG_GAME_STATE = 107;
 	public static readonly short SMSG_GAME_STATE = 207;
 
+
+	public static readonly short CMSG_KEYBOARD = 108;
+	public static readonly short SMSG_KEYBOARD = 208;
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";

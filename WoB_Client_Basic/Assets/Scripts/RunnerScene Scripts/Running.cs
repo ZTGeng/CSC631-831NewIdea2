@@ -75,12 +75,72 @@ public class Running : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (flag) {
-			StartCoroutine(Delay());
-		}
+		//if (flag) {
+		//	StartCoroutine(Delay());
+		//}
 
 		//Debug.Log("this gets called");
 		//Debug.Log("outside!!!!!!!!!");
+		if (Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			RequestKeyboard rk = new RequestKeyboard();
+			rk.send(1,-1);
+			cManager.send (rk);
+
+		}
+		
+		if (Input.GetKeyDown(KeyCode.RightArrow))
+		{
+
+			RequestKeyboard rk = new RequestKeyboard();
+			rk.send(1,1);
+			cManager.send (rk);
+
+		}
+		
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+
+			Debug.Log("space  down");
+
+			RequestKeyboard rk = new RequestKeyboard();
+			rk.send(2,1);
+			cManager.send (rk);
+		}
+
+
+
+
+		if (Input.GetKeyUp(KeyCode.LeftArrow))
+		{
+			RequestKeyboard rk = new RequestKeyboard();
+			rk.send(1,0);
+			cManager.send (rk);
+		}
+		
+		if (Input.GetKeyUp(KeyCode.RightArrow))
+		{
+
+			RequestKeyboard rk = new RequestKeyboard();
+			rk.send(1,0);
+			cManager.send (rk);
+			
+		}
+
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+
+			RequestKeyboard rk = new RequestKeyboard();
+			rk.send(2,0);
+			cManager.send (rk);
+			
+		}
+		
+
+
+
+
+
 
 	}
 }
