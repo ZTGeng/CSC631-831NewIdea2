@@ -28,6 +28,8 @@ public class Constants {
     public final static short CMSG_KEYBOARD = 108;
     public final static short SMSG_KEYBOARD  = 208;
 
+    public final static short CMSG_RRPOSITION= 110;
+    public final static short SMSG_RRPOSITION = 210;
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
     public static final short ORGANISM_TYPE_PLANT = 1;

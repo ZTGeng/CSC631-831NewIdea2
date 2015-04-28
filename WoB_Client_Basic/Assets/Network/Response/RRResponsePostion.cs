@@ -8,7 +8,7 @@ public class RRResponsePositionEventArgs : ExtendedEventArgs {
 	public int  y { get; set; }
 	
 	public RRResponsePositionEventArgs() {
-		event_id = Constants.SMSG_RR_POSTION;
+		event_id = Constants.SMSG_RRPOSITION;
 	}
 }
 
@@ -28,13 +28,12 @@ public class RRResponsePostion : NetworkResponse {
 
 
 
-
 		}
 
 
 
 		public override ExtendedEventArgs process() {
-
+		Debug.Log ("loationResponse");
 
 		RRResponsePositionEventArgs args = new RRResponsePositionEventArgs ();
 		g = GameObject.Find ("GameLogic");

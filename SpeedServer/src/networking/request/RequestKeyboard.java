@@ -5,6 +5,7 @@
  */
 package networking.request;
 
+import core.GameServer;
 import java.io.IOException;
 import networking.response.ResponseKeyboard;
 import utility.DataReader;
@@ -35,7 +36,7 @@ public class RequestKeyboard extends  GameRequest{
     
     public void doBusiness() throws Exception {
         
-        System.out.println("key type:  " +  keytype + "key :  " + key);
+      //  System.out.println("key type:  " +  keytype + "key :  " + key);
         
         responsekeyboard = new ResponseKeyboard();
         responsekeyboard.setKeytype(keytype);
@@ -44,12 +45,17 @@ public class RequestKeyboard extends  GameRequest{
         RaceManager.getInstance();
         client.getPlayer().getID();
         
-        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        
-        Log.println(Integer.toString(RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID()));
+        //Debugging
+//        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        
+//        Log.println(Integer.toString(RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID()));
    
-        p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID();
+        //The playerID of the oppenet of the player who sent the request
+        p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
+                .getOpponent(client.getPlayer()).getID();
                 
-        NetworkManager.addResponseForUser(p_id, responsekeyboard);
+        //NetworkManager.addResponseForUser(p_id, responsekeyboard);
+        
+        GameServer.getInstance().getThreadByPlayerID(p_id).send(responsekeyboard);
     }
     
     

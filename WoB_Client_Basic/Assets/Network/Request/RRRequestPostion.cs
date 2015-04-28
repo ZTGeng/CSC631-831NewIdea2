@@ -4,7 +4,7 @@ using System.Collections;
 public class RRRequestPostion : NetworkRequest {
 	
 	public RRRequestPostion() {
-		request_id = Constants.CMSG_RR_POSITION;
+		request_id = Constants.CMSG_RRPOSITION;
 	}
 	
 	public void send(int x, int y) {

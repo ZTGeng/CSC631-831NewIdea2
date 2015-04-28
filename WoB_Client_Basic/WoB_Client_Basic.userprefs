@@ -1,13 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RunnerScene Scripts\Running.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Network\Request\RRRequestPostion.cs">
     <Files>
-      <File FileName="Assets\Scripts\Constants.cs" Line="23" Column="53" />
-      <File FileName="Assets\Network\Request\RequestLogin.cs" Line="13" Column="42" />
-      <File FileName="Assets\Network\Response\RRResponsePostion.cs" Line="41" Column="36" />
-      <File FileName="Assets\Network\Response\ResponseRaceInit.cs" Line="32" Column="3" />
-      <File FileName="Assets\Network\Response\ResponseKeyboard.cs" Line="31" Column="49" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\Running.cs" Line="122" Column="3" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\Running.cs" Line="59" Column="23" />
+      <File FileName="Assets\Network\Request\RRRequestPostion.cs" Line="13" Column="23" />
+      <File FileName="Assets\Scripts\Constants.cs" Line="27" Column="51" />
+      <File FileName="Assets\Network\Response\RRResponsePostion.cs" Line="32" Column="2" />
+      <File FileName="Assets\Scripts\MessageQueue.cs" Line="40" Column="34" />
+      <File FileName="Assets\Scripts\Login.cs" Line="21" Column="16" />
+      <File FileName="Assets\Network\Response\ResponseGameState.cs" Line="10" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

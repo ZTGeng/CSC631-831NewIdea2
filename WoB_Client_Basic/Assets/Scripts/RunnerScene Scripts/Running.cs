@@ -55,8 +55,8 @@ public class Running : MonoBehaviour {
 		//
 		//Debug.Log("Before!!!!!!!!!");
 		flag = false;
-		yield return new WaitForSeconds(0.1f);
-		//Debug.Log("inside!!!!!!!!!");
+		yield return new WaitForSeconds(1f);
+	//	Debug.Log("inside!!!!!!!!!");
 //		if (gameState == 0){
 //			RequestGameState rg = new RequestGameState ();
 //			rg.send ();
@@ -68,6 +68,17 @@ public class Running : MonoBehaviour {
 //		}
 //		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
 		//HeartBeat();
+
+		if (cManager) {
+			RRRequestPostion rp = new RRRequestPostion ();
+			rp.send ((int)player2.transform.position.x,(int) player2.transform.position.y);
+			cManager.Send (rp);
+			Debug.Log("send position reqeust");
+			
+		}
+
+
+
 		flag = true;
 	}
 
@@ -94,12 +105,13 @@ public class Running : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log("PLAYER 1 = " + player1.transform.position);
-        Debug.Log("PLAYER 2 = " + player2.transform.position);
+//        Debug.Log("PLAYER 1 = " + player1.transform.position);
+   //     Debug.Log("PLAYER 2 = " + player2.transform.position);
 
-		//if (flag) {
-		//	StartCoroutine(Delay());
-		//}
+		if (flag) {
+		StartCoroutine(Delay());
+		}
+
 
 		//Debug.Log("this gets called");
 		//Debug.Log("outside!!!!!!!!!");
@@ -158,6 +170,16 @@ public class Running : MonoBehaviour {
 			
 		}
 
+
+
+		if (cManager) {
+			RRRequestPostion rp = new RRRequestPostion ();
+			rp.send ((int)player2.transform.position.x,(int) player2.transform.position.y);
+			cManager.Send (rp);
+			Debug.Log("send position reqeust");
+			
+		}
+	
 	}
 
 	public void SetGameStateOn(){
