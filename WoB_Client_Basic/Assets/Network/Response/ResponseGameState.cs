@@ -24,22 +24,26 @@ public class ResponseGameState : NetworkResponse {
 	private short gameState;
 
 	public ResponseGameState() {
-		gameObject = GameObject.Find("Running");
+		gameObject = GameObject.Find("GameLogic");
+		//Debug.Log(gameObject.name);
 		running = gameObject.GetComponent<Running>();
 	}
 
 	public override void parse() {
-
 		gameState = DataReader.ReadShort (dataStream);
 
 		if (gameState > 0) {
 			// Change something to cause RequestHeartbeat to be sent
 		}
+
 	}
 
 	public override ExtendedEventArgs process() {
 
 		// Change the game state
+		if (gameState == 1) {
+			running.SetGameStateOn();
+		}
 
 		ResponseGameStateEventArgs args = new ResponseGameStateEventArgs ();
 

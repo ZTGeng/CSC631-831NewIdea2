@@ -21,6 +21,9 @@ public class Constants {
     public final static short SMSG_IN_GAME_HEARTBEAT = 206;
     public final static short CMSG_GAME_STATE = 107;
     public final static short SMSG_GAME_STATE = 207;
+
+    public final static short CMSG_RACE_INIT = 109;
+    public final static short SMSG_RACE_INIT = 209;
     
     public final static short CMSG_KEYBOARD = 108;
     public final static short SMSG_KEYBOARD  = 208;

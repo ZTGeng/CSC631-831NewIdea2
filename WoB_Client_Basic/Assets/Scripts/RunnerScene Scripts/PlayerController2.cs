@@ -15,7 +15,8 @@ public class PlayerController2 : MonoBehaviour {
 	private Vector2 amountToMove;
 
 	private bool wallJumped;
-	
+
+    private Animator anim;
 	private PlayerPhysics playerPhysics;
 	public  ArrayList allkeys;
 	public int keytype, key;
@@ -25,6 +26,7 @@ public class PlayerController2 : MonoBehaviour {
 	
 	void Start () {
 		playerPhysics = GetComponent<PlayerPhysics>();
+        anim = GetComponent<Animator>();
 		keytype = 0;
 		key = 0;
 		jump = false;
@@ -45,6 +47,9 @@ public class PlayerController2 : MonoBehaviour {
 			}
 
 		}
+
+        //Updating animation variables
+        updateAnimation();
 	
 		//Reseting speeds if collide with wall
 		if (playerPhysics.movementStopped) {
@@ -54,14 +59,13 @@ public class PlayerController2 : MonoBehaviour {
 			if(!playerPhysics.grounded)
 				wallJumped = false;
 
-		}
-	
-
-
-				
+		}	
 
 		targetSpeed = direction * speed;
 		currentSpeed = IncrementTowards(currentSpeed, targetSpeed, acceleration);
+
+        //Animation code
+        anim.SetFloat("speed", currentSpeed);
 
 		// Check if on ground then jump
 		if (playerPhysics.grounded) {
@@ -89,6 +93,36 @@ public class PlayerController2 : MonoBehaviour {
 
 		playerPhysics.Move(amountToMove * Time.deltaTime);
 	}
+
+    private void updateAnimation()
+    {
+        if (keytype == 1)
+        {
+            if (key == 1)
+            {
+                anim.SetInteger("facing", 0);
+            }
+            else if (key == -1)
+            {
+                anim.SetInteger("facing", 1);
+            }
+            else
+            {
+                //Look into what needs to be here
+            }
+        }
+        else if (keytype == 2)
+        {
+            if (key == 1)
+            {
+                anim.SetBool("jumping", true);
+            }
+            else
+            {
+                anim.SetBool("jumping", false);
+            }
+        }
+    }
 	
 	// Increase n towards target by speed
 	private float IncrementTowards(float n, float target, float a) {

@@ -14,9 +14,7 @@ public class RequestGameState : NetworkRequest {
 		request_id = Constants.CMSG_GAME_STATE;
 	}
 	
-	public void send() {
-		
-		packet = new GamePacket(request_id);
-		
+	public void send() {	
+		packet = new GamePacket(request_id);		
 	}
 }

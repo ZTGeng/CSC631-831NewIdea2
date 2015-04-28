@@ -12,12 +12,13 @@ public class NetworkRequestTable {
 		requestTable = new Dictionary<short, Type>();
 
 	
-		add(Constants.CMSG_AUTH, "RequestLogin");
-		add(Constants.CMSG_HEARTBEAT, "RequestHeartbeat");
+		add (Constants.CMSG_AUTH, "RequestLogin");
+		add (Constants.CMSG_HEARTBEAT, "RequestHeartbeat");
 		add (Constants.CMSG_IN_GAME_HEARTBEAT, "InGameHeartBeat");
 		add (Constants.CMSG_LOOKING_FOR_OPPONENT, "LookingForOpponent");
 		add (Constants.CMSG_GAMEOVER, "GameOver");
 		add (Constants.CMSG_GAME_STATE, "RequestGameState");
+		add (Constants.CMSG_RACE_INIT, "RequestRaceInit");
 	
 	}
 	

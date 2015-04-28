@@ -8,6 +8,11 @@ package networking.request;
 import java.io.IOException;
 import networking.response.ResponseKeyboard;
 import utility.DataReader;
+import race.Race;
+import race.RaceManager;
+import race.RacePlayer;
+import core.NetworkManager;
+import utility.Log;
 
 /**
  *
@@ -16,9 +21,11 @@ import utility.DataReader;
 public class RequestKeyboard extends  GameRequest{
     
     private int keytype,key;
+    private int p_id;
     private  ResponseKeyboard responsekeyboard;
+    
     public RequestKeyboard() {
-        responses.add(responsekeyboard = new ResponseKeyboard());
+//        responses.add(responsekeyboard = new ResponseKeyboard());
     }
        
     public void parse() throws IOException {
@@ -29,11 +36,20 @@ public class RequestKeyboard extends  GameRequest{
     public void doBusiness() throws Exception {
         
         System.out.println("key type:  " +  keytype + "key :  " + key);
+        
+        responsekeyboard = new ResponseKeyboard();
         responsekeyboard.setKeytype(keytype);
         responsekeyboard.setKey(key);
-   
         
-    
+        RaceManager.getInstance();
+        client.getPlayer().getID();
+        
+        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        
+        Log.println(Integer.toString(RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID()));
+   
+        p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID();
+                
+        NetworkManager.addResponseForUser(p_id, responsekeyboard);
     }
     
     

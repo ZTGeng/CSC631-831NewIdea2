@@ -29,6 +29,7 @@ public class GameRequestTable {
         add(Constants.CMSG_LOOKING_FOR_OPPONENT, "RequestLookingForOpponent");
         add(Constants.CMSG_IN_GAME_HEARTBEAT, "RequestInGameHeartbeat");
         add(Constants.CMSG_GAME_STATE, "RequestGameState");
+        add(Constants.CMSG_RACE_INIT, "RequestRaceInit");
         add(Constants.CMSG_KEYBOARD, "RequestKeyboard");
 
     }

@@ -15,15 +15,15 @@ public class ConnectionManager : MonoBehaviour {
 	private bool socketReady = false;
 	
 	void Awake() {
-		mainObject= GameObject.Find("GameLogic");
+		mainObject= GameObject.Find("MainObject");
 	}
 	
 	// Use this for initialization
 	void Start () {
-		
+		SetupSocket();
 	}
 
-	public void setupSocket() {
+	public void SetupSocket() {
 		if (socketReady) {
 			Debug.Log("Already Connected");
 			return;
@@ -36,16 +36,16 @@ public class ConnectionManager : MonoBehaviour {
 			
 			Debug.Log("Connected");
 
-			RequestLogin login = new RequestLogin();
-			//Hardcoded login only for testing purposes.
-			send(login.send("2","2"));
+			// RequestLogin login = new RequestLogin();
+			// //Hardcoded login only for testing purposes.
+			// Send(login.send("1","1"));
 
 		} catch (Exception e) {
 			Debug.Log("Socket error: " + e);
 		}
 	}
 
-	public void readSocket() {
+	public void ReadSocket() {
 		if (!socketReady) {
 			return;
 		}
@@ -77,7 +77,7 @@ public class ConnectionManager : MonoBehaviour {
 		}
 	}
 
-	public void closeSocket() {
+	public void CloseSocket() {
 		if (!socketReady) {
 			return;
 		}
@@ -85,7 +85,7 @@ public class ConnectionManager : MonoBehaviour {
 		socketReady = false;
 	}
 	
-	public void send(NetworkRequest request) {
+	public void Send(NetworkRequest request) {
 		if (!socketReady) {
 			return;
 		}
@@ -102,6 +102,6 @@ public class ConnectionManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		readSocket();
+		ReadSocket();
 	}
 }
