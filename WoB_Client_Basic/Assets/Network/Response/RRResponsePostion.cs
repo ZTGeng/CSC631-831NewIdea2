@@ -1,0 +1,60 @@
+﻿using UnityEngine;
+using System.Collections;
+
+
+
+public class RRResponsePositionEventArgs : ExtendedEventArgs {
+	public int  x { get; set; }
+	public int  y { get; set; }
+	
+	public RRResponsePositionEventArgs() {
+		event_id = Constants.SMSG_RR_POSTION;
+	}
+}
+
+public class RRResponsePostion : NetworkResponse {
+
+		private int x;
+		private int y;
+
+		private GameObject g;
+		private Running[] p2;
+
+		public RRResponsePostion() { }
+
+		public override void parse() {
+			x = DataReader.ReadInt(dataStream);
+			y = DataReader.ReadInt(dataStream);
+
+
+
+
+		}
+
+
+
+		public override ExtendedEventArgs process() {
+
+
+		RRResponsePositionEventArgs args = new RRResponsePositionEventArgs ();
+		g = GameObject.Find ("GameLogic");
+		p2 = g.GetComponents<Running> ();
+		p2[0].player2.transform.position = new Vector3((float)x,(float)y,-10.02f);
+	
+
+
+
+
+			args.x = x;
+			args.y = y;
+			return args;
+
+		}
+
+
+
+
+
+
+
+}

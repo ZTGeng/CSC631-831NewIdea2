@@ -26,7 +26,7 @@ public class ResponseKeyboard : NetworkResponse {
 	}
 
 	public override ExtendedEventArgs process() {
-		Debug.Log ("response process--");
+		//Debug.Log ("response process--");
 
 		g = GameObject.Find("Player_sprite_2(Clone)");
 		p2 = g.GetComponents<PlayerController2> ();
