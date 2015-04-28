@@ -78,6 +78,8 @@ public class RaceManager {
     public Race getRaceByPlayerID(int playerID) {
         return playerRaceList.get(playerID);
     }
+    
+    
 //    //Adds a client to the correct game out of a list of raceList and makes sure there is a game for the client to be added to.
 //    public void addClientToGame(GameClient client) {
 //        noCurrentGames();

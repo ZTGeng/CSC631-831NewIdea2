@@ -1,0 +1,88 @@
+-debug
+-target:library
+-nowarn:0169
+-out:'Temp/Assembly-CSharp.dll'
+-r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/Managed/UnityEngine.dll'
+-r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll'
+-r:'Assets/Plugins/Mono.Data.Sqlite.dll'
+-define:UNITY_4_6_2
+-define:UNITY_4_6
+-define:UNITY_STANDALONE_OSX
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_NEW_HIERARCHY 
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:INCLUDE_IL2CPP
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_4_6_FEATURES
+-define:INCLUDE_WP_BLUE_SUPPORT
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:UNITY5_SCRIPTING_IN_UNITY4
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_GAMECENTER
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:ENABLE_MONO
+-define:DEVELOPMENT_BUILD
+-define:ENABLE_PROFILER
+'Assets/Network/ConnectionManager.cs'
+'Assets/Network/DataReader.cs'
+'Assets/Network/GamePacket.cs'
+'Assets/Network/GamePacketStream.cs'
+'Assets/Network/NetworkRequestTable.cs'
+'Assets/Network/NetworkResponseTable.cs'
+'Assets/Network/Request/NetworkRequest.cs'
+'Assets/Network/Request/RequestGameState.cs'
+'Assets/Network/Request/RequestHeartbeat.cs'
+'Assets/Network/Request/RequestInGameHeartbeat.cs'
+'Assets/Network/Request/RequestKeyboard.cs'
+'Assets/Network/Request/RequestLogin.cs'
+'Assets/Network/Request/RequestRaceInit.cs'
+'Assets/Network/Response/NetworkResponse.cs'
+'Assets/Network/Response/ResponseGameState.cs'
+'Assets/Network/Response/ResponseHeartbeat.cs'
+'Assets/Network/Response/ResponseKeyboard.cs'
+'Assets/Network/Response/ResponseLogin.cs'
+'Assets/Network/Response/ResponseRaceInit.cs'
+'Assets/Scripts/Constants.cs'
+'Assets/Scripts/CountdownScene/CountdownManager.cs'
+'Assets/Scripts/EndScene/EndGameManager.cs'
+'Assets/Scripts/ExtendedEventArgs.cs'
+'Assets/Scripts/Login.cs'
+'Assets/Scripts/Main.cs'
+'Assets/Scripts/MessageQueue.cs'
+'Assets/Scripts/ReadyScene/RacePrep.cs'
+'Assets/Scripts/RunnerScene Scripts/GameCamera.cs'
+'Assets/Scripts/RunnerScene Scripts/GameManager.cs'
+'Assets/Scripts/RunnerScene Scripts/PlatformActions/ElevatorPlatform.cs'
+'Assets/Scripts/RunnerScene Scripts/PlatformActions/SpinPlatform.cs'
+'Assets/Scripts/RunnerScene Scripts/PlayerController.cs'
+'Assets/Scripts/RunnerScene Scripts/PlayerController2.cs'
+'Assets/Scripts/RunnerScene Scripts/PlayerPhysics.cs'
+'Assets/Scripts/RunnerScene Scripts/ReadyScene/ButtonLogic.cs'
+'Assets/Scripts/RunnerScene Scripts/Running.cs'
+'Assets/Scripts/RunnerScene Scripts/TestingGameManager.cs'
+'Assets/Scripts/RunnerScene Scripts/TestingPlayerController.cs'
+'Assets/Scripts/RunnerScene Scripts/TestingPlayerPhysics.cs'
+'Assets/Scripts/SelectionScene/SelectionManager.cs'
+'Assets/Scripts/SpeciesData.cs'
+'Assets/Scripts/SpeciesTable.cs'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'
