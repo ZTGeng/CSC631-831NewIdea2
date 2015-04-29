@@ -1,24 +1,11 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RunnerScene Scripts\TestingPlayerController.cs">
-    <Files>
-      <File FileName="Assets\Scripts\RunnerScene Scripts\TestingPlayerController.cs" Line="116" Column="19" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\TestingGameManager.cs" Line="13" Column="23" />
-      <File FileName="Assets\Scripts\SelectionScene\SelectionManager.cs" Line="263" Column="23" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\TestingPlayerPhysics.cs" Line="62" Column="3" />
-      <File FileName="Assets\Scripts\EndScene\EndGameManager.cs" Line="23" Column="44" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\num0.cs" Line="12" Column="62" />
-=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Network/Request/RequestKeyboard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RunnerScene Scripts\GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/RunnerScene Scripts/Running.cs" Line="94" Column="3" />
-      <File FileName="Assets/Network/NetworkResponseTable.cs" Line="16" Column="55" />
-      <File FileName="Assets/Network/NetworkRequestTable.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/Response/ResponseKeyboard.cs" Line="1" Column="1" />
-      <File FileName="Assets/Network/Request/RequestKeyboard.cs" Line="1" Column="1" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\RunnerScene Scripts\GameCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Network\NetworkResponseTable.cs" Line="24" Column="54" />
+      <File FileName="Assets\Network\NetworkRequestTable.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\GameManager.cs" Line="60" Column="73" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

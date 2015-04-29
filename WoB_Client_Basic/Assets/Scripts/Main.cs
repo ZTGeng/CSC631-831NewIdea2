@@ -49,7 +49,7 @@ public class Main : MonoBehaviour {
 		}
 		
         //originially 1f changed to .1f
-		StartCoroutine(RequestHeartbeat(.01f));
+		StartCoroutine(RequestHeartbeat(1f));
 	}
 	// public GameObject CreateMessageBox(string message) {
 	// 	GameObject messageBox = Instantiate(Resources.Load (Constants.PREFAB_RESOURCES_PATH + "MessageBox")) as GameObject;

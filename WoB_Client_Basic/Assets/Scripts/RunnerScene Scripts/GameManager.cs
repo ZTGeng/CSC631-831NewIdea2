@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
           // Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 			//map = Instantiate(Resources.Load("Box")) as GameObject;
 
-            map = Instantiate(Resources.Load("Prefabs/map/MapVariation1"), new Vector3(tempEnd, 0.507454f, 0), Quaternion.identity) as GameObject;
+			map = Instantiate(Resources.Load("Prefabs/Maps/MapVariation_1"), new Vector3(tempEnd, 0.507454f, 0), Quaternion.identity) as GameObject;
 			map.name = map.name + " " + i;
 			//(float)(20 + (i * 62.9))
 		    tempEnd += 62.9f;

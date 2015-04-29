@@ -26,6 +26,9 @@ public class Constants {
 	public static readonly short SMSG_RACE_INIT = 209;
 	public static readonly short CMSG_KEYBOARD = 108;
 	public static readonly short SMSG_KEYBOARD = 208;
+
+	public static readonly short CMSG_RRPOSITION = 110;
+	public static readonly short SMSG_RRPOSITION = 210;
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";

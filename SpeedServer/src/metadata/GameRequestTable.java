@@ -31,7 +31,7 @@ public class GameRequestTable {
         add(Constants.CMSG_GAME_STATE, "RequestGameState");
         add(Constants.CMSG_RACE_INIT, "RequestRaceInit");
         add(Constants.CMSG_KEYBOARD, "RequestKeyboard");
-
+        add(Constants.CMSG_RRPOSITION, "RRRequestPosition");
     }
 
     /**

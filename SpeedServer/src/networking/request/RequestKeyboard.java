@@ -36,14 +36,14 @@ public class RequestKeyboard extends  GameRequest{
     
     public void doBusiness() throws Exception {
         
-        System.out.println("key type:  " +  keytype + "key :  " + key);
+      //  System.out.println("key type:  " +  keytype + "key :  " + key);
         
         responsekeyboard = new ResponseKeyboard();
         responsekeyboard.setKeytype(keytype);
         responsekeyboard.setKey(key);
         
-        RaceManager.getInstance();
-        client.getPlayer().getID();
+//        RaceManager.getInstance();
+//        client.getPlayer().getID();
         
         //Debugging
 //        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        
