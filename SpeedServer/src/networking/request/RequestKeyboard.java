@@ -42,8 +42,8 @@ public class RequestKeyboard extends  GameRequest{
         responsekeyboard.setKeytype(keytype);
         responsekeyboard.setKey(key);
         
-        RaceManager.getInstance();
-        client.getPlayer().getID();
+//        RaceManager.getInstance();
+//        client.getPlayer().getID();
         
         //Debugging
 //        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        

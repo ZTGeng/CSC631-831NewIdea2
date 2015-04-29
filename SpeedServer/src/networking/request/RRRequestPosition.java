@@ -35,8 +35,8 @@ public class RRRequestPosition extends GameRequest {
         rrResponsePosition.setX(x);
         rrResponsePosition.setY(y);
         
-        RaceManager.getInstance();
-        client.getPlayer().getID();
+//        RaceManager.getInstance();
+//        client.getPlayer().getID();
         
         //Debugging
 //        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        

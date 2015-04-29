@@ -55,7 +55,7 @@ public class Running : MonoBehaviour {
 		//
 		//Debug.Log("Before!!!!!!!!!");
 		flag = false;
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(4f);
 	//	Debug.Log("inside!!!!!!!!!");
 //		if (gameState == 0){
 //			RequestGameState rg = new RequestGameState ();
@@ -71,7 +71,7 @@ public class Running : MonoBehaviour {
 
 		if (cManager) {
 			RRRequestPostion rp = new RRRequestPostion ();
-			rp.send ((int)player2.transform.position.x,(int) player2.transform.position.y);
+			rp.send ((int) player1.transform.position.x,(int) player1.transform.position.y);
 			cManager.Send (rp);
 			Debug.Log("send position reqeust");
 			
@@ -172,13 +172,13 @@ public class Running : MonoBehaviour {
 
 
 
-		if (cManager) {
-			RRRequestPostion rp = new RRRequestPostion ();
-			rp.send ((int)player2.transform.position.x,(int) player2.transform.position.y);
-			cManager.Send (rp);
-			Debug.Log("send position reqeust");
-			
-		}
+//		if (cManager) {
+//			RRRequestPostion rp = new RRRequestPostion ();
+//			rp.send ((int)player2.transform.position.x,(int) player2.transform.position.y);
+//			cManager.Send (rp);
+//			Debug.Log("send position reqeust");
+//			
+//		}
 	
 	}
 

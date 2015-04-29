@@ -25,9 +25,6 @@ public class RRResponsePostion : NetworkResponse {
 		public override void parse() {
 			x = DataReader.ReadInt(dataStream);
 			y = DataReader.ReadInt(dataStream);
-
-
-
 		}
 
 
@@ -38,7 +35,8 @@ public class RRResponsePostion : NetworkResponse {
 		RRResponsePositionEventArgs args = new RRResponsePositionEventArgs ();
 		g = GameObject.Find ("GameLogic");
 		p2 = g.GetComponents<Running> ();
-		p2[0].player2.transform.position = new Vector3((float)x,(float)y,-10.02f);
+		Debug.Log ("x = "+ x + "\ny = " + y );
+		p2[0].player2.transform.position = new Vector3((float)x,(float)y,0f);
 	
 
 
