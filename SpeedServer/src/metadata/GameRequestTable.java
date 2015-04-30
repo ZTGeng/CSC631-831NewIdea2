@@ -32,6 +32,7 @@ public class GameRequestTable {
         add(Constants.CMSG_RACE_INIT, "RequestRaceInit");
         add(Constants.CMSG_KEYBOARD, "RequestKeyboard");
         add(Constants.CMSG_RRPOSITION, "RRRequestPosition");
+       add(Constants.CMSG_RRSPECIES, "RRPequestSpecies");
     }
 
     /**

@@ -6,14 +6,28 @@ public class Running : MonoBehaviour {
 	public GameObject mainObject;
 	public GameObject player1;
 	public GameObject player2;
+	public float time;
 	private bool flag = true;
 	private ConnectionManager cManager;
 	private MessageQueue messageQueue;
 	private short gameState;
 
+
 	
 	// Use this for initialization
+
+
+
+	
+	void OnGUI(){
+		GUIStyle myStyle = new GUIStyle();
+		myStyle.normal.textColor = Color.blue;
+	
+		GUI.Label (new Rect (Screen.width - 150, 0, 200, 100), "Running Time:  " +time, myStyle);
+	
+	}
 	void Start () {
+		time = 0.0f;
 		mainObject = GameObject.Find("MainObject");
 
 	   	cManager = mainObject.GetComponent<ConnectionManager>();
@@ -104,7 +118,7 @@ public class Running : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		time += Time.deltaTime;
 //        Debug.Log("PLAYER 1 = " + player1.transform.position);
    //     Debug.Log("PLAYER 2 = " + player2.transform.position);
 

@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour {
     private static float startPoint = 0;
     private static float endPoint;
 
+
+
+
+
+
 	// Use this for initialization
 	void Start () {
 

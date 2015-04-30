@@ -35,7 +35,7 @@ public class RRResponsePostion : NetworkResponse {
 		RRResponsePositionEventArgs args = new RRResponsePositionEventArgs ();
 		g = GameObject.Find ("GameLogic");
 		p2 = g.GetComponents<Running> ();
-		Debug.Log ("response:    x = "+ x + "\ny = " + y );
+		//Debug.Log ("response:    x = "+ x + "\ny = " + y );
 		p2[0].player2.transform.position = new Vector3(x,y,0f);
 	
 

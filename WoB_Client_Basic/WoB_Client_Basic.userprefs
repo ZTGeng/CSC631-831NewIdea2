@@ -2,14 +2,20 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RunnerScene Scripts\Running.cs">
     <Files>
-      <File FileName="Assets\Network\Request\RRRequestPostion.cs" Line="14" Column="23" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\GameManager.cs" Line="49" Column="2" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\GameCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets\Network\NetworkResponseTable.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\GameManager.cs" Line="20" Column="2" />
+      <File FileName="Assets\Network\Request\RRRequestSpecies.cs" Line="1" Column="1" />
+      <File FileName="Assets\Network\Request\RRRequestPostion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Constants.cs" Line="1" Column="1" />
+      <File FileName="Assets\Network\Response\RRResponseSpecies.cs" Line="1" Column="1" />
+      <File FileName="Assets\Network\Response\RRResponsePostion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MessageQueue.cs" Line="1" Column="1" />
+      <File FileName="Assets\Network\ConnectionManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Network\NetworkRequestTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\Running.cs" Line="115" Column="3" />
-      <File FileName="Assets\Network\Response\RRResponsePostion.cs" Line="34" Column="3" />
-      <File FileName="Assets\Network\Response\ResponseRaceInit.cs" Line="13" Column="1" />
+      <File FileName="Assets\Network\NetworkResponseTable.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SelectionScene\SelectionManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\GameCamera.cs" Line="30" Column="3" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\Running.cs" Line="12" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
