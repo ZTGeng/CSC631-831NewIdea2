@@ -17,14 +17,14 @@ import utility.DataReader;
  */
 public class RRRequestPosition extends GameRequest {
     
-    private int x, y;
+    private float x, y;
     private int p_id;
     private RRResponsePosition rrResponsePosition;
     
     @Override
     public void parse() throws IOException {
-        x = DataReader.readInt(dataInput);
-        y = DataReader.readInt(dataInput);
+        x = Float.parseFloat(DataReader.readString(dataInput));
+        y = Float.parseFloat(DataReader.readString(dataInput));
     }
 
     @Override

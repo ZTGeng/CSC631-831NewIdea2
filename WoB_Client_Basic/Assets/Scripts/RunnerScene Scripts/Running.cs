@@ -71,9 +71,9 @@ public class Running : MonoBehaviour {
 
 		if (cManager) {
 			RRRequestPostion rp = new RRRequestPostion ();
-			rp.send ((int) player1.transform.position.x,(int) player1.transform.position.y);
+			rp.send ((player1.transform.position.x).ToString(), (player1.transform.position.y).ToString());
 			cManager.Send (rp);
-			Debug.Log("send position reqeust");
+
 			
 		}
 
