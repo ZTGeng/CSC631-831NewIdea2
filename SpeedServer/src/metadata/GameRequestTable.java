@@ -31,8 +31,11 @@ public class GameRequestTable {
         add(Constants.CMSG_GAME_STATE, "RequestGameState");
         add(Constants.CMSG_RACE_INIT, "RequestRaceInit");
         add(Constants.CMSG_KEYBOARD, "RequestKeyboard");
-        add(Constants.CMSG_RRPOSITION, "RRRequestPosition");
-        add(Constants.CMSG_RRENDGAME, "RREndGame");
+        add(Constants.CMSG_RRPOSITION, "RequestRRPosition");
+        add(Constants.CMSG_RRENDGAME, "RequestRREndGame");
+        add(Constants.CMSG_RRSPECIES, "RequestRRSpecies");
+        add(Constants.CMSG_RRBOOST, "RequestRRBoost");
+        add(Constants.CMSG_RRSTARTGAME, "RequestRRStartGame");
     }
 
     /**

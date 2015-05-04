@@ -3,16 +3,16 @@ using System.Collections;
 
 
 
-public class RRResponsePositionEventArgs : ExtendedEventArgs {
+public class ResponseRRPositionEventArgs : ExtendedEventArgs {
 	public int  x { get; set; }
 	public int  y { get; set; }
 	
-	public RRResponsePositionEventArgs() {
+	public ResponseRRPositionEventArgs() {
 		event_id = Constants.SMSG_RRPOSITION;
 	}
 }
 
-public class RRResponsePostion : NetworkResponse {
+public class ResponseRRPostion : NetworkResponse {
 
 		private int x;
 		private int y;
@@ -20,7 +20,7 @@ public class RRResponsePostion : NetworkResponse {
 		private GameObject g;
 		private Running[] p2;
 
-		public RRResponsePostion() { }
+		public ResponseRRPostion() { }
 
 		public override void parse() {
 			x = DataReader.ReadInt(dataStream);
@@ -32,7 +32,7 @@ public class RRResponsePostion : NetworkResponse {
 		public override ExtendedEventArgs process() {
 		Debug.Log ("loationResponse");
 
-		RRResponsePositionEventArgs args = new RRResponsePositionEventArgs ();
+		ResponseRRPositionEventArgs args = new ResponseRRPositionEventArgs ();
 		g = GameObject.Find ("GameLogic");
 		p2 = g.GetComponents<Running> ();
 		Debug.Log ("x = "+ x + "\ny = " + y );
