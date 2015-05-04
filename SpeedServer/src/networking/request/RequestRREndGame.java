@@ -5,8 +5,10 @@
  */
 package networking.request;
 
+import core.GameServer;
 import java.io.IOException;
 import networking.response.ResponseRREndGame;
+import race.RaceManager;
 import utility.DataReader;
 
 /**
@@ -17,6 +19,7 @@ public class RequestRREndGame extends GameRequest {
     
     private boolean gameCompleted;
     private float finalTime;
+    private int p_id;
     private ResponseRREndGame responseRREndGame;
     
     public RequestRREndGame(){
@@ -34,8 +37,15 @@ public class RequestRREndGame extends GameRequest {
     public void doBusiness() throws Exception {
         responseRREndGame = new ResponseRREndGame();
         
+        responseRREndGame.setFinalTime(finalTime);
+        responseRREndGame.setGameCompleted(gameCompleted);
         // GET FASTEST and HIGHEST POINT PLAYER NAMES FROM DATABASE
         // THEN SET RESPONSERRENDGAME VALUES TO IT
+        
+        p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
+                .getOpponent(client.getPlayer()).getID();
+                        
+        GameServer.getInstance().getThreadByPlayerID(p_id).send(responseRREndGame);
     }
     
 }
