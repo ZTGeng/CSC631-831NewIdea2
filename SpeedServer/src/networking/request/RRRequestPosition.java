@@ -29,8 +29,8 @@ public class RRRequestPosition extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
-        System.out.println("X:  " +  x + "Y :  " + y);
-        
+//        System.out.println("X:  " +  x + "Y :  " + y);
+    
         rrResponsePosition = new RRResponsePosition();
         rrResponsePosition.setX(x);
         rrResponsePosition.setY(y);

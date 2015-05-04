@@ -20,15 +20,16 @@ public class RRResponseSpecies : NetworkResponse {
 
 
 	public override void parse() {
+		///Debug.Log ("species parse() -------------------------");
 		id = DataReader.ReadInt(dataStream);
 
 	}
 
 	public override ExtendedEventArgs process() {
 
-
+		//Debug.Log ("species choose for 2nd player : " + id);
 		RRResponseSpeciesEventArgs args = new RRResponseSpeciesEventArgs ();
-		args.event_id = id;
+		args.id = id;
 
 
 		return args;

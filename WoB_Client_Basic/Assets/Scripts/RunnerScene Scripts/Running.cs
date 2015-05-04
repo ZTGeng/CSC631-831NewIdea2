@@ -13,6 +13,7 @@ public class Running : MonoBehaviour {
 	private short gameState;
 
 
+
 	
 	// Use this for initialization
 
@@ -29,6 +30,7 @@ public class Running : MonoBehaviour {
 	void Start () {
 		time = 0.0f;
 		mainObject = GameObject.Find("MainObject");
+
 
 	   	cManager = mainObject.GetComponent<ConnectionManager>();
 
@@ -131,42 +133,50 @@ public class Running : MonoBehaviour {
 		//Debug.Log("outside!!!!!!!!!");
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
 		{
+			if(cManager)
+			{
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,-1);
 			cManager.Send (rk);
+			}
 
 		}
 		
 		if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 
+			if(cManager)
+			{
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,1);
 			cManager.Send (rk);
+			}
 
 		}
 		
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 
-			Debug.Log("space  down");
 
+			if(cManager)
+			{
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(2,1);
 			cManager.Send (rk);
+			}
 		}
 
 
 
 
-		if (Input.GetKeyUp(KeyCode.LeftArrow))
+		if (Input.GetKeyUp(KeyCode.LeftArrow) && cManager)
 		{
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,0);
 			cManager.Send (rk);
 		}
 		
-		if (Input.GetKeyUp(KeyCode.RightArrow))
+		if (Input.GetKeyUp(KeyCode.RightArrow) &&cManager)
 		{
 
 			RequestKeyboard rk = new RequestKeyboard();
@@ -175,7 +185,7 @@ public class Running : MonoBehaviour {
 			
 		}
 
-		if (Input.GetKeyUp(KeyCode.Space))
+		if (Input.GetKeyUp(KeyCode.Space) && cManager)
 		{
 
 			RequestKeyboard rk = new RequestKeyboard();

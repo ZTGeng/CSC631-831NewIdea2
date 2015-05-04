@@ -32,7 +32,7 @@ public class RRRequestSpecies extends GameRequest {
         
         rrResponseSpecies = new RRResponseSpecies();
         rrResponseSpecies.setId(id);
-        
+       System.out.println("speciec: " + id);
 //        RaceManager.getInstance();
 //        client.getPlayer().getID();
         

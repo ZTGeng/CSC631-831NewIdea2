@@ -17,7 +17,7 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_RACE_INIT, "ResponseRaceInit");
 		add(Constants.SMSG_KEYBOARD, "ResponseKeyboard");
 		add(Constants.SMSG_RRPOSITION, "RRResponsePostion");
-		add(Constants.CMSG_RRSPECIES, "RRResponseSpecies");
+		add(Constants.SMSG_RRSPECIES, "RRResponseSpecies");
 
 
 	}
@@ -34,6 +34,7 @@ public class NetworkResponseTable {
 			response.response_id = response_id;
 		} else {
 			Debug.Log("Response [" + response_id + "] Not Found");
+			Debug.Log (response.ToString());
 		}
 		
 		return response;
