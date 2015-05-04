@@ -7,7 +7,7 @@ package networking.request;
 
 import core.GameServer;
 import java.io.IOException;
-import networking.response.RRResponsePosition;
+import networking.response.ResponseRRPosition;
 import race.RaceManager;
 import utility.DataReader;
 
@@ -15,11 +15,11 @@ import utility.DataReader;
  *
  * @author markfavis
  */
-public class RRRequestPosition extends GameRequest {
+public class RequestRRPosition extends GameRequest {
     
     private int x, y;
     private int p_id;
-    private RRResponsePosition rrResponsePosition;
+    private ResponseRRPosition responseRRPosition;
     
     @Override
     public void parse() throws IOException {
@@ -31,9 +31,9 @@ public class RRRequestPosition extends GameRequest {
     public void doBusiness() throws Exception {
         System.out.println("X:  " +  x + "Y :  " + y);
         
-        rrResponsePosition = new RRResponsePosition();
-        rrResponsePosition.setX(x);
-        rrResponsePosition.setY(y);
+        responseRRPosition = new ResponseRRPosition();
+        responseRRPosition.setX(x);
+        responseRRPosition.setY(y);
         
 //        RaceManager.getInstance();
 //        client.getPlayer().getID();
@@ -48,7 +48,7 @@ public class RRRequestPosition extends GameRequest {
                 
         //NetworkManager.addResponseForUser(p_id, responsekeyboard);
         
-        GameServer.getInstance().getThreadByPlayerID(p_id).send(rrResponsePosition);
+        GameServer.getInstance().getThreadByPlayerID(p_id).send(responseRRPosition);
     }
     
 }

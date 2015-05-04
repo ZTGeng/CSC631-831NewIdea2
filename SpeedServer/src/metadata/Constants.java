@@ -30,6 +30,10 @@ public class Constants {
 
     public final static short CMSG_RRPOSITION= 110;
     public final static short SMSG_RRPOSITION = 210;
+    
+    public final static short CMSG_RRENDGAME = 111;
+    public final static short SMSG_RRENDGAME = 211;
+    
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
     public static final short ORGANISM_TYPE_PLANT = 1;

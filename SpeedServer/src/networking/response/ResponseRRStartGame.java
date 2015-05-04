@@ -4,43 +4,35 @@
  * and open the template in the editor.
  */
 package networking.response;
-import metadata.Constants;
+
 import utility.GamePacket;
 
 /**
  *
  * @author markfavis
  */
-public class RRResponsePosition extends GameResponse {
+public class ResponseRRStartGame extends GameResponse {
     
-    private int x, y;
+    private int opponentStatus;
     
-    public RRResponsePosition(){
-        responseCode = Constants.SMSG_RRPOSITION;
+    /*
+    status:
+        0 = opponent not ready
+        1 = opponent ready
+        2 = opponent quit
+    */
+    
+    public ResponseRRStartGame(){
+        
     }
 
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-        packet.addInt32(x);
-        packet.addInt32(y);
+        
+        packet.addInt32(opponentStatus);
+        
         return packet.getBytes();
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
     
 }
