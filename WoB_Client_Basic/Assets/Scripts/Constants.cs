@@ -29,6 +29,13 @@ public class Constants {
 
 	public static readonly short CMSG_RRPOSITION = 110;
 	public static readonly short SMSG_RRPOSITION = 210;
+
+	public static readonly short CMSG_RRENDGAME = 111;
+	public static readonly short SMSG_RRENDGAME = 211;
+	public static readonly short CMSG_RRSTARTGAME = 112;
+	public static readonly short SMSG_RRSTARTGAME = 212;
+	public static readonly short CMSG_RRBOOST = 113;
+	public static readonly short SMSG_RRBOOST = 213;
 	
 	// Other
 	public static readonly string IMAGE_RESOURCES_PATH = "Images/";
