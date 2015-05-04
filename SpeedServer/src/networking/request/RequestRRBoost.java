@@ -5,8 +5,10 @@
  */
 package networking.request;
 
+import core.GameServer;
 import java.io.IOException;
 import networking.response.ResponseRRBoost;
+import race.RaceManager;
 import utility.DataReader;
 
 /**
@@ -16,6 +18,7 @@ import utility.DataReader;
 public class RequestRRBoost extends GameRequest {
 
     private int boostItemID;
+    private int p_id;
     private ResponseRRBoost responseRRBoost;
 
     @Override
@@ -26,8 +29,14 @@ public class RequestRRBoost extends GameRequest {
     @Override
     public void doBusiness() throws Exception {
         responseRRBoost = new ResponseRRBoost();
-        
-        // inform other opponent
+        responseRRBoost.setBoostItemID(boostItemID);
+
+        // inform opponent
+        p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
+                .getOpponent(client.getPlayer()).getID();
+
+        //NetworkManager.addResponseForUser(p_id, responsekeyboard);
+        GameServer.getInstance().getThreadByPlayerID(p_id).send(responseRRBoost);
     }
 
 }
