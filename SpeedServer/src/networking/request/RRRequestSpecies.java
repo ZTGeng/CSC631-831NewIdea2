@@ -10,6 +10,7 @@ import java.io.IOException;
 import networking.response.RRResponseSpecies;
 import race.RaceManager;
 import utility.DataReader;
+import race.RacePlayer;
 
 /**
  *
@@ -40,6 +41,10 @@ public class RRRequestSpecies extends GameRequest {
 //        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        
 //        Log.println(Integer.toString(RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID()));
    
+        //Set the species of this Player
+        RacePlayer racePlayer = (RacePlayer) client.getPlayer();
+        racePlayer.setSpecies(id);
+        
         //The playerID of the oppenet of the player who sent the request
         p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
                 .getOpponent(client.getPlayer()).getID();

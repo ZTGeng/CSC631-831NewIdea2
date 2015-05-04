@@ -20,6 +20,7 @@ public class RacePlayer extends Player {
     private int y;
     private int speed;
     private int boosts; // Number of boosts (positive speed items) a user has.
+    private int species;
     
 //    private int distanceTraveled;
 //    private short gameover;
@@ -189,6 +190,20 @@ public class RacePlayer extends Player {
      */
     public void setOpponent(RacePlayer opponent) {
         this.opponent = opponent;
+    }
+
+    /**
+     * @return the species
+     */
+    public int getSpecies() {
+        return species;
+    }
+
+    /**
+     * @param species the species to set
+     */
+    public void setSpecies(int species) {
+        this.species = species;
     }
     
 }
