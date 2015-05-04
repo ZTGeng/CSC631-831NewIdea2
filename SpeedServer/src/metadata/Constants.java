@@ -51,4 +51,5 @@ public class Constants {
     public static final String CLIENT_VERSION = "1.00";
     public static final int TIMEOUT_SECONDS = 90;
     public static final String CSV_SAVE_PATH = "src/log/";
+    public static final short MAX_NUMBER_OF_PLAYERS = 2;
 }

@@ -4,6 +4,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import model.Player;
+import networking.response.ResponseRRStartGame;
+import metadata.Constants;
+import core.NetworkManager;
 
 
 
@@ -26,10 +29,10 @@ public class Race {
     
     
     
-    private short shortPlayersInGame;  // number of players in a game
+    private short playersReadyToStart;
 //    private GameClient client1;
 //    private GameClient client2;
-    private short state;
+//    private short state;
     
     
     
@@ -41,7 +44,7 @@ public class Race {
         }
         
 //        shortPlayersInGame = 0;
-//        state = 0;
+//        state = 0; // the game is off
     }
    
 //    public Race(GameClient player1, GameClient player2){
@@ -66,6 +69,18 @@ public class Race {
         }
         
         return null; // error
+    }
+    
+    public void startRace(int player_id) {
+        if (player_id == rPlayers.get(0).getID() || player_id == rPlayers.get(1).getID()){
+            playersReadyToStart++;        
+        }
+        if (playersReadyToStart == Constants.MAX_NUMBER_OF_PLAYERS){
+            ResponseRRStartGame responseStart = new ResponseRRStartGame(); 
+            for(int p_id : getPlayers().keySet()) {
+                    NetworkManager.addResponseForUser(p_id, responseStart);
+            }
+        }
     }
 
 //    /**
