@@ -13,21 +13,25 @@ import utility.GamePacket;
  * @author markfavis
  */
 public class ResponseRREndGame extends GameResponse {
-    
+
+    private boolean gameCompleted;
+    private float finalTime;
     private String fastestPlayer;
     private String highestPoint;
-    
-    public ResponseRREndGame(){
+
+    public ResponseRREndGame() {
         responseCode = Constants.SMSG_RRENDGAME;
     }
 
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-        
-        packet.addString(getFastestPlayer());
-        packet.addString(getHighestPoint());
-        
+
+        packet.addBoolean(isGameCompleted());
+        packet.addFloat(getFinalTime());
+        //packet.addString(getFastestPlayer());
+        //packet.addString(getHighestPoint());
+
         return packet.getBytes();
     }
 
@@ -58,5 +62,33 @@ public class ResponseRREndGame extends GameResponse {
     public void setHighestPoint(String highestPoint) {
         this.highestPoint = highestPoint;
     }
-    
+
+    /**
+     * @return the gameCompleted
+     */
+    public boolean isGameCompleted() {
+        return gameCompleted;
+    }
+
+    /**
+     * @param gameCompleted the gameCompleted to set
+     */
+    public void setGameCompleted(boolean gameCompleted) {
+        this.gameCompleted = gameCompleted;
+    }
+
+    /**
+     * @return the finalTime
+     */
+    public float getFinalTime() {
+        return finalTime;
+    }
+
+    /**
+     * @param finalTime the finalTime to set
+     */
+    public void setFinalTime(float finalTime) {
+        this.finalTime = finalTime;
+    }
+
 }
