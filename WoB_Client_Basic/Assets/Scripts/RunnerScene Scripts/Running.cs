@@ -18,8 +18,7 @@ public class Running : MonoBehaviour {
 
 	   	cManager = mainObject.GetComponent<ConnectionManager>();
 
-	    NetworkRequestTable.init();
-	    NetworkResponseTable.init();
+	    
 
 	    if (cManager) {
 		    cManager.SetupSocket();
@@ -70,7 +69,7 @@ public class Running : MonoBehaviour {
 		//HeartBeat();
 
 		if (cManager) {
-			RRRequestPostion rp = new RRRequestPostion ();
+			RequestRRPostion rp = new RequestRRPostion ();
 			rp.send ((int) player1.transform.position.x,(int) player1.transform.position.y);
 			cManager.Send (rp);
 			Debug.Log("send position reqeust");

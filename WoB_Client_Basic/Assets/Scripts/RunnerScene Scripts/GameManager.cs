@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour {
     private float raceTime;
     private static float startPoint = 0;
     private static float endPoint;
+	private int species1;
+	public  static int species2;
 
 	// Use this for initialization
 	void Start () {
-
+		Debug.Log ("this is specie2 : " + species2);
         
 
         cam = GetComponent<GameCamera>();

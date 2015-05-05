@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RRRequestPostion : NetworkRequest {
+public class RequestRRPostion : NetworkRequest {
 	
-	public RRRequestPostion() {
+	public RequestRRPostion() {
 		request_id = Constants.CMSG_RRPOSITION;
 	}
 	
