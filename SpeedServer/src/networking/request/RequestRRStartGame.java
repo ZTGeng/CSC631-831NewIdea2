@@ -7,6 +7,8 @@ package networking.request;
 
 import java.io.IOException;
 import networking.response.ResponseRRStartGame;
+import race.Race;
+import race.RaceManager;
 
 /**
  *
@@ -23,7 +25,7 @@ public class RequestRRStartGame extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
-        responseRRStartGame = new ResponseRRStartGame();
+        RaceManager.manager.getRaceByPlayerID(client.getUserID()).startRace(client.getUserID());
         // WAIT FOR OPPONENT TO SEND THE SAME PACKET
     }
     
