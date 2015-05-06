@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	public ArrayList items;
 	private GameCamera cam;
     private float raceTime;
-    private static float startPoint = 0;
+    private static float startPoint = 0f;
     private static float endPoint;
 
 	// Use this for initialization
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
         SpawnMap();
         SpawnPlayer();
 
-        player2 = Instantiate(player2, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+        player2 = Instantiate(player2, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
         player2.name = "Player_sprite_2(Clone)";
 
         raceTime = 0;
@@ -35,11 +35,13 @@ public class GameManager : MonoBehaviour {
         // items.Add (items);
 
         GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
-  
+		GameObject.Find ("GameLogic").GetComponent<RunnerUI> ().setStartandEndPoints (startPoint, endPoint);
+		GameObject.Find ("GameLogic").GetComponent<RunnerUI> ().setPlayer1 (player1);
+		GameObject.Find ("GameLogic").GetComponent<RunnerUI> ().SetPlayer2 (player2);
 	}
 	
 	private void SpawnPlayer() {
-        player1 = Instantiate(player1, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+        player1 = Instantiate(player1, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
         cam.SetTarget(player1.transform);
 
         player1.name = "Player_sprite(Clone)";
@@ -54,17 +56,17 @@ public class GameManager : MonoBehaviour {
 			MapVars[i+1] = Resources.Load("Prefabs/Maps/MapVariation_" + i) as GameObject;
 		}
 
-		float tempEnd = 20;
+		float tempEnd = 39;
 		int mapUnitLength = 5;
 		for (int i = 0; i < mapUnitLength; i++)
 		{
 			tempEnd += 62.9f;
 			if(i == 0)
-				Instantiate(MapVars[0], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+				Instantiate(MapVars[0], new Vector3((float)(39 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 			else if(i == (mapUnitLength - 1))
-				Instantiate(MapVars[0], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+				Instantiate(MapVars[0], new Vector3((float)(39 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 			else
-				Instantiate(MapVars[Random.Range (1,3)], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+				Instantiate(MapVars[Random.Range (1,3)], new Vector3((float)(39 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 		}
 		
 		endPoint = tempEnd - 62.9f;
