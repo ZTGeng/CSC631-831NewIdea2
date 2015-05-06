@@ -9,9 +9,19 @@ public class SelectionManager : MonoBehaviour {
 	private GameObject[] buttonImages;
     private GameObject submit;
     private int spot1, spot2;
+<<<<<<< HEAD
 
 	// Use this for initialization
 	void Start () {
+=======
+	private GameObject mainObject;
+	private ConnectionManager cManager;
+	private int species;
+	// Use this for initialization
+	void Start () {
+
+	
+>>>>>>> Dong
 		//Canvas Initialization
 		gObj = new GameObject ();
 		gObj.name = "SelectionCanvas";
@@ -27,6 +37,13 @@ public class SelectionManager : MonoBehaviour {
 
 		//Initialize Buttons
 		initButtons ();
+<<<<<<< HEAD
+=======
+		mainObject = GameObject.Find("MainObject");
+		
+		
+		cManager = mainObject.GetComponent<ConnectionManager>();
+>>>>>>> Dong
 	}
 
 	private void initButtons(){
@@ -169,6 +186,7 @@ public class SelectionManager : MonoBehaviour {
 			
 			switch(i){
                 case 0:
+<<<<<<< HEAD
                     s.onClick.AddListener(() => selectSpecies(speciesButtons[0]));
                     break;
                 case 1:
@@ -182,6 +200,21 @@ public class SelectionManager : MonoBehaviour {
                     break;
                 case 4:
                     s.onClick.AddListener(() => selectSpecies(speciesButtons[4]));
+=======
+                    s.onClick.AddListener(() => selectSpecies(0));
+                    break;
+                case 1:
+                    s.onClick.AddListener(() => selectSpecies(1));
+                    break;
+                case 2:
+                    s.onClick.AddListener(() => selectSpecies(2));
+                    break;
+                case 3:
+                    s.onClick.AddListener(() => selectSpecies(3));
+                    break;
+                case 4:
+                    s.onClick.AddListener(() => selectSpecies(4));
+>>>>>>> Dong
                     break;
             }
 
@@ -281,10 +314,18 @@ public class SelectionManager : MonoBehaviour {
         setButtonActive(spot2);
 	}
 
+<<<<<<< HEAD
     void selectSpecies(GameObject species)
     {
         Debug.Log(species);
 		setButtonActive(5);
+=======
+    void selectSpecies(int s)
+    {
+		species = s;
+		setButtonActive(5);
+	
+>>>>>>> Dong
 
 		//Pass selected species information to the game manager
 		//lets the game manager know which species to initialize
@@ -292,6 +333,19 @@ public class SelectionManager : MonoBehaviour {
 
     void goToRunnerScene()
     {
+<<<<<<< HEAD
         Application.LoadLevel("CountdownScene");
+=======
+
+		RRRequestSpecies rs = new RRRequestSpecies ();
+		rs.send (species);
+		if (cManager) {
+			cManager.Send (rs);
+		}
+
+		GameManager.species2 = species;
+        Application.LoadLevel("CountdownScene");
+		
+>>>>>>> Dong
     }
 }

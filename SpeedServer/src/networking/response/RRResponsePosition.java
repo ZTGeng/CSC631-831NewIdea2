@@ -13,7 +13,8 @@ import utility.GamePacket;
  */
 public class RRResponsePosition extends GameResponse {
     
-    private int x, y;
+//    private int x, y;
+    private float x, y;
     
     public RRResponsePosition(){
         responseCode = Constants.SMSG_RRPOSITION;
@@ -22,24 +23,46 @@ public class RRResponsePosition extends GameResponse {
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-        packet.addInt32(x);
-        packet.addInt32(y);
+//
+//        packet.addInt32(x);
+//        packet.addInt32(y);
+//        return packet.getBytes();
+//    }
+//
+//    public int getX() {
+//        return x;
+//    }
+//
+//    public void setX(int x) {
+//        this.x = x;
+//    }
+//
+//    public int getY() {
+//        return y;
+//    }
+//
+//    public void setY(int y) {
+//        this.y = y;
+//    }
+
+        packet.addFloat(x);
+        packet.addFloat(y);
         return packet.getBytes();
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
     }
     

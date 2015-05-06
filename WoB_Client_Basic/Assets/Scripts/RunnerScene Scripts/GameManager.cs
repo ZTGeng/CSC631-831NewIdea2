@@ -14,11 +14,24 @@ public class GameManager : MonoBehaviour {
     private float raceTime;
     private static float startPoint = 0;
     private static float endPoint;
+	private int species1;
+	public  static int species2;
+
+
+
+
+
 
 	// Use this for initialization
 	void Start () {
 
+<<<<<<< HEAD
         
+=======
+		species1 = PlayerPrefs.GetInt ("species1");
+
+		//Debug.Log ("species2 : " + species2);
+>>>>>>> Dong
 
         cam = GetComponent<GameCamera>();
         SpawnMap();
