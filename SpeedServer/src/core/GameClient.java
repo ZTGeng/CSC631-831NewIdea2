@@ -39,12 +39,12 @@ public class GameClient implements Runnable {
     private Queue<GameResponse> updates; // Temporarily store responses for client
     // Other Variables
     private Player player;
-    private Player opponent;
-    private int x;
-    private int y;
-    private int distanceTraveled;
-    private short gameover;
-    private short gameState;
+//    private Player opponent;
+//    private int x;
+//    private int y;
+//    private int distanceTraveled;
+//    private short gameover;
+//    private short gameState;
 
     /**
      * Initialize the GameClient using the client socket and creating both input
@@ -169,53 +169,53 @@ public class GameClient implements Runnable {
         return this.player = player;
     }
     
-    public Player getOpponent() {
-        return opponent;
-    }
-
-    public Player setOpponent(Player opponent) {
-        return this.opponent = opponent;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-    
-    public int setX(int x) {
-        return this.x = x;
-    }
-
-    public int setY(int y) {
-        return this.y = y;
-    }
-    
-    public int getDistanceTraveled() {
-        return distanceTraveled;
-    }
-    
-    public int setDistanceTraveled(int distanceTraveled) {
-        return this.distanceTraveled = distanceTraveled;
-    }
-    
-    public short getGameover() {
-        return gameover;
-    }
-    
-    public short setGameover(short gameover) {
-        return this.gameover = gameover;
-    }
-    
-    public short getGameState() {
-        return gameState;
-    }
-    
-    public short setGameState(short gameState) {
-        return this.gameState = gameState;
-    }
+//    public Player getOpponent() {
+//        return opponent;
+//    }
+//
+//    public Player setOpponent(Player opponent) {
+//        return this.opponent = opponent;
+//    }
+//
+//    public int getX() {
+//        return x;
+//    }
+//
+//    public int getY() {
+//        return y;
+//    }
+//    
+//    public int setX(int x) {
+//        return this.x = x;
+//    }
+//
+//    public int setY(int y) {
+//        return this.y = y;
+//    }
+//    
+//    public int getDistanceTraveled() {
+//        return distanceTraveled;
+//    }
+//    
+//    public int setDistanceTraveled(int distanceTraveled) {
+//        return this.distanceTraveled = distanceTraveled;
+//    }
+//    
+//    public short getGameover() {
+//        return gameover;
+//    }
+//    
+//    public short setGameover(short gameover) {
+//        return this.gameover = gameover;
+//    }
+//    
+//    public short getGameState() {
+//        return gameState;
+//    }
+//    
+//    public short setGameState(short gameState) {
+//        return this.gameState = gameState;
+//    }
     
     public boolean addResponseForUpdate(GameResponse response) {
         return updates.add(response);

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     private static float endPoint;
 	private int species1;
 	public  static int species2;
+<<<<<<< HEAD
 
 
 
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 
 <<<<<<< HEAD
+=======
+
+	// Use this for initialization
+	void Start () {
+		Debug.Log ("this is specie2 : " + species2);
+>>>>>>> start
         
 =======
 		species1 = PlayerPrefs.GetInt ("species1");

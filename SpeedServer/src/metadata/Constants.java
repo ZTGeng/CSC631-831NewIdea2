@@ -30,8 +30,22 @@ public class Constants {
 
     public final static short CMSG_RRPOSITION= 110;
     public final static short SMSG_RRPOSITION = 210;
+<<<<<<< HEAD
     public final static short CMSG_RRSPECIES= 111;
     public final static short SMSG_RRSPECIES = 211;
+=======
+    
+    public final static short CMSG_RRSPECIES= 111;
+    public final static short SMSG_RRSPECIES = 211;
+    
+    public final static short CMSG_RRENDGAME = 112;
+    public final static short SMSG_RRENDGAME = 212;
+    public final static short CMSG_RRSTARTGAME = 113;
+    public final static short SMSG_RRSTARTGAME = 213;
+    public final static short CMSG_RRBOOST = 114;
+    public final static short SMSG_RRBOOST = 214;
+    
+>>>>>>> start
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
     public static final short ORGANISM_TYPE_PLANT = 1;
@@ -49,4 +63,5 @@ public class Constants {
     public static final String CLIENT_VERSION = "1.00";
     public static final int TIMEOUT_SECONDS = 90;
     public static final String CSV_SAVE_PATH = "src/log/";
+    public static final short MAX_NUMBER_OF_PLAYERS = 2;
 }

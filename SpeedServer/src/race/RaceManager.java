@@ -22,33 +22,32 @@ import networking.response.ResponseRaceInit;
  * @author markfavis
  */
 public class RaceManager {
-    
+
     // Singleton Instance
     public static RaceManager manager;
-    
+
     // Regerence Tables
     private Map<Integer, Race> raceList = new HashMap<Integer, Race>(); //RaceID -> race
     private Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
+    public Map<Integer, Integer> readyToRace = new HashMap<Integer, Integer>(); //GameID -> number of request
 
-    
     private List<Player> players = new ArrayList<Player>(); //used to create a race
-    
+
     protected short numberOfGamesBeingPlayed;
-    
+
     private final short MAX_NUMBER_OF_PLAYERS = 2;
-    
-    public static RaceManager getInstance(){
+
+    public static RaceManager getInstance() {
         if (manager == null) {
             manager = new RaceManager();
         }
-        
+
         return manager;
     }
 
-   
     public Race createRace(int player_id) {
         Race race = null;
-        
+
         if (players.isEmpty()) {
             players.add(GameServer.getInstance().getActivePlayer(player_id));
         } else {
@@ -58,28 +57,27 @@ public class RaceManager {
                 add(race);
                 // Respond to Players to load the Runner scene
                 ResponseRaceInit response = new ResponseRaceInit();
-                for(int p_id : race.getPlayers().keySet()) {
+                for (int p_id : race.getPlayers().keySet()) {
                     NetworkManager.addResponseForUser(p_id, response);
                 }
                 players.clear();
             }
         }
-        
+
         return race;
     }
-    
-    public Race add(Race race){
+
+    public Race add(Race race) {
         for (int id : race.getPlayers().keySet()) {
             playerRaceList.put(id, race);
         }
         return raceList.put(race.getID(), race);
     }
-    
+
     public Race getRaceByPlayerID(int playerID) {
         return playerRaceList.get(playerID);
     }
-    
-    
+
 //    //Adds a client to the correct game out of a list of raceList and makes sure there is a game for the client to be added to.
 //    public void addClientToGame(GameClient client) {
 //        noCurrentGames();
@@ -121,4 +119,3 @@ public class RaceManager {
 //        }
 //    }
 }
-

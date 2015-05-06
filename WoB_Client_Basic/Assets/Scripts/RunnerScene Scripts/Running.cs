@@ -11,11 +11,11 @@ public class Running : MonoBehaviour {
 	private ConnectionManager cManager;
 	private MessageQueue messageQueue;
 	private short gameState;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> Dong
+//<<<<<<< HEAD
+//=======
+//
+//
+//>>>>>>> Dong
 
 	
 	// Use this for initialization
@@ -31,26 +31,30 @@ public class Running : MonoBehaviour {
 	
 	}
 	void Start () {
-<<<<<<< HEAD
-		mainObject = GameObject.Find("MainObject");
-
-	   	cManager = mainObject.GetComponent<ConnectionManager>();
-
-=======
+//<<<<<<< HEAD
+//		mainObject = GameObject.Find("MainObject");
+//
+//	   	cManager = mainObject.GetComponent<ConnectionManager>();
+//
+//=======
 		time = 0.0f;
 		mainObject = GameObject.Find("MainObject");
 
 
 	   	cManager = mainObject.GetComponent<ConnectionManager>();
 
->>>>>>> Dong
-	    NetworkRequestTable.init();
-	    NetworkResponseTable.init();
+//<<<<<<< HEAD
+//>>>>>>> Dong
+//	    NetworkRequestTable.init();
+//	    NetworkResponseTable.init();
+//=======
+	    
+//>>>>>>> start
 
-	    if (cManager) {
-		    cManager.SetupSocket();
+//	    if (cManager) {
+//		    cManager.SetupSocket();
 		
-	    }
+//	    }
 
         gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
 	    gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
@@ -96,16 +100,20 @@ public class Running : MonoBehaviour {
 		//HeartBeat();
 
 		if (cManager) {
+//<<<<<<< HEAD
 			RRRequestPostion rp = new RRRequestPostion ();
-<<<<<<< HEAD
-			rp.send ((int) player1.transform.position.x,(int) player1.transform.position.y);
-			cManager.Send (rp);
-			Debug.Log("send position reqeust");
-=======
+//<<<<<<< HEAD
+//=======
+//			RequestRRPostion rp = new RequestRRPostion ();
+//>>>>>>> start
+//			rp.send ((int) player1.transform.position.x,(int) player1.transform.position.y);
+//			cManager.Send (rp);
+//			Debug.Log("send position reqeust");
+////=======
 			rp.send ((player1.transform.position.x).ToString(), (player1.transform.position.y).ToString());
 			cManager.Send (rp);
 
->>>>>>> Dong
+//>>>>>>> Dong
 			
 		}
 
@@ -144,16 +152,16 @@ public class Running : MonoBehaviour {
 		StartCoroutine(Delay());
 		}
 
-<<<<<<< HEAD
-//        Debug.Log("PLAYER 1 = " + player1.transform.position);
-   //     Debug.Log("PLAYER 2 = " + player2.transform.position);
-
-		if (flag) {
-		StartCoroutine(Delay());
-		}
-
-=======
->>>>>>> Dong
+//<<<<<<< HEAD
+////        Debug.Log("PLAYER 1 = " + player1.transform.position);
+//   //     Debug.Log("PLAYER 2 = " + player2.transform.position);
+//
+//		if (flag) {
+//		StartCoroutine(Delay());
+//		}
+//
+//=======
+//>>>>>>> Dong
 
 		//Debug.Log("this gets called");
 		//Debug.Log("outside!!!!!!!!!");
@@ -164,10 +172,10 @@ public class Running : MonoBehaviour {
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,-1);
 			cManager.Send (rk);
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 			}
->>>>>>> Dong
+//>>>>>>> Dong
 
 		}
 		
@@ -179,10 +187,10 @@ public class Running : MonoBehaviour {
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,1);
 			cManager.Send (rk);
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 			}
->>>>>>> Dong
+//>>>>>>> Dong
 
 		}
 		
@@ -195,10 +203,10 @@ public class Running : MonoBehaviour {
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(2,1);
 			cManager.Send (rk);
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 			}
->>>>>>> Dong
+//>>>>>>> Dong
 		}
 
 

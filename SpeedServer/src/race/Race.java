@@ -4,6 +4,10 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import model.Player;
+import networking.response.ResponseRRStartGame;
+import metadata.Constants;
+import core.NetworkManager;
+import utility.Log;
 
 
 
@@ -26,22 +30,22 @@ public class Race {
     
     
     
-    private short shortPlayersInGame;  // number of players in a game
+    private short playersReadyToStart;
 //    private GameClient client1;
 //    private GameClient client2;
-    private short state;
+//    private short state;
     
     
     
     public Race(List<Player> players, int raceID){
         
-        this.raceID =-1;
+        this.raceID = raceID;
         for(Player player: players) {
             this.rPlayers.put(Integer.valueOf(player.getID()), new RacePlayer(player.getID(), raceID));
         }
         
 //        shortPlayersInGame = 0;
-//        state = 0;
+//        state = 0; // the game is off
     }
    
 //    public Race(GameClient player1, GameClient player2){
@@ -66,6 +70,25 @@ public class Race {
         }
         
         return null; // error
+    }
+    
+    
+    // USSAGE: Called by RequestRRStartGame.
+    // Sends an output to the clients of this race to start the countdown 
+    // sequence to the start of a race.
+    public void startRace(int player_id) {
+        
+        for(int p_id : getPlayers().keySet()) {
+                    if (p_id == player_id)
+                        playersReadyToStart++;                    
+            }        
+        
+        if (playersReadyToStart == Constants.MAX_NUMBER_OF_PLAYERS){
+            ResponseRRStartGame responseStart = new ResponseRRStartGame(); 
+            for(int p_id : getPlayers().keySet()) {
+                    NetworkManager.addResponseForUser(p_id, responseStart);
+            }
+        }
     }
 
 //    /**
