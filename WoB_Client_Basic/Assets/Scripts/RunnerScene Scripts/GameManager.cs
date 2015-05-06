@@ -6,9 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject player1;
 	public GameObject player2;
-    public GameObject map;
     public GameObject endFlag;
-	public GameObject item1;
 	public ArrayList items;
 	private GameCamera cam;
     private float raceTime;
@@ -50,21 +48,27 @@ public class GameManager : MonoBehaviour {
     private void SpawnMap()
     {
 
-        float tempEnd = 20;
-        for (int i = 0; i < 21; i++)
-        {
-           
-          // Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
-			//map = Instantiate(Resources.Load("Box")) as GameObject;
+		GameObject[] MapVars = new GameObject[10];
+		MapVars [0] = Resources.Load ("Prefabs/Maps/MapVariation_blank") as GameObject;
+		for (int i = 0; i < 2; i++) {
+			MapVars[i+1] = Resources.Load("Prefabs/Maps/MapVariation_" + i) as GameObject;
+		}
 
-			map = Instantiate(Resources.Load("Prefabs/Maps/MapVariation_1"), new Vector3(tempEnd, 0.507454f, 0), Quaternion.identity) as GameObject;
-			map.name = map.name + " " + i;
-			//(float)(20 + (i * 62.9))
-		    tempEnd += 62.9f;
-
-        }
-
-		Instantiate(endFlag, new Vector3(tempEnd - 62.9f + 9, 0.507454f, 0), Quaternion.identity);
+		float tempEnd = 20;
+		int mapUnitLength = 5;
+		for (int i = 0; i < mapUnitLength; i++)
+		{
+			tempEnd += 62.9f;
+			if(i == 0)
+				Instantiate(MapVars[0], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+			else if(i == (mapUnitLength - 1))
+				Instantiate(MapVars[0], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+			else
+				Instantiate(MapVars[Random.Range (1,3)], new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
+		}
+		
+		endPoint = tempEnd - 62.9f;
+		Instantiate(endFlag, new Vector3(endPoint, -0.49f, 0), Quaternion.identity);
     } 
 
 	private void PlaceItem(GameObject itemType, Vector2 vect) {

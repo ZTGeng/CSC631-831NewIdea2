@@ -162,6 +162,7 @@ public class SelectionManager : MonoBehaviour {
                 s.targetGraphic = image;
 
 				img.sprite = t;
+				img.rectTransform.localScale = new Vector3(2f,2f,1f);
 
             }
             else
