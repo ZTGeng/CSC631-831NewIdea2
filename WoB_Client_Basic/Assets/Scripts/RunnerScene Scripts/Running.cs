@@ -101,7 +101,7 @@ public class Running : MonoBehaviour {
 
 		if (cManager) {
 //<<<<<<< HEAD
-			RRRequestPostion rp = new RRRequestPostion ();
+			RequestRRPostion rp = new RequestRRPostion ();
 //<<<<<<< HEAD
 //=======
 //			RequestRRPostion rp = new RequestRRPostion ();

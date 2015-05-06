@@ -16,29 +16,29 @@ public class GameManager : MonoBehaviour {
     private static float endPoint;
 	private int species1;
 	public  static int species2;
-<<<<<<< HEAD
-
-
-
-
-
-
-	// Use this for initialization
-	void Start () {
-
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//
+//
+////
+////
+////
+////
+////	// Use this for initialization
+////	void Start () {
+////
+//<<<<<<< HEAD
+//=======
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("this is specie2 : " + species2);
->>>>>>> start
-        
-=======
+//>>>>>>> start
+//        
+//=======
 		species1 = PlayerPrefs.GetInt ("species1");
 
 		//Debug.Log ("species2 : " + species2);
->>>>>>> Dong
+//>>>>>>> Dong
 
         cam = GetComponent<GameCamera>();
         SpawnMap();
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour {
     {
 
         float tempEnd = 20;
-        for (int i = 0; i < 21; i++)
+        for (int i = 0; i < 7; i++)
         {
            
           // Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);

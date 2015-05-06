@@ -36,17 +36,17 @@ public class RequestRRPosition extends GameRequest {
     public void doBusiness() throws Exception {
 
         System.out.println("X:  " +  x + "Y :  " + y);
-<<<<<<< HEAD:SpeedServer/src/networking/request/RRRequestPosition.java
-
-        rrResponsePosition = new RRResponsePosition();
-        rrResponsePosition.setX(x);
-        rrResponsePosition.setY(y);
-=======
-        
+//<<<<<<< HEAD:SpeedServer/src/networking/request/RRRequestPosition.java
+//
+//        rrResponsePosition = new RRResponsePosition();
+//        rrResponsePosition.setX(x);
+//        rrResponsePosition.setY(y);
+////=======
+//        
         responseRRPosition = new ResponseRRPosition();
         responseRRPosition.setX(x);
         responseRRPosition.setY(y);
->>>>>>> start:SpeedServer/src/networking/request/RequestRRPosition.java
+//>>>>>>> start:SpeedServer/src/networking/request/RequestRRPosition.java
         
 //        RaceManager.getInstance();
 //        client.getPlayer().getID();

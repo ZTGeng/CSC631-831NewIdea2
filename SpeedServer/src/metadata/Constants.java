@@ -30,10 +30,6 @@ public class Constants {
 
     public final static short CMSG_RRPOSITION= 110;
     public final static short SMSG_RRPOSITION = 210;
-<<<<<<< HEAD
-    public final static short CMSG_RRSPECIES= 111;
-    public final static short SMSG_RRSPECIES = 211;
-=======
     
     public final static short CMSG_RRSPECIES= 111;
     public final static short SMSG_RRSPECIES = 211;
@@ -45,7 +41,6 @@ public class Constants {
     public final static short CMSG_RRBOOST = 114;
     public final static short SMSG_RRBOOST = 214;
     
->>>>>>> start
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;
     public static final short ORGANISM_TYPE_PLANT = 1;

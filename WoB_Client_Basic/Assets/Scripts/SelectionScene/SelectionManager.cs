@@ -7,23 +7,6 @@ public class SelectionManager : MonoBehaviour {
 	private GameObject gObj;
 	private GameObject[] speciesButtons;
 	private GameObject[] buttonImages;
-<<<<<<< HEAD
-    private GameObject submit;
-    private int spot1, spot2;
-<<<<<<< HEAD
-
-	// Use this for initialization
-	void Start () {
-=======
-	private GameObject mainObject;
-	private ConnectionManager cManager;
-	private int species;
-	// Use this for initialization
-	void Start () {
-
-	
->>>>>>> Dong
-=======
 	private GameObject submit;
 	private int spot1, spot2;
 	private GameObject mainObject;
@@ -33,7 +16,6 @@ public class SelectionManager : MonoBehaviour {
 	void Start () {
 		
 		
->>>>>>> start
 		//Canvas Initialization
 		gObj = new GameObject ();
 		gObj.name = "SelectionCanvas";
@@ -49,24 +31,14 @@ public class SelectionManager : MonoBehaviour {
 		
 		//Initialize Buttons
 		initButtons ();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> start
 		mainObject = GameObject.Find("MainObject");
 		
 		
 		cManager = mainObject.GetComponent<ConnectionManager>();
-<<<<<<< HEAD
->>>>>>> Dong
-	}
-=======
->>>>>>> start
-
-//		NetworkRequestTable.init();
-//		NetworkResponseTable.init();
-
+		
+		//		NetworkRequestTable.init();
+		//		NetworkResponseTable.init();
+		
 		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RRSTARTGAME, ResponseRRStartGame);
 	}
 	
@@ -209,75 +181,6 @@ public class SelectionManager : MonoBehaviour {
 				Debug.LogError("Sprite is null");
 			
 			switch(i){
-<<<<<<< HEAD
-                case 0:
-<<<<<<< HEAD
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[0]));
-                    break;
-                case 1:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[1]));
-                    break;
-                case 2:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[2]));
-                    break;
-                case 3:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[3]));
-                    break;
-                case 4:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[4]));
-=======
-                    s.onClick.AddListener(() => selectSpecies(0));
-                    break;
-                case 1:
-                    s.onClick.AddListener(() => selectSpecies(1));
-                    break;
-                case 2:
-                    s.onClick.AddListener(() => selectSpecies(2));
-                    break;
-                case 3:
-                    s.onClick.AddListener(() => selectSpecies(3));
-                    break;
-                case 4:
-                    s.onClick.AddListener(() => selectSpecies(4));
->>>>>>> Dong
-                    break;
-            }
-
-            speciesButtons[i].SetActive(false);
-        }
-    }
-
-    void setButtonActive(int num)
-    {
-
-        if (num == 5)
-        {
-
-            submit.SetActive(true);
-
-            return;
-        }
-
-        //Placing the Button on the canvas
-        //Drawing one the proper coordinates
-        RectTransform RectTrans = speciesButtons[num].GetComponent<RectTransform>();
-        if (num == spot1)
-            RectTrans.localPosition = new Vector3(-140f, 0f, 0f);
-        else
-            RectTrans.localPosition = new Vector3(140f, 0f, 0f);
-
-        speciesButtons[num].SetActive(true);
-    }
-
-    void setButtonInactive(int num)
-    {
-        if (num == 5)
-            submit.SetActive(false);
-        else
-            speciesButtons[num].SetActive(false);
-    }
-
-=======
 			case 0:
 				s.onClick.AddListener(() => selectSpecies(0));
 				break;
@@ -329,7 +232,6 @@ public class SelectionManager : MonoBehaviour {
 			speciesButtons[num].SetActive(false);
 	}
 	
->>>>>>> start
 	void next(){
 		
 		int temp1, temp2;
@@ -391,22 +293,6 @@ public class SelectionManager : MonoBehaviour {
 		setButtonActive(spot1);
 		setButtonActive(spot2);
 	}
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-    void selectSpecies(GameObject species)
-    {
-        Debug.Log(species);
-		setButtonActive(5);
-=======
-    void selectSpecies(int s)
-    {
-		species = s;
-		setButtonActive(5);
-	
->>>>>>> Dong
-
-=======
 	
 	void selectSpecies(int s)
 	{
@@ -414,7 +300,6 @@ public class SelectionManager : MonoBehaviour {
 		setButtonActive(5);
 		
 		
->>>>>>> start
 		//Pass selected species information to the game manager
 		//lets the game manager know which species to initialize
 	}
@@ -427,47 +312,26 @@ public class SelectionManager : MonoBehaviour {
 		if (cManager) {
 			cManager.Send (rs);
 		}
-
+		
 		RequestRRStartGame request = new RequestRRStartGame();
 		request.Send(Constants.USER_ID);
 		cManager.Send(request);
-//		Application.LoadLevel("CountdownScene");
-
+		//		Application.LoadLevel("CountdownScene");
+		
 		// Give the client a message about waiting for the other player to finish selecting.  Hide the PLAY button so 
 		// player can't send another RequestRRStartGame.  It is cruicial only one RequestRRstartGame is sent from each
 		// player.
 	}
-
-<<<<<<< HEAD
-    void goToRunnerScene()
-    {
-<<<<<<< HEAD
-        Application.LoadLevel("CountdownScene");
-=======
-
-		RRRequestSpecies rs = new RRRequestSpecies ();
-		rs.send (species);
-		if (cManager) {
-			cManager.Send (rs);
-		}
-
-		GameManager.species2 = species;
-        Application.LoadLevel("CountdownScene");
-		
->>>>>>> Dong
-    }
-}
-=======
+	
 	public void ResponseRRStartGame(ExtendedEventArgs eventArgs) {
 		Debug.Log("ResponseRRStartGame has been called from Selection Manager.cs");
-
+		
 		ResponseRRStartGameEventArgs args = eventArgs as ResponseRRStartGameEventArgs;
 		
 		if (args.status == 0) {
 			Application.LoadLevel("CountdownScene");
 		} else {
-//			Join();
+			//			Join();
 		}
 	}
 }
->>>>>>> start
