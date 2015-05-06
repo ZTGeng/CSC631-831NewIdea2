@@ -15,9 +15,6 @@ public class PlayerController : MonoBehaviour
     private float currentSpeed;
     private float targetSpeed;
     private Vector2 amountToMove;
-
-    private bool wallJumped;
-
     private PlayerPhysics playerPhysics;
 
 
@@ -31,18 +28,15 @@ public class PlayerController : MonoBehaviour
     {
 
             int direction;
+			anim.SetBool ("jumping", !playerPhysics.grounded);
             direction = doKeyboardInput();
-
-            wallJumped = true;
-
-            //Reseting speeds if collide with wall
+			
+            
+			//Reseting speeds if collide with wall
             if (playerPhysics.movementStopped)
             {
                 targetSpeed = 0;
                 currentSpeed = 0;
-
-                if (!playerPhysics.grounded)
-                    wallJumped = false;
             }
 
             targetSpeed = direction * speed;
@@ -55,7 +49,6 @@ public class PlayerController : MonoBehaviour
             if (playerPhysics.grounded)
             {
                 amountToMove.y = 0;
-                anim.SetBool("jumping", false);
 
                 // Jump
                 if (Input.GetButtonDown("Jump"))
@@ -63,15 +56,10 @@ public class PlayerController : MonoBehaviour
                     amountToMove.y = jumpHeight;
                 }
             }
-            else if (!playerPhysics.grounded)
-            {
-                anim.SetBool("jumping", true);
-            }
 
             // Wall jump
             if (!playerPhysics.grounded && playerPhysics.movementStopped && targetSpeed != 0)
             {
-
                 if (Input.GetButtonDown("Jump"))
                 {
                     amountToMove.y = jumpHeight;
