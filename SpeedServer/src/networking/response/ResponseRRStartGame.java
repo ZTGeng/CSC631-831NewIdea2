@@ -7,6 +7,7 @@ package networking.response;
 
 import utility.GamePacket;
 import utility.Log;
+import metadata.Constants;
 
 /**
  *
@@ -25,7 +26,8 @@ public class ResponseRRStartGame extends GameResponse {
     */
     
     public ResponseRRStartGame(){
-        short status = 0;
+        responseCode = Constants.SMSG_RRSTARTGAME;
+        status = 0;
         Log.println("A ResponseRRStartGame has been sent out.");
     }
 

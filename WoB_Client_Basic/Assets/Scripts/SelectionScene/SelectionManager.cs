@@ -36,8 +36,10 @@ public class SelectionManager : MonoBehaviour {
 		
 		cManager = mainObject.GetComponent<ConnectionManager>();
 
-		NetworkRequestTable.init();
-		NetworkResponseTable.init();
+//		NetworkRequestTable.init();
+//		NetworkResponseTable.init();
+
+		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RRSTARTGAME, ResponseRRStartGame);
 	}
 	
 	private void initButtons(){
@@ -319,5 +321,17 @@ public class SelectionManager : MonoBehaviour {
 		// Give the client a message about waiting for the other player to finish selecting.  Hide the PLAY button so 
 		// player can't send another RequestRRStartGame.  It is cruicial only one RequestRRstartGame is sent from each
 		// player.
+	}
+
+	public void ResponseRRStartGame(ExtendedEventArgs eventArgs) {
+		Debug.Log("ResponseRRStartGame has been called from Selection Manager.cs");
+
+		ResponseRRStartGameEventArgs args = eventArgs as ResponseRRStartGameEventArgs;
+		
+		if (args.status == 0) {
+			Application.LoadLevel("CountdownScene");
+		} else {
+//			Join();
+		}
 	}
 }
