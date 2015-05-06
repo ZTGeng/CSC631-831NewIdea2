@@ -19,6 +19,7 @@ public class NetworkRequestTable {
 		add (Constants.CMSG_GAMEOVER, "GameOver");
 		add (Constants.CMSG_GAME_STATE, "RequestGameState");
 		add (Constants.CMSG_RACE_INIT, "RequestRaceInit");
+		add (Constants.CMSG_RRSTARTGAME, "RequestRRStartGame");
 	
 	}
 	

@@ -18,6 +18,7 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_KEYBOARD, "ResponseKeyboard");
 		add(Constants.SMSG_RRPOSITION, "ResponseRRPostion");
 		add(Constants.SMSG_RRSPECIES, "ResponseRRSpecies");
+		add (Constants.SMSG_RRSTARTGAME, "ResponseRRStartGame");
 
 	}
 	

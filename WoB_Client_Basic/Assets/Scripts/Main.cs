@@ -24,7 +24,7 @@ public class Main : MonoBehaviour {
 		ConnectionManager cManager = gameObject.GetComponent<ConnectionManager>();
 
 		if (cManager) {
-			cManager.SetupSocket();
+//			cManager.SetupSocket();
 
 			StartCoroutine(RequestHeartbeat(1f));
 		}

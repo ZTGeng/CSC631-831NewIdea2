@@ -6,6 +6,7 @@
 package networking.response;
 
 import utility.GamePacket;
+import utility.Log;
 
 /**
  *
@@ -13,8 +14,9 @@ import utility.GamePacket;
  */
 public class ResponseRRStartGame extends GameResponse {
     
-    private int opponentStatus;
-    
+    private short status;
+
+//  Ignore comment below, 0 by convention is success.
     /*
     status:
         0 = opponent not ready
@@ -23,14 +25,15 @@ public class ResponseRRStartGame extends GameResponse {
     */
     
     public ResponseRRStartGame(){
-        
+        short status = 0;
+        Log.println("A ResponseRRStartGame has been sent out.");
     }
 
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
         
-        packet.addInt32(opponentStatus);
+        packet.addShort16(status);
         
         return packet.getBytes();
     }

@@ -116,7 +116,7 @@ public class SelectionManager : MonoBehaviour {
 		But3.targetGraphic = img3;
 		img3.preserveAspect = true;
 		
-		But3.onClick.AddListener(() => goToRunnerScene());
+		But3.onClick.AddListener(() => goToRunnerScene()); // This click can only be clicked once!
 		
 		submit.SetActive(false);
 		
@@ -310,8 +310,14 @@ public class SelectionManager : MonoBehaviour {
 		if (cManager) {
 			cManager.Send (rs);
 		}
-		
-		Application.LoadLevel("CountdownScene");
-		
+
+		RequestRRStartGame request = new RequestRRStartGame();
+		request.Send(Constants.USER_ID);
+		cManager.Send(request);
+//		Application.LoadLevel("CountdownScene");
+
+		// Give the client a message about waiting for the other player to finish selecting.  Hide the PLAY button so 
+		// player can't send another RequestRRStartGame.  It is cruicial only one RequestRRstartGame is sent from each
+		// player.
 	}
 }

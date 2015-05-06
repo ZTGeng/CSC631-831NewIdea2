@@ -10,11 +10,11 @@
         </group>
         <group name="Group 20150422-02:41:29">
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRStartGame.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRaceInit.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/Race.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/NetworkManager.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRPosition.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRREndGame.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/GameClient.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/GameManager.java</file>
         </group>
     </open-files>
 </project-private>

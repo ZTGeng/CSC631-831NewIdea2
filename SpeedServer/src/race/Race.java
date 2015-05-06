@@ -7,6 +7,7 @@ import model.Player;
 import networking.response.ResponseRRStartGame;
 import metadata.Constants;
 import core.NetworkManager;
+import utility.Log;
 
 
 
@@ -38,7 +39,7 @@ public class Race {
     
     public Race(List<Player> players, int raceID){
         
-        this.raceID =-1;
+        this.raceID = raceID;
         for(Player player: players) {
             this.rPlayers.put(Integer.valueOf(player.getID()), new RacePlayer(player.getID(), raceID));
         }
@@ -71,10 +72,17 @@ public class Race {
         return null; // error
     }
     
+    
+    // USSAGE: Called by RequestRRStartGame.
+    // Sends an output to the clients of this race to start the countdown 
+    // sequence to the start of a race.
     public void startRace(int player_id) {
-        if (player_id == rPlayers.get(0).getID() || player_id == rPlayers.get(1).getID()){
-            playersReadyToStart++;        
-        }
+        
+        for(int p_id : getPlayers().keySet()) {
+                    if (p_id == player_id)
+                        playersReadyToStart++;                    
+            }        
+        
         if (playersReadyToStart == Constants.MAX_NUMBER_OF_PLAYERS){
             ResponseRRStartGame responseStart = new ResponseRRStartGame(); 
             for(int p_id : getPlayers().keySet()) {

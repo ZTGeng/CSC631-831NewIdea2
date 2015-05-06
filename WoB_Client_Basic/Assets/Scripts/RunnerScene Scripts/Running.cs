@@ -20,10 +20,10 @@ public class Running : MonoBehaviour {
 
 	    
 
-	    if (cManager) {
-		    cManager.SetupSocket();
+//	    if (cManager) {
+//		    cManager.SetupSocket();
 		
-	    }
+//	    }
 
         gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
 	    gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
