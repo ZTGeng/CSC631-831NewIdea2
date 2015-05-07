@@ -4,23 +4,45 @@ using System.Collections;
 public class Running : MonoBehaviour {
 
 	public GameObject mainObject;
-	public GameObject player1;
+	public static GameObject player1;
 	public GameObject player2;
 	public float time;
 	private bool flag = true;
+	private static bool speedUpFlag = true;
+	private static bool speedDownFlag = true;
 	private ConnectionManager cManager;
 	private MessageQueue messageQueue;
 	private short gameState;
-//<<<<<<< HEAD
-//=======
-//
-//
-//>>>>>>> Dong
+	//public static bool player1touchitem1 = false;
+	//public static string hitItem = "";
 
-	
-	// Use this for initialization
+	private const float SPEED_INCREASE = 5;
+	private const float SPEED_DECREASE = -5;
 
 
+	static void ChangeSpeed(float boost) {
+		PlayerController[] pcontroller = player1.GetComponents<PlayerController>();
+		float originalSpeed = pcontroller[0].speed;
+		pcontroller[0].speed = originalSpeed + boost;
+	}
+
+	public static void hitOnItem(string name) {
+
+		if (GameManager.relationship["animal4"].ContainsKey(name)) {
+			if (speedUpFlag) {
+				Debug.Log(name + " is hit!!! for speed UP");
+				ChangeSpeed(SPEED_INCREASE);
+				speedUpFlag = false;
+			}
+		} else if (GameManager.relationship[name].ContainsKey("animal4")) {
+			if (speedDownFlag) {
+				Debug.Log(name + " is hit!!! for speed DOWN");
+				ChangeSpeed(SPEED_DECREASE);
+				speedDownFlag = false;
+			}
+		}
+
+	}
 
 	
 	void OnGUI(){
@@ -65,7 +87,7 @@ public class Running : MonoBehaviour {
 
 		//Debug.Log("After!!!!!!!!");	  
 
-		player1 = GameObject.Find("Player_sprite(Clone)");
+		//player1 = GameObject.Find("Player_sprite(Clone)");
 		player2 = GameObject.Find("Player_sprite_2(Clone)");
 //		if (player1 != null) {
 //			Debug.Log("found " + player1.transform.position);
@@ -79,6 +101,16 @@ public class Running : MonoBehaviour {
 
 	private void HeartBeat() {
 		// The Heart Beat!!
+	}
+
+	private static IEnumerator SpeedUpDelay() {
+		speedUpFlag = true;
+		yield return new WaitForSeconds(1f);
+	}
+
+	private static IEnumerator SpeedDownDelay() {
+		speedDownFlag = true;
+		yield return new WaitForSeconds(1f);
 	}
 
 	private IEnumerator Delay() {
@@ -149,22 +181,17 @@ public class Running : MonoBehaviour {
    //     Debug.Log("PLAYER 2 = " + player2.transform.position);
 
 		if (flag) {
-		StartCoroutine(Delay());
+			StartCoroutine(Delay());
 		}
 
-//<<<<<<< HEAD
-////        Debug.Log("PLAYER 1 = " + player1.transform.position);
-//   //     Debug.Log("PLAYER 2 = " + player2.transform.position);
-//
-//		if (flag) {
-//		StartCoroutine(Delay());
-//		}
-//
-//=======
-//>>>>>>> Dong
+		if (!speedUpFlag) {
+			StartCoroutine(SpeedUpDelay());
+		}
 
-		//Debug.Log("this gets called");
-		//Debug.Log("outside!!!!!!!!!");
+		if (!speedDownFlag) {
+			StartCoroutine(SpeedDownDelay());
+		}
+
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
 		{
 			if(cManager)
