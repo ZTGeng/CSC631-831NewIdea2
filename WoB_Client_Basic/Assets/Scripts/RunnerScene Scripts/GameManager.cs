@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
 	public  static int species2;
 
 	public static Dictionary<string, Dictionary<string, string>> relationship = new Dictionary<string, Dictionary<string, string>>();
+	
+	private const string FILEPATH = "\\Resources\\ItemLocationFiles\\1.txt";
 
 
 	// Use this for initialization
@@ -70,7 +72,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void SpawnItem() {
-		Dictionary<string, string> items = ItemReader.ReadFile("c:\\Users\\Geng\\1.txt");
+		//Debug.Log(Application.dataPath);
+		Dictionary<string, string> items = ItemReader.ReadFile(Application.dataPath + FILEPATH);
 		List<string> keyList = new List<string>(items.Keys);
 		foreach (string x in keyList) {
 			PlaceItem(int.Parse(items[x]), float.Parse(x));
