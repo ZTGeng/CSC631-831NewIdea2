@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 
     // Player Handling
     public float gravity = 20;
-    public float speed = 8;
+	// Cannot assign speed with other value here. Don't know why.
+	public float speed = 8;//Running.BASE_SPEED; // <- Doesn't work.
     public float acceleration = 32;
     public float jumpHeight = 12;
 
@@ -23,8 +24,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+		speed = Running.BASE_SPEED;
+		//Debug.Log("!!!!!!!!!"+speed.ToString());
         playerPhysics = GetComponent<PlayerPhysics>();
         anim = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -44,6 +48,7 @@ public class PlayerController : MonoBehaviour
                 if (!playerPhysics.grounded)
                     wallJumped = false;
             }
+
 
             targetSpeed = direction * speed;
             currentSpeed = IncrementTowards(currentSpeed, targetSpeed, acceleration);

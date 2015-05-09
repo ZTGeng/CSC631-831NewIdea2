@@ -7,7 +7,7 @@ public class TestingPlayerController : MonoBehaviour
 
     // Player Handling
     public float gravity = 20;
-    public float speed = 8;
+    public float speed = 12;
     public float acceleration = 32;
     public float jumpHeight = 12;
     

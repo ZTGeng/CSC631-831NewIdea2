@@ -6,7 +6,7 @@ public class PlayerController2 : MonoBehaviour {
 	
 	// Player Handling
 	public float gravity = 20;
-	public float speed = 8;
+	public float speed = Running.BASE_SPEED;
 	public float acceleration = 32;
 	public float jumpHeight = 12;
 	
@@ -25,6 +25,7 @@ public class PlayerController2 : MonoBehaviour {
 
 	
 	void Start () {
+		speed = Running.BASE_SPEED;
 		playerPhysics = GetComponent<PlayerPhysics>();
         anim = GetComponent<Animator>();
 		keytype = 0;

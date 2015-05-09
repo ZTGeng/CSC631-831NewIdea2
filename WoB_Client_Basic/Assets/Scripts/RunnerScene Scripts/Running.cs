@@ -4,44 +4,55 @@ using System.Collections;
 public class Running : MonoBehaviour {
 
 	public GameObject mainObject;
-	public static GameObject player1;
+	public GameObject player1;
 	public GameObject player2;
 	public float time;
 	private bool flag = true;
-	private static bool speedUpFlag = true;
-	private static bool speedDownFlag = true;
+	private bool speedUpFlag = true;
+	private bool speedDownFlag = true;
+	private bool speedReturnFlag = true;
 	private ConnectionManager cManager;
 	private MessageQueue messageQueue;
 	private short gameState;
 	//public static bool player1touchitem1 = false;
 	//public static string hitItem = "";
 
-	private const float SPEED_INCREASE = 5;
-	private const float SPEED_DECREASE = -5;
+	private const float SPEED_INCREASE = 5f;
+	private const float SPEED_DECREASE = -5f;
+	public const float BASE_SPEED = 15f;
+	public const float HIGH_SPEED = 25f;
+	public const float MAX_SPEED = 30f;
+	public const float MIN_SPEED = 10f;
 
-
-	static void ChangeSpeed(float boost) {
+	// Change player1's speed. boost can be positive or negative.
+	// speed won'r increase if it's already the MAX_SPEED, won't decrease if already MIN_SPEED
+	void ChangeSpeed(float boost) {
 		PlayerController[] pcontroller = player1.GetComponents<PlayerController>();
 		float originalSpeed = pcontroller[0].speed;
+		if (boost > 0 && originalSpeed >= MAX_SPEED) return;
+		if (boost < 0 && originalSpeed <= MIN_SPEED) return;
 		pcontroller[0].speed = originalSpeed + boost;
 	}
 
-	public static void hitOnItem(string name) {
+	// When collider happens, check if player1 can eat item (hunt it or be hunted by it)
+	public bool isHitItem(string name) {
 
 		if (GameManager.relationship["animal4"].ContainsKey(name)) {
 			if (speedUpFlag) {
 				Debug.Log(name + " is hit!!! for speed UP");
 				ChangeSpeed(SPEED_INCREASE);
 				speedUpFlag = false;
+				return true;
 			}
 		} else if (GameManager.relationship[name].ContainsKey("animal4")) {
 			if (speedDownFlag) {
 				Debug.Log(name + " is hit!!! for speed DOWN");
 				ChangeSpeed(SPEED_DECREASE);
 				speedDownFlag = false;
+				return true;
 			}
 		}
-
+		return false;
 	}
 
 	
@@ -53,31 +64,10 @@ public class Running : MonoBehaviour {
 	
 	}
 	void Start () {
-//<<<<<<< HEAD
-//		mainObject = GameObject.Find("MainObject");
-//
-//	   	cManager = mainObject.GetComponent<ConnectionManager>();
-//
-//=======
+
 		time = 0.0f;
 		mainObject = GameObject.Find("MainObject");
-
-
 	   	cManager = mainObject.GetComponent<ConnectionManager>();
-
-//<<<<<<< HEAD
-//>>>>>>> Dong
-//	    NetworkRequestTable.init();
-//	    NetworkResponseTable.init();
-//=======
-	    
-//>>>>>>> start
-
-//	    if (cManager) {
-//		    cManager.SetupSocket();
-		
-//	    }
-
         gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
 	    gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
 
@@ -85,13 +75,7 @@ public class Running : MonoBehaviour {
 
 	public void RunOnce () {
 
-		//Debug.Log("After!!!!!!!!");	  
-
-		//player1 = GameObject.Find("Player_sprite(Clone)");
 		player2 = GameObject.Find("Player_sprite_2(Clone)");
-//		if (player1 != null) {
-//			Debug.Log("found " + player1.transform.position);
-//		}
 
 	}
 
@@ -103,53 +87,55 @@ public class Running : MonoBehaviour {
 		// The Heart Beat!!
 	}
 
-	private static IEnumerator SpeedUpDelay() {
+	// when player1 eats a boost, it can't eat more in next 1 second
+	private IEnumerator SpeedUpDelay() {
 		speedUpFlag = true;
 		yield return new WaitForSeconds(1f);
 	}
 
-	private static IEnumerator SpeedDownDelay() {
+	// when player1 eats a obstacle, it can't eat more in next 1 second
+	private IEnumerator SpeedDownDelay() {
 		speedDownFlag = true;
 		yield return new WaitForSeconds(1f);
 	}
 
+	// every 1 second, player1's speed will return towards the base value a little
+	private IEnumerator SpeedReturnDelay() {
+
+		speedReturnFlag = false;
+		yield return new WaitForSeconds(1f);
+
+		PlayerController[] pcontroller = player1.GetComponents<PlayerController>();
+		float currentSpeed = pcontroller[0].speed;
+		Debug.Log(currentSpeed);
+		if (currentSpeed == BASE_SPEED) { // this line is not necessary but can reduce operations
+		} else if (currentSpeed > HIGH_SPEED) {
+			pcontroller[0].speed = currentSpeed - 2;
+		} else if (currentSpeed > BASE_SPEED) {
+			pcontroller[0].speed = currentSpeed - 1;
+		} else if (currentSpeed > BASE_SPEED - 1) {
+			pcontroller[0].speed = BASE_SPEED;
+		} else {
+			pcontroller[0].speed = currentSpeed + 1;
+		}
+//		pcontroller[0].speed = originalSpeed + boost;
+
+		speedReturnFlag = true;
+
+	}
+
+	// comunication with server
 	private IEnumerator Delay() {
-		//
-		//Debug.Log("Before!!!!!!!!!");
+
 		flag = false;
 		yield return new WaitForSeconds(4f);
-	//	Debug.Log("inside!!!!!!!!!");
-//		if (gameState == 0){
-//			RequestGameState rg = new RequestGameState ();
-//			rg.send ();
-//			cManager.send (rg);
-//		} else {
-//			RequestHeartbeat rh = new RequestHeartbeat ();
-//			rh.send ((int) player1.transform.position.x, (int)player1.transform.position.y, 0, 0);
-//			cManager.send (rh);
-//		}
-//		Player2Move( new Vector2(player1.transform.position.x, player1.transform.position.y + 3) );
-		//HeartBeat();
 
 		if (cManager) {
-//<<<<<<< HEAD
 			RequestRRPostion rp = new RequestRRPostion ();
-//<<<<<<< HEAD
-//=======
-//			RequestRRPostion rp = new RequestRRPostion ();
-//>>>>>>> start
-//			rp.send ((int) player1.transform.position.x,(int) player1.transform.position.y);
-//			cManager.Send (rp);
-//			Debug.Log("send position reqeust");
-////=======
 			rp.send ((player1.transform.position.x).ToString(), (player1.transform.position.y).ToString());
 			cManager.Send (rp);
 
-//>>>>>>> Dong
-			
 		}
-
-
 
 		flag = true;
 	}
@@ -177,8 +163,6 @@ public class Running : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
-//        Debug.Log("PLAYER 1 = " + player1.transform.position);
-   //     Debug.Log("PLAYER 2 = " + player2.transform.position);
 
 		if (flag) {
 			StartCoroutine(Delay());
@@ -192,6 +176,10 @@ public class Running : MonoBehaviour {
 			StartCoroutine(SpeedDownDelay());
 		}
 
+		if (speedReturnFlag) {
+			StartCoroutine(SpeedReturnDelay());
+		}
+
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
 		{
 			if(cManager)
@@ -199,10 +187,7 @@ public class Running : MonoBehaviour {
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,-1);
 			cManager.Send (rk);
-//<<<<<<< HEAD
-//=======
 			}
-//>>>>>>> Dong
 
 		}
 		
@@ -214,30 +199,21 @@ public class Running : MonoBehaviour {
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(1,1);
 			cManager.Send (rk);
-//<<<<<<< HEAD
-//=======
 			}
-//>>>>>>> Dong
 
 		}
 		
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 
-
 			if(cManager)
 			{
 			RequestKeyboard rk = new RequestKeyboard();
 			rk.send(2,1);
 			cManager.Send (rk);
-//<<<<<<< HEAD
-//=======
 			}
-//>>>>>>> Dong
+
 		}
-
-
-
 
 		if (Input.GetKeyUp(KeyCode.LeftArrow) && cManager)
 		{
@@ -263,16 +239,6 @@ public class Running : MonoBehaviour {
 			cManager.Send (rk);
 			
 		}
-
-
-
-//		if (cManager) {
-//			RRRequestPostion rp = new RRRequestPostion ();
-//			rp.send ((int)player2.transform.position.x,(int) player2.transform.position.y);
-//			cManager.Send (rp);
-//			Debug.Log("send position reqeust");
-//			
-//		}
 	
 	}
 

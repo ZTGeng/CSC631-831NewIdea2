@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour {
         cam.SetTarget(player1.transform);
 
         player1.name = "Player_sprite(Clone)";
-		Running.player1 = this.player1;
+		GameObject.Find("GameLogic").GetComponent<Running>().player1 = this.player1;
 	}
 
     private void SpawnMap()

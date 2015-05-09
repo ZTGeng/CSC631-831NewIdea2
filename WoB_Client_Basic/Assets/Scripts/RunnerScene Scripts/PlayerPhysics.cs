@@ -25,13 +25,14 @@ public class PlayerPhysics : MonoBehaviour
 	Ray ray;
 	RaycastHit hit;
 
-
+	private Running running;
 	
 	void Start()
 	{
 		collider = GetComponent<BoxCollider>();
 		s = collider.size;
 		c = collider.center;
+		running = GameObject.Find("GameLogic").GetComponent<Running>();
 	}
 	
 	public void Move(Vector2 moveAmount)
@@ -101,11 +102,11 @@ public class PlayerPhysics : MonoBehaviour
 			}
 			else if (Physics.Raycast(ray, out hit, Mathf.Abs(deltaY) + skin, collectableMask))
 			{
-				//Logic for collectable collisions
-				//Running.player1touchitem1 = true;
-				//Running.hitItem = hit.collider.gameObject.name;
-				Running.hitOnItem(hit.collider.gameObject.name);
-				GameObject.Destroy(hit.collider.gameObject);
+			
+				// isHitItem return true if player1 eats the item
+				if (running.isHitItem(hit.collider.gameObject.name)) {
+					GameObject.Destroy(hit.collider.gameObject);
+				}
 				
 			}
 			
@@ -156,11 +157,10 @@ public class PlayerPhysics : MonoBehaviour
 			}
 			else if (Physics.Raycast(ray, out hit, Mathf.Abs(deltaX) + skin, collectableMask))
 			{
-				
-				//Running.player1touchitem1 = true;
-				//Running.hitItem = hit.collider.gameObject.name;
-				Running.hitOnItem(hit.collider.gameObject.name);
-				GameObject.Destroy(hit.collider.gameObject);
+
+				if (running.isHitItem(hit.collider.gameObject.name)) {
+					GameObject.Destroy(hit.collider.gameObject);
+				}
 				
 			}
 			
