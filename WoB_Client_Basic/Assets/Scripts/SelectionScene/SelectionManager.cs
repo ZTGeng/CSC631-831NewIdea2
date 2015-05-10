@@ -9,6 +9,7 @@ public class SelectionManager : MonoBehaviour {
 	private GameObject[] buttonImages;
     private GameObject submit;
     private int spot1, spot2;
+	private int selectedSpecies;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,21 @@ public class SelectionManager : MonoBehaviour {
 
 		//Initialize Buttons
 		initButtons ();
+	}
+
+	void Update(){ 
+
+		if (selectedSpecies != null) {
+			for (int i = 0; i < speciesButtons.Length; i++) {
+				if (i != selectedSpecies) {
+					Button b = speciesButtons [i].GetComponent<Button> ();
+					ColorBlock cb = b.colors;
+					cb.normalColor = Color.white;
+					cb.highlightedColor = Color.white;
+					b.colors = cb;
+				}
+			}
+		}
 	}
 
 	private void initButtons(){
@@ -173,19 +189,19 @@ public class SelectionManager : MonoBehaviour {
 			
 			switch(i){
                 case 0:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[0]));
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[0], 0));
                     break;
                 case 1:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[1]));
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[1], 1));
                     break;
                 case 2:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[2]));
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[2], 2));
                     break;
                 case 3:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[3]));
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[3], 3));
                     break;
                 case 4:
-                    s.onClick.AddListener(() => selectSpecies(speciesButtons[4]));
+                    s.onClick.AddListener(() => selectSpecies(speciesButtons[4], 4));
                     break;
             }
 
@@ -285,10 +301,19 @@ public class SelectionManager : MonoBehaviour {
         setButtonActive(spot2);
 	}
 
-    void selectSpecies(GameObject species)
+    void selectSpecies(GameObject species, int num)
     {
         Debug.Log(species);
 		setButtonActive(5);
+		selectedSpecies = num;
+
+		//green would be the following rgb value --> new Color (138,141,93,1);
+		Button b = species.GetComponent<Button> ();
+		ColorBlock cb = b.colors;
+		cb.normalColor = Color.green;
+		cb.highlightedColor = Color.green;
+		b.colors = cb;
+
 
 		//Pass selected species information to the game manager
 		//lets the game manager know which species to initialize
