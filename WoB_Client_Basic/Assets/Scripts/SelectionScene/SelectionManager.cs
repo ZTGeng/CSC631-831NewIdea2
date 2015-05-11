@@ -61,7 +61,7 @@ public class SelectionManager : MonoBehaviour {
 		RectTransform RT = bBack.AddComponent<RectTransform> ();
 		RT.anchoredPosition = new Vector2 (0f, 0f);
 		RT.sizeDelta = new Vector2 (25, 25);
-		RT.localPosition = new Vector3 (-325f, 0f, 0f);
+		RT.localPosition = new Vector3 (-325f, -50f, 0f);
 		RT.localScale = new Vector3 (3f, 3f, 1f);
 
 		Button But = bBack.AddComponent<Button> ();
@@ -85,7 +85,7 @@ public class SelectionManager : MonoBehaviour {
 		RectTransform RT2 = bNext.AddComponent<RectTransform> ();
 		RT2.anchoredPosition = new Vector2 (0f, 0f);
 		RT2.sizeDelta = new Vector2 (25, 25);
-		RT2.localPosition = new Vector3 (325f, 0f, 0f);
+		RT2.localPosition = new Vector3 (325f, -50f, 0f);
 		RT2.localScale = new Vector3 (3f, 3f, 1f);
 
 		Button But2 = bNext.AddComponent<Button> ();
@@ -150,7 +150,7 @@ public class SelectionManager : MonoBehaviour {
             RectTransform RectTrans = speciesButtons[i].AddComponent<RectTransform>();
             RectTrans.anchoredPosition = new Vector2(0f, 0f);
             RectTrans.sizeDelta = new Vector2(100, 100);
-            RectTrans.localScale = new Vector3(3f, 3f, 1f);
+            RectTrans.localScale = new Vector3(2f, 2f, 1f);
 
 			//Button Image :: Placing the image inside the  button
 			RectTransform rT = buttonImages[i].AddComponent<RectTransform>();
@@ -224,9 +224,9 @@ public class SelectionManager : MonoBehaviour {
         //Drawing one the proper coordinates
         RectTransform RectTrans = speciesButtons[num].GetComponent<RectTransform>();
         if (num == spot1)
-            RectTrans.localPosition = new Vector3(-140f, 0f, 0f);
+            RectTrans.localPosition = new Vector3(-140f, -50f, 0f);
         else
-            RectTrans.localPosition = new Vector3(140f, 0f, 0f);
+            RectTrans.localPosition = new Vector3(140f, -50f, 0f);
 
         speciesButtons[num].SetActive(true);
     }
