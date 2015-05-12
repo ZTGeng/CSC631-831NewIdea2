@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 		SpawnItem();
         SpawnPlayer();
 
-        player2 = Instantiate(player2, new Vector3(20f, 0f, 0f), Quaternion.identity) as GameObject;
+        player2 = Instantiate(player2, new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
         player2.name = "Player_sprite_2(Clone)";
 
         raceTime = 0;
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void SpawnPlayer() {
-        player1 = Instantiate(player1, new Vector3(20f, 0f, 0f), Quaternion.identity) as GameObject;
+        player1 = Instantiate(player1, new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
         cam.SetTarget(player1.transform);
 
         player1.name = "Player_sprite(Clone)";
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
     private void SpawnMap()
     {
 
-        float tempEnd = 0f;
+        float tempEnd = -35f;
         int length = 6;
         for (int i = 0; i < length; i++)
         {
