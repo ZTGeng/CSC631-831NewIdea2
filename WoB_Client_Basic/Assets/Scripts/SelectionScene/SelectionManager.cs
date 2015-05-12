@@ -8,6 +8,7 @@ public class SelectionManager : MonoBehaviour {
 	private GameObject[] speciesButtons;
 	private GameObject[] buttonImages;
     private GameObject submit;
+    private GameObject chart;
     private int spot1, spot2;
 	private int selectedSpecies;
 
@@ -49,7 +50,7 @@ public class SelectionManager : MonoBehaviour {
 
         initSpeciesButtons();
         setButtonActive(spot1);
-        setButtonActive(spot2);
+        //setButtonActive(spot2);
 
 		/*
 		 * BACK BUTTON
@@ -61,7 +62,7 @@ public class SelectionManager : MonoBehaviour {
 		RectTransform RT = bBack.AddComponent<RectTransform> ();
 		RT.anchoredPosition = new Vector2 (0f, 0f);
 		RT.sizeDelta = new Vector2 (25, 25);
-		RT.localPosition = new Vector3 (-325f, -50f, 0f);
+		RT.localPosition = new Vector3 (-150f, -75f, 0f);
 		RT.localScale = new Vector3 (3f, 3f, 1f);
 
 		Button But = bBack.AddComponent<Button> ();
@@ -85,7 +86,7 @@ public class SelectionManager : MonoBehaviour {
 		RectTransform RT2 = bNext.AddComponent<RectTransform> ();
 		RT2.anchoredPosition = new Vector2 (0f, 0f);
 		RT2.sizeDelta = new Vector2 (25, 25);
-		RT2.localPosition = new Vector3 (325f, -50f, 0f);
+		RT2.localPosition = new Vector3 (150f, -75f, 0f);
 		RT2.localScale = new Vector3 (3f, 3f, 1f);
 
 		Button But2 = bNext.AddComponent<Button> ();
@@ -125,7 +126,25 @@ public class SelectionManager : MonoBehaviour {
 
         submit.SetActive(false);
 
-	}
+        /*
+         * Feeding Chart 
+         */
+        chart = new GameObject();
+        chart.name = "PredatorPreyChart";
+        chart.transform.parent = gObj.transform;
+
+        RectTransform rtChart = chart.AddComponent<RectTransform>();
+        rtChart.anchoredPosition = new Vector2(0f, 0f);
+        rtChart.sizeDelta = new Vector2(400, 75);
+        rtChart.localPosition = new Vector3(0f, 150f, 0f);
+        rtChart.localScale = new Vector3(3f, 3f, 1f);
+
+        Image cImg = chart.AddComponent<Image>();
+        Sprite cSprite = Resources.Load<Sprite>("Prefabs/UI/feedingChart");
+        cImg.sprite = cSprite;
+        cImg.preserveAspect = true;
+
+    }
 
     void initSpeciesButtons()
     {
@@ -223,10 +242,8 @@ public class SelectionManager : MonoBehaviour {
         //Placing the Button on the canvas
         //Drawing one the proper coordinates
         RectTransform RectTrans = speciesButtons[num].GetComponent<RectTransform>();
-        if (num == spot1)
-            RectTrans.localPosition = new Vector3(-140f, -50f, 0f);
-        else
-            RectTrans.localPosition = new Vector3(140f, -50f, 0f);
+
+        RectTrans.localPosition = new Vector3(0f, -75f, 0f);
 
         speciesButtons[num].SetActive(true);
     }
@@ -241,6 +258,7 @@ public class SelectionManager : MonoBehaviour {
 
 	void next(){
         
+        /*
         int temp1, temp2;
         temp1 = spot1;
         temp2 = spot2;
@@ -268,10 +286,25 @@ public class SelectionManager : MonoBehaviour {
         setButtonInactive(temp2);
         setButtonActive(spot1);
         setButtonActive(spot2);
+         */
+
+        setButtonInactive(spot1);
+
+        if (spot1 == 4)
+        {
+            spot1 = 0;
+            setButtonActive(spot1);
+        }
+        else
+        {
+            spot1++;
+            setButtonActive(spot1);
+        }
 	}
 
 	void previous(){
 
+        /*
         int temp1, temp2;
         temp1 = spot1;
         temp2 = spot2;
@@ -299,6 +332,20 @@ public class SelectionManager : MonoBehaviour {
         setButtonInactive(temp2);
         setButtonActive(spot1);
         setButtonActive(spot2);
+         */
+
+        setButtonInactive(spot1);
+
+        if (spot1 == 0)
+        {
+            spot1 = 4;
+            setButtonActive(spot1);
+        }
+        else
+        {
+            spot1--;
+            setButtonActive(spot1);
+        }
 	}
 
     void selectSpecies(GameObject species, int num)
