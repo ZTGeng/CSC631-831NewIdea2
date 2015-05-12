@@ -99,7 +99,7 @@
      <Compile Include="Assets\Scripts\SelectionScene\SelectionManager.cs" />
      <Compile Include="Assets\Scripts\SpeciesData.cs" />
      <Compile Include="Assets\Scripts\SpeciesTable.cs" />
-     <None Include="Assets\Resources\ItemLocationFiles\1.txt" />
+     <None Include="Assets\Resources\Prefabs\map\ItemLocationFiles\1.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\SpritePack1\!Readme.txt" />
  <Reference Include="UnityEngine.UI">
