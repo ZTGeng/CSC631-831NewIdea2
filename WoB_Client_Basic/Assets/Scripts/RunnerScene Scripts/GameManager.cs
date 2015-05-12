@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     private float raceTime;
     private static float startPoint = 0;
     private static float endPoint;
-	private int species1;
+	private static  int species1;
 	public  static int species2;
 
 	public static Dictionary<string, Dictionary<string, string>> relationship = new Dictionary<string, Dictionary<string, string>>();
@@ -25,16 +25,13 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("this is specie2 : " + species2);
 
-		species1 = PlayerPrefs.GetInt ("species1");
-		
         cam = GetComponent<GameCamera>();
         SpawnMap();
 		SpawnItem();
         SpawnPlayer();
 
-        player2 = Instantiate(player2, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+		player2 = Instantiate(Resources.Load("Prefabs/Species/animal" + (species2)+ "copy" ), new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
         player2.name = "Player_sprite_2(Clone)";
 
         raceTime = 0;
@@ -81,7 +78,9 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void SpawnPlayer() {
-        player1 = Instantiate(player1, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+		species1 = PlayerPrefs.GetInt ("species1");
+		Debug.Log("species1 is  " + species1);
+		player1 = Instantiate(Resources.Load("Prefabs/Species/animal" + species1), new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
         cam.SetTarget(player1.transform);
 
         player1.name = "Player_sprite(Clone)";
