@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	public static Dictionary<string, Dictionary<string, string>> relationship = new Dictionary<string, Dictionary<string, string>>();
 	
-	private const string FILEPATH = "\\Resources\\ItemLocationFiles\\1.txt";
+	private const string FILEPATH = "ItemLocationFiles/1";//   <-----------need fix
 
 
 	// Use this for initialization

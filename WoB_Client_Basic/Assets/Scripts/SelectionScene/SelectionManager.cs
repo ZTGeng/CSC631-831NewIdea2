@@ -11,6 +11,8 @@ public class SelectionManager : MonoBehaviour {
     private GameObject chart;
     private int spot1, spot2;
 	private int selectedSpecies;
+	private GameObject mainObject;
+	private ConnectionManager cManager;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +31,15 @@ public class SelectionManager : MonoBehaviour {
 
 		//Initialize Buttons
 		initButtons ();
+
+		mainObject = GameObject.Find("MainObject");
+		
+		cManager = mainObject.GetComponent<ConnectionManager>();
+		
+		//		NetworkRequestTable.init();
+		//		NetworkResponseTable.init();
+		
+		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RRSTARTGAME, ResponseRRStartGame);
 	}
 
 	void Update(){ 
@@ -352,7 +363,9 @@ public class SelectionManager : MonoBehaviour {
     {
         Debug.Log(species);
 		setButtonActive(5);
-		selectedSpecies = num;
+		selectedSpecies = num + 1;
+
+		PlayerPrefs.SetInt ("species1", num + 1);	
 
 		//green would be the following rgb value --> new Color (138,141,93,1);
 		Button b = species.GetComponent<Button> ();
@@ -366,8 +379,39 @@ public class SelectionManager : MonoBehaviour {
 		//lets the game manager know which species to initialize
     }
 
-    void goToRunnerScene()
-    {
-        Application.LoadLevel("CountdownScene");
-    }
+	void goToRunnerScene()
+	{
+//		int temp = selectSpecies;
+//		PlayerPrefs.SetInt ("species1", temp);	
+		
+		RequestRRSpecies rs = new RequestRRSpecies ();
+		rs.send (selectedSpecies);
+		
+		
+		if (cManager) {
+			cManager.Send (rs);
+		}
+		
+		
+		RequestRRStartGame request = new RequestRRStartGame();
+		request.Send(Constants.USER_ID);
+		cManager.Send(request);
+		//		Application.LoadLevel("CountdownScene");
+		
+		// Give the client a message about waiting for the other player to finish selecting.  Hide the PLAY button so 
+		// player can't send another RequestRRStartGame.  It is cruicial only one RequestRRstartGame is sent from each
+		// player.
+	}
+	
+	public void ResponseRRStartGame(ExtendedEventArgs eventArgs) {
+		Debug.Log("ResponseRRStartGame has been called from Selection Manager.cs");
+		
+		ResponseRRStartGameEventArgs args = eventArgs as ResponseRRStartGameEventArgs;
+		
+		if (args.status == 0) {
+			Application.LoadLevel("CountdownScene");
+		} else {
+			//			Join();
+		}
+	}
 }
