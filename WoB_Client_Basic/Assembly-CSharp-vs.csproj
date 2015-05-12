@@ -77,11 +77,8 @@
      <Compile Include="Assets\Scripts\ReadyScene\RacePrep.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\GameCamera.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\RunnerScene Scripts\ItemController.cs" />
-     <Compile Include="Assets\Scripts\RunnerScene Scripts\ItemReader.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlatformActions\ElevatorPlatform.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlatformActions\SpinPlatform.cs" />
-     <Compile Include="Assets\Scripts\RunnerScene Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerController2.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerPhysics.cs" />
