@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 		SpawnItem();
         SpawnPlayer();
 
-        player2 = Instantiate(player2, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+        player2 = Instantiate(player2, new Vector3(20f, 0f, 0f), Quaternion.identity) as GameObject;
         player2.name = "Player_sprite_2(Clone)";
 
         raceTime = 0;
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void SpawnPlayer() {
-        player1 = Instantiate(player1, new Vector3(-19f, 0f, 0f), Quaternion.identity) as GameObject;
+        player1 = Instantiate(player1, new Vector3(20f, 0f, 0f), Quaternion.identity) as GameObject;
         cam.SetTarget(player1.transform);
 
         player1.name = "Player_sprite(Clone)";
@@ -91,22 +91,29 @@ public class GameManager : MonoBehaviour {
     private void SpawnMap()
     {
 
-        float tempEnd = 20;
-        for (int i = 0; i < 7; i++)
+        float tempEnd = 0f;
+        int length = 6;
+        for (int i = 0; i < length; i++)
         {
            
           // Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
 			//map = Instantiate(Resources.Load("Box")) as GameObject;
 
-			map = Instantiate(Resources.Load("Prefabs/Maps/MapVariation_1"), new Vector3(tempEnd, 0.507454f, 0), Quaternion.identity) as GameObject;
+            if (i == 0)
+                map = Instantiate(Resources.Load("Prefabs/Maps/BaseMapVar"), new Vector3(tempEnd, -2.5f, 0), Quaternion.identity) as GameObject;
+            else if (i == length - 1)
+                map = Instantiate(Resources.Load("Prefabs/Maps/BaseMapVar"), new Vector3(tempEnd, -2.5f, 0), Quaternion.identity) as GameObject;
+            else
+                map = Instantiate(Resources.Load("Prefabs/Maps/MapVar_" + Random.Range(0, 6)), new Vector3(tempEnd, -2.5f, 0), Quaternion.identity) as GameObject;
+
 			//map.name = map.name + " " + i;
 			map.name = "aMap" + i;
 			//(float)(20 + (i * 62.9))
-		    tempEnd += 62.9f;
+		    tempEnd += 50f;
 
         }
 
-		Instantiate(endFlag, new Vector3(tempEnd - 62.9f + 9, 0.507454f, 0), Quaternion.identity);
+		Instantiate(endFlag, new Vector3(tempEnd - 24, -8.5f, 0), Quaternion.identity);
     } 
 
 	private void PlaceItem(int speciesId, float x) {
