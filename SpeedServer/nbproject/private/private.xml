@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/markfavis/Projects/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
-            <file>file:/Users/markfavis/Projects/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRRStartGame.java</file>
-            <file>file:/Users/markfavis/Projects/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRREndGame.java</file>
-            <file>file:/Users/markfavis/Projects/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRREndGame.java</file>
-            <file>file:/Users/markfavis/Projects/CSC631-831NewIdea2/SpeedServer/src/metadata/GameRequestTable.java</file>
+            <file>file:/C:/Users/HenryJoseph/Documents/CSC631-831NewIdea2/SpeedServer/src/dataAccessLayer/RaceDAO.java</file>
+            <file>file:/C:/Users/HenryJoseph/Documents/CSC631-831NewIdea2/SpeedServer/src/dataAccessLayer/TestDBConnection.java</file>
+            <file>file:/C:/Users/HenryJoseph/Documents/CSC631-831NewIdea2/SpeedServer/src/race/RacePlayer.java</file>
         </group>
     </open-files>
 </project-private>

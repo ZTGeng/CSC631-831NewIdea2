@@ -1,5 +1,5 @@
 // @author Joseph Fernandez
-// RunnerItems (collectable items/boosts) models created from RunnerItems DAO.
+// RunnerItems (collectable items/boosts) models created from RunnerItemsDAO.
 
 package model;
 

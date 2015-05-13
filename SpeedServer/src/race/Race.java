@@ -1,70 +1,65 @@
+// @author: Mark Favis, Joseph Fernandez
+// Race models created from RaceDAO.
+
 package race;
-import core.GameClient;
+
+// Java imports
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+
+// Other imports
+// import core.GameClient;
 import model.Player;
 import networking.response.ResponseRRStartGame;
 import metadata.Constants;
 import core.NetworkManager;
-import utility.Log;
+// import utility.Log;
 
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author markfavis
- */
 public class Race {
     
-//    private 
     private Map<Integer, RacePlayer> rPlayers = new HashMap<Integer, RacePlayer>();
-    
     private int raceID;
-    
-    
-    
     private short playersReadyToStart;
-//    private GameClient client1;
-//    private GameClient client2;
-//    private short state;
+    // private GameClient client1;
+    // private GameClient client2;
+    // private short state;
     
-    
-    
-    public Race(List<Player> players, int raceID){
-        
+    public Race(List<Player> players, int raceID)
+    {
         this.raceID = raceID;
-        for(Player player: players) {
-            this.rPlayers.put(Integer.valueOf(player.getID()), new RacePlayer(player.getID(), raceID));
+        for (Player player : players)
+        {
+            rPlayers.put(player.getID(), new RacePlayer(player.getID(), raceID));
         }
         
-//        shortPlayersInGame = 0;
-//        state = 0; // the game is off
-    }
-   
-//    public Race(GameClient player1, GameClient player2){
-//        this.client1 = player1;
-//        this.client2 = player2;
-//    }
-    
-    public int getID(){
-        return this.raceID;
+    // shortPlayersInGame = 0;
+    // state = 0; // the game is off
     }
     
-    public Map<Integer, RacePlayer> getPlayers() {
+    /*
+    public Race(GameClient player1, GameClient player2) {
+        this.client1 = player1;
+        this.client2 = player2;
+    }
+    */
+    
+    public int getID()
+    {
+        return raceID;
+    }
+    
+    public Map<Integer, RacePlayer> getPlayers()
+    {
         return rPlayers;
     }
     
-    public RacePlayer getOpponent(Player racePlayer){
-        
-        for (RacePlayer player : rPlayers.values()){
-            if(player.getID() != racePlayer.getID()){
+    public RacePlayer getOpponent(Player racePlayer)
+    {
+        for (RacePlayer player : rPlayers.values())
+        {
+            if (player.getID() != racePlayer.getID())
+            {
                 return player;
             }
         }
@@ -72,21 +67,23 @@ public class Race {
         return null; // error
     }
     
-    
     // USSAGE: Called by RequestRRStartGame.
     // Sends an output to the clients of this race to start the countdown 
     // sequence to the start of a race.
-    public void startRace(int player_id) {
+    public void startRace(int player_id)
+    {
+        for (int p_id : getPlayers().keySet())
+        {
+            if (p_id == player_id)
+                playersReadyToStart++;                    
+        }        
         
-        for(int p_id : getPlayers().keySet()) {
-                    if (p_id == player_id)
-                        playersReadyToStart++;                    
-            }        
-        
-        if (playersReadyToStart == Constants.MAX_NUMBER_OF_PLAYERS){
+        if (playersReadyToStart == Constants.MAX_NUMBER_OF_PLAYERS)
+        {
             ResponseRRStartGame responseStart = new ResponseRRStartGame(); 
-            for(int p_id : getPlayers().keySet()) {
-                    NetworkManager.addResponseForUser(p_id, responseStart);
+            for (int p_id : getPlayers().keySet())
+            {
+                NetworkManager.addResponseForUser(p_id, responseStart);
             }
         }
     }

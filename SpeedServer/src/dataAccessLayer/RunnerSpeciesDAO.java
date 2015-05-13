@@ -3,28 +3,33 @@
 
 package dataAccessLayer;
 
-// Other Imports
-import model.RunnerSpecies;
+// Java imports
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+
+// Other imports
+import model.RunnerSpecies;
+import utility.Log;
 
 public final class RunnerSpeciesDAO {
     private RunnerSpeciesDAO() {;}
     
-    public static List<RunnerSpecies> getRunnerSpecies() throws SQLException
+    // Load all runner species from DB.
+    // @returns: hashmap of all runner species (species ID mapped to species)
+    // @throws: SQLException
+    public static Map<Integer, RunnerSpecies> getRunnerSpecies() throws SQLException
     {
-        List<RunnerSpecies> runnerSpeciesList = new ArrayList<RunnerSpecies>(); // list of available species to play as
-        Map<Integer, List<Integer>> predatorMap = ConsumeDAO.getPreyToPredatorTable(); // list of predators (from ConsumeDAO)
-        Map<Integer, List<Integer>> preyMap = ConsumeDAO.getPredatorToPreyTable(); // list of prey (from ConsumeDAO)
+        Map<Integer, RunnerSpecies> runnerSpeciesMap = new HashMap<Integer, RunnerSpecies>(); // map of available species to play as
         
-        String query = "SELECT * FROM `runner_species`"; // SQL
+        // SQL query to load all records of each species by species ID (join `runner_species` and `species` tables together)
+        String query = "SELECT * FROM `runner_species` JOIN `species` ON `runner_species`.`species_id` = `species`.`species_id`";
         Connection connection = null; // DB connection
-        PreparedStatement pstmt = null; // SQL execution
+        PreparedStatement pstmt; // SQL execution
         
         try
         {
@@ -32,48 +37,56 @@ public final class RunnerSpeciesDAO {
             pstmt = connection.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery(); // result of SQL execution
             
-            int ID = 0; // for ID check in case of possible dummy entries
             RunnerSpecies rSpecies = null;
+            int ID; // species ID
             
+            // pull out all runner species from DB and define them
             while (rs.next())
             {
-                if ((ID = rs.getInt("runner_id")) > 0) // ID check; don't retrieve any records with invalid ID
+                if ((ID = rs.getInt("species_id")) > 0) // ID check; don't retrieve any records with invalid ID
                 {
                     // define species
-                    rSpecies = new RunnerSpecies(ID, rs.getInt("species_id"), rs.getInt("health"), rs.getFloat("speed"), rs.getFloat("jump"), rs.getFloat("power"), rs.getBoolean("flight"));
+                    rSpecies = new RunnerSpecies(ID, rs.getInt("health"), rs.getFloat("speed"), rs.getFloat("jump"), rs.getFloat("power"), rs.getBoolean("flight"));
+                    rSpecies.setName(rs.getString("name"));
+                    rSpecies.setDescription(rs.getString("description"));
+                    rSpecies.setDietType(rs.getShort("diet_type"));
                 }
                 
-                runnerSpeciesList.add(rSpecies);
+                // add defined species of map
+                runnerSpeciesMap.put(ID, rSpecies);
             }
             
             // all done with queries
             rs.close();
-            pstmt.close();
+            pstmt.close(); 
             
-            // get predators and prey of each species
-            // refer to ConsumeDAO
-            for (RunnerSpecies runner : runnerSpeciesList)
-            {
-                ID = runner.getSpeciesID();
-                if (predatorMap.containsKey(ID))
-                {
-                    for (int predatorID : predatorMap.get(ID))
-                    {
-                        runner.addPredator(predatorID);
+            // load and define prey and predators of each species
+            // refer to ConsumeDAO for prey and predator loading info
+            Map<Integer, List<Integer>> predatorMap = ConsumeDAO.getPreyToPredatorTable(); // map of predators
+            Map<Integer, List<Integer>> preyMap = ConsumeDAO.getPredatorToPreyTable(); // map of prey
+            
+            for (int runnerID : runnerSpeciesMap.keySet()) {
+                rSpecies = runnerSpeciesMap.get(runnerID);
+                
+                // get list of predators
+                if (predatorMap.containsKey(runnerID)) {
+                    for (int predator_id : predatorMap.get(runnerID)) {
+                        rSpecies.addPredatorID(predator_id);
                     }
                 }
-                if (preyMap.containsKey(ID))
-                {
-                    for (int preyID : preyMap.get(ID))
-                    {
-                        runner.addPrey(preyID);
+                
+                // get list of prey
+                if (preyMap.containsKey(runnerID)) {
+                    for (int prey_id : preyMap.get(runnerID)) {
+                        rSpecies.addPreyID(prey_id);
                     }
                 }
-            }            
+            }
         }
         catch (Exception e)
         {
-            System.err.println("Error in retrieving species.");
+            System.err.println("Database error. Failed to load species.");
+            Log.println_e("Database error. Failed to load species.");
         }
         finally // close connection
         {
@@ -83,6 +96,6 @@ public final class RunnerSpeciesDAO {
             }
         }
         
-        return runnerSpeciesList;
+        return runnerSpeciesMap;
     }
 }

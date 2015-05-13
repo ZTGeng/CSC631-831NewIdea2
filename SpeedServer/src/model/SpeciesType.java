@@ -7,14 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// Other Imports
-import metadata.Constants;
-
 /**
  * The SpeciesType class is an abstract class that is used to represent a single
  * class of species belonging in one of the animal or plant groups.
  */
-public  class SpeciesType {
+public class SpeciesType {
 
     protected int species_id;
     protected String name;

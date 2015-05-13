@@ -3,25 +3,31 @@
 
 package dataAccessLayer;
 
-// Other Imports
-import model.RunnerItems;
+// Java imports
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+
+// Other imports
+import model.RunnerItems;
+import utility.Log;
 
 public final class RunnerItemsDAO {
     private RunnerItemsDAO() {;}
     
-    public static List<RunnerItems> getRunnerItems() throws SQLException
+    // Load all runner items from DB.
+    // @returns: hashmap of all runner items (item ID mapped to items)
+    // @throws: SQLException
+    public static Map<Integer, RunnerItems> getRunnerItems() throws SQLException
     {
-        List<RunnerItems> runnerItemsList = new ArrayList<RunnerItems>(); // list of items/boosts
+        Map<Integer, RunnerItems> runnerItemsMap = new HashMap<Integer, RunnerItems>(); // map of items/boosts
         
         String query = "SELECT * FROM `runner_items`";
         Connection connection = null; // DB connection
-        PreparedStatement pstmt = null; // for SQL execution
+        PreparedStatement pstmt; // for SQL execution
         
         try
         {
@@ -29,8 +35,8 @@ public final class RunnerItemsDAO {
             pstmt = connection.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery(); // execute SQL
             
-            int ID = 0; // ID check for dummy entries
-            RunnerItems ri = null;
+            int ID; // ID check for dummy entries
+            RunnerItems ri;
             
             while (rs.next())
             {
@@ -38,7 +44,7 @@ public final class RunnerItemsDAO {
                 {
                     // define item/boost
                     ri = new RunnerItems(ID, rs.getString("runner_item_name"), rs.getInt("health_bonus"), rs.getFloat("speed_bonus"), rs.getFloat("jump_bonus"), rs.getFloat("power_bonus"), rs.getInt("special_bonus"));
-                    runnerItemsList.add(ri);
+                    runnerItemsMap.put(ID, ri);
                 }
             }
             
@@ -47,7 +53,8 @@ public final class RunnerItemsDAO {
         }
         catch (Exception e)
         {
-            System.err.println("Error in retrieving items.");
+            System.err.println("Database error. Failed to load items.");
+            Log.println_e("Database error. Failed to load items.");
         }
         finally // close DB connection
         {
@@ -57,6 +64,6 @@ public final class RunnerItemsDAO {
             }
         }
         
-        return runnerItemsList;
+        return runnerItemsMap;
     }
 }
