@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public ArrayList items;
 	private GameCamera cam;
     private float raceTime;
-    private static float startPoint = 0;
+    private static float startPoint = 0f;
     private static float endPoint;
 	private int species1;
 	public  static int species2;
@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour {
         // items.Add (items);
 
         GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
+
+		GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
+		GameObject.Find ("GameLogic").GetComponent<RunnerUI> ().setStartandEndPoints (startPoint, endPoint);
+		GameObject.Find ("GameLogic").GetComponent<RunnerUI> ().setPlayer1 (player1);
+		GameObject.Find ("GameLogic").GetComponent<RunnerUI> ().SetPlayer2 (player2);
 
 		buildRelationship();
   
@@ -110,10 +115,11 @@ public class GameManager : MonoBehaviour {
 			map.name = "aMap" + i;
 			//(float)(20 + (i * 62.9))
 		    tempEnd += 50f;
+			endPoint = tempEnd - 24;
 
         }
 
-		Instantiate(endFlag, new Vector3(tempEnd - 24, -8.5f, 0), Quaternion.identity);
+		Instantiate(endFlag, new Vector3(endPoint, -8.5f, 0), Quaternion.identity);
     } 
 
 	private void PlaceItem(int speciesId, float x) {
