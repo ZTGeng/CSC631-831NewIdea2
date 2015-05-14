@@ -1,7 +1,7 @@
 using UnityEngine;
 
 using System;
-
+namespace RR{
 public class RequestHeartbeat : NetworkRequest {
 
 	public RequestHeartbeat() {
@@ -11,4 +11,5 @@ public class RequestHeartbeat : NetworkRequest {
 	public void Send() {
 		packet = new GamePacket(request_id);
 	}
+}
 }

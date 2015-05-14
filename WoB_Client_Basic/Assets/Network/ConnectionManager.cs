@@ -6,6 +6,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+namespace RR{
 
 public class ConnectionManager : MonoBehaviour {
 	
@@ -104,4 +105,5 @@ public class ConnectionManager : MonoBehaviour {
 	void Update () {
 		ReadSocket();
 	}
+}
 }

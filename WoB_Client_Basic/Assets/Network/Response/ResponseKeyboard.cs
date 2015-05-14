@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+namespace RR{
 public class ResponseKeyboardEventArgs : ExtendedEventArgs {
 	public int keytype { get; set; }
 	public int key { get; set; }
@@ -11,7 +11,9 @@ public class ResponseKeyboardEventArgs : ExtendedEventArgs {
 		event_id = Constants.SMSG_KEYBOARD;
 	}
 }
+}
 
+namespace RR {
 public class ResponseKeyboard : NetworkResponse {
 
 	private int keytype,key;
@@ -47,4 +49,5 @@ public class ResponseKeyboard : NetworkResponse {
 
 
 
+}
 }

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
+namespace RR {
 public class GamePacketStream {
 	
 	private MemoryStream stream;
@@ -51,4 +52,5 @@ public class GamePacketStream {
 	public int size() {
 		return (int) stream.Length;
 	}
+}
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace RR{
 public class RequestRRPostion : NetworkRequest {
 	
 	public RequestRRPostion() {
@@ -23,4 +23,4 @@ public class RequestRRPostion : NetworkRequest {
 	
 	}
 }
-
+}

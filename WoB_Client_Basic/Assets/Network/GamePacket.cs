@@ -1,4 +1,5 @@
-public class GamePacket {
+namespace RR {
+	public class GamePacket {
 
 	private GamePacketStream buffer;
 
@@ -41,4 +42,5 @@ public class GamePacket {
 	public byte[] getBytes() {
 		return buffer.toByteArray();
 	}
+}
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
+namespace RR {
 public class NetworkResponseTable {
 
 	public static Dictionary<short, Type> responseTable { get; set; }
@@ -48,4 +49,5 @@ public class NetworkResponseTable {
 		
 		return response;
 	}
+}
 }

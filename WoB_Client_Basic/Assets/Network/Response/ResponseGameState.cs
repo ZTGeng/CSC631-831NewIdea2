@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+namespace RR{
 public class ResponseGameStateEventArgs : ExtendedEventArgs {
 	public short gameState { get; set; }
 
@@ -9,6 +9,7 @@ public class ResponseGameStateEventArgs : ExtendedEventArgs {
 	public ResponseGameStateEventArgs() {
 		event_id = Constants.SMSG_GAME_STATE;
 	}
+}
 }
 
 /*
@@ -18,6 +19,7 @@ public class ResponseGameStateEventArgs : ExtendedEventArgs {
  * rate that would mini
  */
 
+namespace RR {
 public class ResponseGameState : NetworkResponse {
 	private GameObject gameObject;
 	private Running running;
@@ -56,4 +58,5 @@ public class ResponseGameState : NetworkResponse {
 
 
 
+}
 }

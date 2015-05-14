@@ -7,7 +7,7 @@ using System;
  * client.  This can be class This request should be made in a heartbeat like function asking at a
  * rate that would mini
  */
-
+namespace RR{
 public class RequestGameState : NetworkRequest {
 	
 	public RequestGameState() {
@@ -17,4 +17,5 @@ public class RequestGameState : NetworkRequest {
 	public void send() {	
 		packet = new GamePacket(request_id);		
 	}
+}
 }

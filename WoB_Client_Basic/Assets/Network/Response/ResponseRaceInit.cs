@@ -2,7 +2,7 @@
 using UnityEngine;
 
 using System;
-
+namespace RR{
 public class ResponseRaceInitEventArgs : ExtendedEventArgs {
 	public short status { get; set; }
 	
@@ -10,7 +10,9 @@ public class ResponseRaceInitEventArgs : ExtendedEventArgs {
 		event_id = Constants.SMSG_RACE_INIT;
 	}
 }
+}
 
+namespace RR {
 public class ResponseRaceInit : NetworkResponse {
 	
 	private short status;//start a battle: 0; wait for a battle: 1
@@ -46,4 +48,5 @@ public class ResponseRaceInit : NetworkResponse {
 		}
 		return args;
 	}
+}
 }
