@@ -48,6 +48,10 @@ namespace RR {
 	
 	        GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
 	
+			GameObject.Find("GameLogic").GetComponent<RunnerUI>().setStartandEndPoints(startPoint, endPoint);
+	        GameObject.Find("GameLogic").GetComponent<RunnerUI>().setPlayer1(player1);
+	        GameObject.Find("GameLogic").GetComponent<RunnerUI>().SetPlayer2(player2);
+			
 			buildRelationship();
 	  
 		}
@@ -93,6 +97,7 @@ namespace RR {
 	
 	        float tempEnd = -35f;
 	        int length = 6;
+			Random.seed = 3; // get from server
 	        for (int i = 0; i < length; i++)
 	        {
 	           
@@ -110,14 +115,15 @@ namespace RR {
 				map.name = "aMap" + i;
 				//(float)(20 + (i * 62.9))
 			    tempEnd += 50f;
+				endPoint = tempEnd - 24;
 	
 	        }
 	
-			Instantiate(endFlag, new Vector3(tempEnd - 24, -8.5f, 0), Quaternion.identity);
+			Instantiate(endFlag, new Vector3(endPoint, -8.5f, 0), Quaternion.identity);
 	    } 
 	
 		private void PlaceItem(int speciesId, float x) {
-			Debug.Log("Prefabs/Items/item" + speciesId.ToString());
+			//Debug.Log("Prefabs/Items/item" + speciesId.ToString());
 			GameObject aItem = Instantiate (Resources.Load("Prefabs/Items/item" + speciesId.ToString()), new Vector3(x, 10f, 0f), Quaternion.identity) as GameObject;
 			aItem.name = "animal" + speciesId;
 		}

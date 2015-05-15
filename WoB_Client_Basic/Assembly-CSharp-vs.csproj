@@ -94,6 +94,7 @@
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerController2.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\PlayerPhysics.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\ReadyScene\ButtonLogic.cs" />
+     <Compile Include="Assets\Scripts\RunnerScene Scripts\RunnerUI.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\Running.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\TestingGameManager.cs" />
      <Compile Include="Assets\Scripts\RunnerScene Scripts\TestingPlayerController.cs" />

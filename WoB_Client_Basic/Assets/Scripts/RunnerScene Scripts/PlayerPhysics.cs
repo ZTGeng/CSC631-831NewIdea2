@@ -197,5 +197,11 @@ namespace RR {
 			
 			
 		}
+		//This has been called on by the item that was collided with
+	    private void doDestroyPlayer()
+	    {
+	        //Need to add logic for removing the calling item
+			Debug.Log("doDestroyPlayer is called!!");
+	    }
 	}
 }

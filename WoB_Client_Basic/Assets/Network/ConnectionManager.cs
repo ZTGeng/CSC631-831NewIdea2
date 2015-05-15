@@ -62,7 +62,7 @@ public class ConnectionManager : MonoBehaviour {
 
 			short response_id = DataReader.ReadShort(dataStream);
 			Debug.Log("response_id: " + response_id);
-			Debug.Log(response_id.GetType().ToString());
+			//Debug.Log(response_id.GetType().ToString());
 			NetworkResponse response = NetworkResponseTable.get(response_id);
 			
 			if (response != null) {
