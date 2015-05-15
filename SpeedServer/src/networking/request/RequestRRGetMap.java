@@ -19,7 +19,7 @@ public class RequestRRGetMap extends GameRequest {
     private ResponseRRGetMap getMap;
     
     public RequestRRGetMap(){
-        responses.add(getMap);
+        responses.add(getMap = new ResponseRRGetMap());
     }
 
     @Override
