@@ -6,5 +6,26 @@
             <file>file:/C:/Users/Geng/unity%20workspace/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
             <file>file:/C:/Users/Geng/unity%20workspace/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRaceInit.java</file>
         </group>
+        <group name="Group 20150422-02:41:29">
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestLogin.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/model/Player.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRPosition.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/model/Game.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/RacePlayer.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRStartGame.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/GameManager.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/NetworkManager.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRaceInit.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/Race.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/GameClient.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRREndGame.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRaceInit.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/RaceManager.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRRStartGame.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestKeyboard.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRRPosition.java</file>
+        </group>
     </open-files>
 </project-private>

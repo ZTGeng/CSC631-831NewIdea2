@@ -29,15 +29,19 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_RRSPECIES, "ResponseRRSpecies");
 		add(Constants.SMSG_RRSTARTGAME, "ResponseRRStartGame");
 //>>>>>>> start
-
+		
+//		Debug.Log("dictionary check: " + responseTable.TryGetValue);
+//		Debug.Log("Response table: " + (responseTable[Constants.SMSG_AUTH]).ToString());
 	}
 	
 	public static void add(short response_id, string name) {
-		responseTable.Add(response_id, Type.GetType(name));
+		responseTable.Add(response_id, Type.GetType("RR."+name));
 	}
 	
 	public static NetworkResponse get(short response_id) {
 		NetworkResponse response = null;
+
+//		Debug.Log("Response table: " + responseTable[response_id].ToString());
 		
 		if (responseTable.ContainsKey(response_id)) {
 			response = (NetworkResponse) Activator.CreateInstance(responseTable[response_id]);
