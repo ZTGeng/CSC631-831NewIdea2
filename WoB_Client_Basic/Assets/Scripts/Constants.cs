@@ -58,7 +58,11 @@ namespace RR {
 		public static readonly string IMAGE_RESOURCES_PATH = "Images/";
 		public static readonly string PREFAB_RESOURCES_PATH = "Prefabs/";
 		public static readonly string TEXTURE_RESOURCES_PATH = "Textures/";
-		
+
+		// Player Object names
+		public static readonly string PLAYER1_NAME = "Player_sprite(Clone)";
+		public static readonly string PLAYER2_NAME = "Player_sprite_2(Clone)";
+
 		// GUI Window IDs
 		public enum GUI_ID {
 			Login

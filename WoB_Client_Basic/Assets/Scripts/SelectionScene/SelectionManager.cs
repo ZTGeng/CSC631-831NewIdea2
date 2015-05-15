@@ -40,7 +40,13 @@ namespace RR {
     		//		NetworkResponseTable.init();
     		
     		mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RRSTARTGAME, ResponseRRStartGame);
-    	}
+			mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RRGETMAP, ResponseRRGetMap);
+
+			RequestRRGetMap reqmap = new RequestRRGetMap();
+			reqmap.Send();
+			cManager.Send(reqmap);
+
+		}
     
     	void Update(){ 
     
@@ -401,6 +407,9 @@ namespace RR {
     		// Give the client a message about waiting for the other player to finish selecting.  Hide the PLAY button so 
     		// player can't send another RequestRRStartGame.  It is cruicial only one RequestRRstartGame is sent from each
     		// player.
+
+
+
     	}
     	
     	public void ResponseRRStartGame(ExtendedEventArgs eventArgs) {
@@ -414,5 +423,13 @@ namespace RR {
     			//			Join();
     		}
     	}
+
+		public void ResponseRRGetMap(ExtendedEventArgs eventArgs) {
+
+			ResponseRRGetMapEventArgs args = eventArgs as ResponseRRGetMapEventArgs;
+			GameManager.mapSeed = args.mapNumber;
+			//Debug.Log("Get map seed from server! The number is " + args.mapNumber);
+		}
+
     }
 }

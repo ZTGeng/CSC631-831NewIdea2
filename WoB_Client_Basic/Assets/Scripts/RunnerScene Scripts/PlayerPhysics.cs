@@ -104,8 +104,12 @@ namespace RR {
 				{
 				
 					// isHitItem return true if player1 eats the item
-					if (running.isHitItem(hit.collider.gameObject.name)) {
-						GameObject.Destroy(hit.collider.gameObject);
+					string name = hit.collider.gameObject.name.Substring(0,7);
+					//Debug.Log("!!!Try to pass name: " + name);
+					if (running.isHitItem(name)) {
+						Animator animator = hit.collider.gameObject.GetComponent<Animator>();
+						animator.SetBool("eaten", true);
+						//GameObject.Destroy(hit.collider.gameObject);
 					}
 					
 				}
@@ -158,8 +162,12 @@ namespace RR {
 				else if (Physics.Raycast(ray, out hit, Mathf.Abs(deltaX) + skin, collectableMask))
 				{
 	
-					if (running.isHitItem(hit.collider.gameObject.name)) {
-						GameObject.Destroy(hit.collider.gameObject);
+					string name = hit.collider.gameObject.name.Substring(0,7);
+					//Debug.Log("!!!Try to pass name: " + name);
+					if (running.isHitItem(name)) {
+						Animator animator = hit.collider.gameObject.GetComponent<Animator>();
+						animator.SetBool("eaten", true);
+						//GameObject.Destroy(hit.collider.gameObject);
 					}
 					
 				}
@@ -201,7 +209,8 @@ namespace RR {
 	    private void doDestroyPlayer()
 	    {
 	        //Need to add logic for removing the calling item
-			Debug.Log("doDestroyPlayer is called!!");
+			//Debug.Log("doDestroyPlayer is called!! Should I destroy: " + this.name);
+			GameObject.Destroy(GameObject.Find(this.name));
 	    }
 	}
 }

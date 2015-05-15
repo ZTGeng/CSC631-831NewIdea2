@@ -16,7 +16,10 @@ namespace RR {
 	    private static float startPoint = 0;
 	    private static float endPoint;
 		private int species1;
-		public  static int species2;
+		public static int species2;
+		private int mapLength;
+		public static int mapSeed;
+		private int itemCounter;
 	
 		public static Dictionary<string, Dictionary<string, string>> relationship = new Dictionary<string, Dictionary<string, string>>();
 		
@@ -28,14 +31,17 @@ namespace RR {
 			Debug.Log ("this is specie2 : " + species2);
 	
 			species1 = PlayerPrefs.GetInt ("species1");
+			GameObject.Find("GameLogic").GetComponent<Running>().species1 = "animal" + species1;
 			
 	        cam = GetComponent<GameCamera>();
+
+			itemCounter = 1;
 	        SpawnMap();
 			SpawnItem();
 	        SpawnPlayer();
 	
-	        player2 = Instantiate(Resources.Load("Prefabs/Species/animal" + species2 + "copy"), new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
-	        player2.name = "Player_sprite_2(Clone)";
+	        player2 = Instantiate(Resources.Load("Prefabs/Species/animal" + species2 + "copy"), new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+	        player2.name = Constants.PLAYER2_NAME;
 	
 	        raceTime = 0;
 	        //Debug.Log("Before!!!!!!!!!");
@@ -85,10 +91,10 @@ namespace RR {
 		}
 		
 		private void SpawnPlayer() {
-	        player1 = Instantiate(Resources.Load("Prefabs/Species/animal" + species1), new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
+	        player1 = Instantiate(Resources.Load("Prefabs/Species/animal" + species1), new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
 	        cam.SetTarget(player1.transform);
 	
-	        player1.name = "Player_sprite(Clone)";
+			player1.name = Constants.PLAYER1_NAME;
 			GameObject.Find("GameLogic").GetComponent<Running>().player1 = this.player1;
 		}
 	
@@ -96,9 +102,14 @@ namespace RR {
 	    {
 	
 	        float tempEnd = -35f;
-	        int length = 6;
-			Random.seed = 3; // get from server
-	        for (int i = 0; i < length; i++)
+	        mapLength = 6;
+			if (mapSeed != null) {
+				Debug.Log("Map seed is " + mapSeed);
+				Random.seed = mapSeed;
+			} else {
+				Debug.Log("Not receive map seed!! Will use random number!!");
+			}
+	        for (int i = 0; i < mapLength; i++)
 	        {
 	           
 	          // Instantiate(map, new Vector3((float)(20 + (i * 62.9)), 0.507454f, 0), Quaternion.identity);
@@ -106,7 +117,7 @@ namespace RR {
 	
 	            if (i == 0)
 	                map = Instantiate(Resources.Load("Prefabs/Maps/BaseMapVar"), new Vector3(tempEnd, -2.5f, 0), Quaternion.identity) as GameObject;
-	            else if (i == length - 1)
+	            else if (i == mapLength - 1)
 	                map = Instantiate(Resources.Load("Prefabs/Maps/BaseMapVar"), new Vector3(tempEnd, -2.5f, 0), Quaternion.identity) as GameObject;
 	            else
 	                map = Instantiate(Resources.Load("Prefabs/Maps/MapVar_" + Random.Range(0, 6)), new Vector3(tempEnd, -2.5f, 0), Quaternion.identity) as GameObject;
@@ -125,7 +136,8 @@ namespace RR {
 		private void PlaceItem(int speciesId, float x) {
 			//Debug.Log("Prefabs/Items/item" + speciesId.ToString());
 			GameObject aItem = Instantiate (Resources.Load("Prefabs/Items/item" + speciesId.ToString()), new Vector3(x, 10f, 0f), Quaternion.identity) as GameObject;
-			aItem.name = "animal" + speciesId;
+			aItem.name = "animal" + speciesId + "id" + itemCounter;
+			itemCounter++;
 		}
 	}
 }

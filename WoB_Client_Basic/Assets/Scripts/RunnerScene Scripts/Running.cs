@@ -7,6 +7,7 @@ namespace RR {
 		public GameObject mainObject;
 		public GameObject player1;
 		public GameObject player2;
+		public string species1 { get; set; }
 		public static float time;
 		public static bool completed;
 		private bool flag = true;
@@ -39,15 +40,16 @@ namespace RR {
 	
 		// When collider happens, check if player1 can eat item (hunt it or be hunted by it)
 		public bool isHitItem(string name) {
-	
-			if (GameManager.relationship["animal4"].ContainsKey(name)) {
+			//Debug.Log("!!!!!!!!!!Pass the substring: " + name);
+			if (species1 == null ) return false;
+			if (GameManager.relationship[species1].ContainsKey(name)) {
 				if (speedUpFlag) {
 					Debug.Log(name + " is hit!!! for speed UP");
 					ChangeSpeed(SPEED_INCREASE);
 					speedUpFlag = false;
 					return true;
 				}
-			} else if (GameManager.relationship[name].ContainsKey("animal4")) {
+			} else if (GameManager.relationship[name].ContainsKey(species1)) {
 				if (speedDownFlag) {
 					Debug.Log(name + " is hit!!! for speed DOWN");
 					ChangeSpeed(SPEED_DECREASE);
@@ -72,7 +74,6 @@ namespace RR {
 			mainObject = GameObject.Find("MainObject");
 		   	cManager = mainObject.GetComponent<ConnectionManager>();
 	        gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseLogin);
-		    gameObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_AUTH, ResponseGameState);
 	
 		}
 	
@@ -110,7 +111,7 @@ namespace RR {
 	
 			PlayerController[] pcontroller = player1.GetComponents<PlayerController>();
 			float currentSpeed = pcontroller[0].speed;
-			Debug.Log(currentSpeed);
+			//Debug.Log(currentSpeed);
 			if (currentSpeed == BASE_SPEED) { // this line is not necessary but can reduce operations
 			} else if (currentSpeed > HIGH_SPEED) {
 				pcontroller[0].speed = currentSpeed - 2;
