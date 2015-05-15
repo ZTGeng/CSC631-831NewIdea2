@@ -34,7 +34,7 @@ namespace RR {
 			SpawnItem();
 	        SpawnPlayer();
 	
-	        player2 = Instantiate(player2, new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
+	        player2 = Instantiate(Resources.Load("Prefabs/Species/animal" + species2 + "copy"), new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
 	        player2.name = "Player_sprite_2(Clone)";
 	
 	        raceTime = 0;
@@ -81,7 +81,7 @@ namespace RR {
 		}
 		
 		private void SpawnPlayer() {
-	        player1 = Instantiate(player1, new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
+	        player1 = Instantiate(Resources.Load("Prefabs/Species/animal" + species1), new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
 	        cam.SetTarget(player1.transform);
 	
 	        player1.name = "Player_sprite(Clone)";
