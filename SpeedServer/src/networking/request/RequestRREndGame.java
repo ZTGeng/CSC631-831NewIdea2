@@ -5,7 +5,6 @@
  */
 package networking.request;
 
-import core.GameServer;
 import java.io.IOException;
 import networking.response.ResponseRREndGame;
 import race.Race;
@@ -17,13 +16,13 @@ import utility.DataReader;
  * @author markfavis
  */
 public class RequestRREndGame extends GameRequest {
-    
+
     private boolean gameCompleted;
     private String finalTime;
     private int p_id;
     private ResponseRREndGame responseRREndGame;
-    
-    public RequestRREndGame(){
+
+    public RequestRREndGame() {
         gameCompleted = false;
         finalTime = "";
     }
@@ -38,7 +37,10 @@ public class RequestRREndGame extends GameRequest {
     public void doBusiness() throws Exception {
         int thisPlayerID = this.client.getPlayer().getID();
         // end race
-        RaceManager.manager.endRace(RaceManager.manager.getRaceByPlayerID(thisPlayerID).getID(),thisPlayerID,finalTime);
+        Race race = RaceManager.manager.getRaceByPlayerID(thisPlayerID);
+        if (race != null) {
+            RaceManager.manager.endRace(race.getID(), thisPlayerID, finalTime);
+        }
     }
-    
+
 }

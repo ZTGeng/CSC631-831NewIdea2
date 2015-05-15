@@ -1,14 +1,13 @@
 package race;
 
-import core.GameClient;
+import core.GameServer;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import model.Player;
 import networking.response.ResponseRRStartGame;
 import metadata.Constants;
-import core.NetworkManager;
-import utility.Log;
+import java.io.IOException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -70,7 +69,7 @@ public class Race {
     // USSAGE: Called by RequestRRStartGame.
     // Sends an output to the clients of this race to start the countdown 
     // sequence to the start of a race.
-    public void startRace(int player_id) {
+    public void startRace(int player_id) throws IOException {
 
         for (int p_id : getPlayers().keySet()) {
             if (p_id == player_id) {
@@ -81,7 +80,10 @@ public class Race {
         if (playersReadyToStart == Constants.MAX_NUMBER_OF_PLAYERS) {
             ResponseRRStartGame responseStart = new ResponseRRStartGame();
             for (int p_id : getPlayers().keySet()) {
-                NetworkManager.addResponseForUser(p_id, responseStart);
+                //NetworkManager.addResponseForUser(p_id, responseStart);
+                // changed to this to reduce start game lag
+                // this change made it almost simultaneous start
+                GameServer.getInstance().getThreadByPlayerID(p_id).send(responseStart);
             }
         }
     }
