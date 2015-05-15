@@ -40,6 +40,10 @@ public class Constants {
     public final static short SMSG_RRSTARTGAME = 213;
     public final static short CMSG_RRBOOST = 114;
     public final static short SMSG_RRBOOST = 214;
+    public final static short CMSG_RRGETMAP = 115;
+    public final static short SMSG_RRGETMAP = 215;
+    public final static short CMSG_RRENDSESSION = 116;
+    public final static short SMSG_RRENDSESSION = 216;
     
     // Organism Type
     public static final short ORGANISM_TYPE_ANIMAL = 0;

@@ -49,6 +49,9 @@ namespace RR {
 		public static readonly short SMSG_RRSTARTGAME = 213;
 		public static readonly short CMSG_RRBOOST = 114;
 		public static readonly short SMSG_RRBOOST = 214;
+
+		public static readonly short CMSG_RRGETMAP = 115;
+		public static readonly short SMSG_RRGETMAP = 215;
 	//>>>>>>> start
 		
 		// Other

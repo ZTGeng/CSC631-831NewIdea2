@@ -165,11 +165,24 @@ namespace RR {
 				}
 				
 				else if (Physics.Raycast(ray, out hit, Mathf.Abs(deltaX) + skin, endFlagMask))
-				{
-					
-					//Logic for reaching endFlag
-					doPlayerFinish();
-					
+				{			
+					if(collider.gameObject.ToString().CompareTo("Player_sprite(Clone)") > 0){
+						
+						PlayerPrefs.SetInt ("Win", -1);
+						PlayerPrefs.SetString ("Winning Time", "");
+						
+						GameObject mainObject = GameObject.Find ("MainObject");
+						ConnectionManager cManager;
+						cManager = mainObject.GetComponent<ConnectionManager> ();
+						
+						RequestRREndGame requestRREndGame = new RequestRREndGame ();
+						requestRREndGame.Send (Running.completed, Running.time.ToString ());
+						cManager.Send (requestRREndGame);
+						
+						doPlayerFinish();
+						
+					}
+
 				}
 			}
 			

@@ -28,6 +28,9 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_RRPOSITION, "ResponseRRPostion");
 		add(Constants.SMSG_RRSPECIES, "ResponseRRSpecies");
 		add(Constants.SMSG_RRSTARTGAME, "ResponseRRStartGame");
+
+		add (Constants.SMSG_RRENDGAME, "ResponseRREndGame");
+		add (Constants.SMSG_RRGETMAP, "ResponseRRGetMap");
 //>>>>>>> start
 		
 //		Debug.Log("dictionary check: " + responseTable.TryGetValue);

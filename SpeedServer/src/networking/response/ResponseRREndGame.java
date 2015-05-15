@@ -14,10 +14,11 @@ import utility.GamePacket;
  */
 public class ResponseRREndGame extends GameResponse {
 
-    private boolean gameCompleted;
-    private float finalTime;
     private String fastestPlayer;
-    private String highestPoint;
+    private String highestPoint;    
+    private boolean win;
+    private String winningTime;
+    
 
     public ResponseRREndGame() {
         responseCode = Constants.SMSG_RRENDGAME;
@@ -27,8 +28,8 @@ public class ResponseRREndGame extends GameResponse {
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
 
-        packet.addBoolean(isGameCompleted());
-        packet.addFloat(getFinalTime());
+        packet.addBoolean(isWin());
+        packet.addString(getWinningTime());
         //packet.addString(getFastestPlayer());
         //packet.addString(getHighestPoint());
 
@@ -62,33 +63,33 @@ public class ResponseRREndGame extends GameResponse {
     public void setHighestPoint(String highestPoint) {
         this.highestPoint = highestPoint;
     }
-
+    
     /**
-     * @return the gameCompleted
+     * @return the win
      */
-    public boolean isGameCompleted() {
-        return gameCompleted;
+    public boolean isWin() {
+        return win;
     }
 
     /**
-     * @param gameCompleted the gameCompleted to set
+     * @param win the win to set
      */
-    public void setGameCompleted(boolean gameCompleted) {
-        this.gameCompleted = gameCompleted;
+    public void setWin(boolean win) {
+        this.win = win;
     }
 
     /**
-     * @return the finalTime
+     * @return the winningTime
      */
-    public float getFinalTime() {
-        return finalTime;
+    public String getWinningTime() {
+        return winningTime;
     }
 
     /**
-     * @param finalTime the finalTime to set
+     * @param winningTime the winningTime to set
      */
-    public void setFinalTime(float finalTime) {
-        this.finalTime = finalTime;
+    public void setWinningTime(String winningTime) {
+        this.winningTime = winningTime;
     }
 
 }

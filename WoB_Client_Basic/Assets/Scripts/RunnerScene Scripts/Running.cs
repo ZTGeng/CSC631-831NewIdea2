@@ -7,7 +7,8 @@ namespace RR {
 		public GameObject mainObject;
 		public GameObject player1;
 		public GameObject player2;
-		public float time;
+		public static float time;
+		public static bool completed;
 		private bool flag = true;
 		private bool speedUpFlag = true;
 		private bool speedDownFlag = true;
@@ -15,6 +16,7 @@ namespace RR {
 		private ConnectionManager cManager;
 		private MessageQueue messageQueue;
 		private short gameState;
+		private bool called = false;
 		//public static bool player1touchitem1 = false;
 		//public static string hitItem = "";
 	
@@ -160,7 +162,22 @@ namespace RR {
 				Debug.Log("Response GameState Failed"); // Don't know what comment should be made here
 			}
 		}
-		
+
+		public void ResponseRREndGame(ExtendedEventArgs eventArgs) {
+			//		Debug.Log ("ResponseEndGame Called in Running.cs 1");
+			ResponseRREndGameEventArgs args = eventArgs as ResponseRREndGameEventArgs;
+			
+			if (args.win == true) {
+				PlayerPrefs.SetInt ("Win", 1);
+			} else {
+				PlayerPrefs.SetInt ("Win", 0);
+			}
+			PlayerPrefs.SetString ("Winning Time", args.winningTime);
+			
+			//		Debug.Log ("ResponseEndGame Called in Running.cs 2");
+			Application.LoadLevel("RREndScene");
+		}
+
 		// Update is called once per frame
 		void Update () {
 			time += Time.deltaTime;
@@ -239,6 +256,11 @@ namespace RR {
 				rk.send(2,0);
 				cManager.Send (rk);
 				
+			}
+			if (!called) {
+				mainObject.GetComponent<MessageQueue>().AddCallback(Constants.SMSG_RRENDGAME, ResponseRREndGame);
+				//Debug.Log ("Running.cs :::::::::: Start");
+				called = true;
 			}
 		
 		}

@@ -59,6 +59,7 @@
      <Compile Include="Assets\Network\Request\RequestInGameHeartbeat.cs" />
      <Compile Include="Assets\Network\Request\RequestKeyboard.cs" />
      <Compile Include="Assets\Network\Request\RequestLogin.cs" />
+     <Compile Include="Assets\Network\Request\RequestRREndGame.cs" />
      <Compile Include="Assets\Network\Request\RequestRRPostion.cs" />
      <Compile Include="Assets\Network\Request\RequestRRSpecies.cs" />
      <Compile Include="Assets\Network\Request\RequestRRStartGame.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Network\Response\ResponseHeartbeat.cs" />
      <Compile Include="Assets\Network\Response\ResponseKeyboard.cs" />
      <Compile Include="Assets\Network\Response\ResponseLogin.cs" />
+     <Compile Include="Assets\Network\Response\ResponseRREndGame.cs" />
      <Compile Include="Assets\Network\Response\ResponseRRPostion.cs" />
      <Compile Include="Assets\Network\Response\ResponseRRSpecies.cs" />
      <Compile Include="Assets\Network\Response\ResponseRRStartGame.cs" />
