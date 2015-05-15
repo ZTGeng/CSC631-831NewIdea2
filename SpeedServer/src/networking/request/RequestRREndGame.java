@@ -10,6 +10,7 @@ import java.io.IOException;
 import networking.response.ResponseRREndGame;
 import race.Race;
 import race.RaceManager;
+import race.RacePlayer;
 import utility.DataReader;
 
 /**
@@ -17,16 +18,15 @@ import utility.DataReader;
  * @author markfavis
  */
 public class RequestRREndGame extends GameRequest {
-
+    
     private boolean gameCompleted;
     private String finalTime;
     private int p_id;
     private ResponseRREndGame responseRREndGame;
-
-    public RequestRREndGame() {
+    
+    public RequestRREndGame(){
         gameCompleted = false;
         finalTime = "";
-        responses.add(responseRREndGame);
     }
 
     @Override
@@ -37,26 +37,14 @@ public class RequestRREndGame extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
-//        responseRREndGame = new ResponseRREndGame();
-//        
-//        responseRREndGame.setFinalTime(finalTime);
-//        responseRREndGame.setGameCompleted(gameCompleted);
-//        // GET FASTEST and HIGHEST POINT PLAYER NAMES FROM DATABASE
-//        // THEN SET RESPONSERRENDGAME VALUES TO IT
-//        
-//        p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
-//                .getOpponent(client.getPlayer()).getID();
-//                        
-//        GameServer.getInstance().getThreadByPlayerID(p_id).send(responseRREndGame);
+        // RacePlayer player; // the RacePlayer sending the request
         int thisPlayerID = this.client.getPlayer().getID();
-        Race temp = RaceManager.manager.playerRaceList.get(thisPlayerID);
-        temp.setFinalTime(thisPlayerID, Float.parseFloat(this.finalTime));
-        RaceManager.manager.playerRaceList.put(thisPlayerID, temp);
-
-        System.out.println("Player ID: " + thisPlayerID + " final time: " + finalTime + " completed?: " + gameCompleted);
-
-        responseRREndGame.setFinalTime(finalTime);
-        responseRREndGame.setGameCompleted(gameCompleted);
+        // end race
+        RaceManager.manager.endRace(RaceManager.manager.getRaceByPlayerID(thisPlayerID).getID(),thisPlayerID,finalTime);
+        
+        // get player and load final time
+        // player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers().get(p_id);
+        // player.setFinalTime(finalTime);
     }
-
+    
 }

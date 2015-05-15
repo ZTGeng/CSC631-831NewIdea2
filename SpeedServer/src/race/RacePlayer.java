@@ -1,12 +1,13 @@
-// Info and data on players of race. Extends Player class.
-// @authors: Mark Favis, Joseph Fernandez
-
 package race;
 
 // Other Imports
-// import core.GameClient;
 import model.Player;
 
+/**
+ * The Player class holds important information about the player including, most
+ * importantly, the account. Such information includes the username, password,
+ * email, and the player ID.
+ */
 public class RacePlayer extends Player {
 
     private int raceID, // race ID that player is currently in
@@ -24,23 +25,38 @@ public class RacePlayer extends Player {
             finalTime;
     private boolean right,
             left,
-            jump;
+            jump,
+            usedItem; // player used item?
     private RacePlayer opponent;
     
-    // private short gameover;
-    // private short gameState;
     
-    public RacePlayer(int player_id, int raceID) {
+    public RacePlayer(int player_id, int raceID){
         super(player_id);
         this.raceID = raceID;
+        
+        // set defaults
+        runnerSpeciesID = 31;
+        health = 100;
+        status = 0;
+        itemID = 1;
+        numItems = 0;
+        time = 0;
+        score = 0;
+        x = 0;
+        y = 0;
+        speed = 1.0f;
+        power = 1.0f;
+        finalTime = 0.0f;
+        right = false;
+        left = false;
+        jump = false;
+        usedItem = false;
     }
 
-    // @return: raceID of race
     public int getRaceID() {
         return raceID;
     }
 
-    // @param: raceID race ID that the player will be in
     public void setRaceID(int raceID){
         this.raceID = raceID;
     }
@@ -109,23 +125,13 @@ public class RacePlayer extends Player {
         return this.y = y;
     }
     
-    /*
-    public short getGameover() {
-        return gameover;
-    }
-    
-    public short setGameover(short gameover) {
-        return this.gameover = gameover;
-    }
-    
-    public short getGameState() {
-        return gameState;
-    }
-    
-    public short setGameState(short gameState) {
-        return this.gameState = gameState;
-    }
-    */
+//    public RacePlayer getOpponent() {
+//        return opponent;
+//    }
+//
+//    public RacePlayer setOpponent(RacePlayer opponent) {
+//        return this.opponent = opponent;
+//    }
 
     /**
      * @return the speed
@@ -192,6 +198,27 @@ public class RacePlayer extends Player {
     }
 
     /**
+     * @return usedItem
+     */
+    public boolean usedItem() {
+        return usedItem;
+    }
+
+    /**
+     * @param usedItem used item
+     */
+    public void setUsedItem(boolean usedItem) {
+        this.usedItem = usedItem;
+    }
+
+    /**
+     * @return the opponent
+     */
+    public RacePlayer getOpponent() {
+        return opponent;
+    }
+    
+    /**
      * @return number of collected items
      */
     public int getNumItems() {
@@ -203,13 +230,6 @@ public class RacePlayer extends Player {
      */
     public void setNumItems(int numItems) {
         this.numItems = numItems;
-    }
-
-    /**
-     * @return the opponent
-     */
-    public RacePlayer getOpponent() {
-        return opponent;
     }
 
     /**

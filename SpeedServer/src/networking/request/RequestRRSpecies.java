@@ -8,6 +8,8 @@ package networking.request;
 import core.GameServer;
 import java.io.IOException;
 import networking.response.ResponseRRSpecies;
+import dataAccessLayer.RaceDAO;
+import race.RacePlayer;
 import race.RaceManager;
 import utility.DataReader;
 
@@ -29,10 +31,11 @@ public class RequestRRSpecies extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
+        // RacePlayer player;
         
         responseRRSpecies = new ResponseRRSpecies();
         responseRRSpecies.setId(id);
-       System.out.println("speciec: " + id);
+        System.out.println("species: " + id);
 //        RaceManager.getInstance();
 //        client.getPlayer().getID();
         
@@ -43,10 +46,17 @@ public class RequestRRSpecies extends GameRequest {
         //The playerID of the oppenet of the player who sent the request
         p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
                 .getOpponent(client.getPlayer()).getID();
+        
+        // get the player and set species
+        // player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers().get(p_id);
+        // player.setRunnerSpeciesID(id);
+        
                 
         //NetworkManager.addResponseForUser(p_id, responsekeyboard);
         
         GameServer.getInstance().getThreadByPlayerID(p_id).send(responseRRSpecies);
+        
+        // RaceDAO.setPlayerSpecies(player);
     }
     
     

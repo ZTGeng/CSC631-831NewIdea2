@@ -14,9 +14,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import model.Player;
 import networking.response.ResponseRaceInit;
+import java.util.Random;
+import networking.response.ResponseRREndGame;
 
 /**
  *
@@ -30,13 +31,8 @@ public class RaceManager {
     // Regerence Tables
     private Map<Integer, Race> raceList = new HashMap<Integer, Race>(); //RaceID -> race
     public Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
-    public Map<Integer, Integer> readyToRace = new HashMap<Integer, Integer>(); //GameID -> number of request
 
     private List<Player> players = new ArrayList<Player>(); //used to create a race
-
-    protected short numberOfGamesBeingPlayed;
-
-    private final short MAX_NUMBER_OF_PLAYERS = 2;
 
     public static RaceManager getInstance() {
         if (manager == null) {
@@ -53,11 +49,19 @@ public class RaceManager {
             players.add(GameServer.getInstance().getActivePlayer(player_id));
         } else {
             if (player_id != players.get(0).getID()) {
+                // random generator used for generating map
                 Random randomGenerator = new Random();
+                // create raceID randomly
+                int raceID = randomGenerator.nextInt(2001);
+                while (raceList.containsKey(raceID)) {
+                    raceID = randomGenerator.nextInt(2001);
+                    System.out.println("Race ID:" + raceID);
+                }
+                System.out.println("Race ID:" + raceID);
                 players.add(GameServer.getInstance().getActivePlayer(player_id));
-                race = new Race(players, 1);  // fix 2nd parameter
+                race = new Race(players, raceID);  // fix 2nd parameter
                 race.setMapID(randomGenerator.nextInt(101));
-                System.out.println("Map ID:" + race.getMapID());
+                //System.out.println("Map ID:" + race.getMapID());
                 add(race);
                 // Respond to Players to load the Runner scene
                 ResponseRaceInit response = new ResponseRaceInit();
@@ -66,9 +70,33 @@ public class RaceManager {
                 }
                 players.clear();
             }
-        }
 
+        }
         return race;
+    }
+
+    public void endRace(int raceID, int playerID, String winningTime) throws Exception {
+        Race race = raceList.get(raceID);
+        int opponentID = race.getOpponentID(playerID);
+
+        ResponseRREndGame response = new ResponseRREndGame();
+        response.setWinningTime(winningTime);
+        for (int p_id : race.getPlayers().keySet()) {
+            if (playerID == p_id) {
+                response.setWin(true);
+            } else {
+                response.setWin(false);
+            }
+            GameServer.getInstance().getThreadByPlayerID(p_id).send(response);
+        }
+    }
+
+    public void removePlayerFromRaceList(int player_id) {
+        playerRaceList.remove(player_id);
+    }
+
+    public void destroyRace(int race_id) {
+        raceList.remove(race_id);
     }
 
     public Race add(Race race) {
@@ -81,45 +109,4 @@ public class RaceManager {
     public Race getRaceByPlayerID(int playerID) {
         return playerRaceList.get(playerID);
     }
-
-//    //Adds a client to the correct game out of a list of raceList and makes sure there is a game for the client to be added to.
-//    public void addClientToGame(GameClient client) {
-//        noCurrentGames();
-//        PlaceClient(client);
-//        createNewGame();
-//    }
-//    
-//    //checks to see if any raceList exisit and if not creates one;
-//    void noCurrentGames() {
-//        if (raceList.isEmpty()){
-//            raceList.add(new Race(null, null));
-//        
-//            //debugging
-//            Log.printf("No games set up, creating a new game.");
-//        }
-//    }
-//    
-//    //Places the client into the open game with the correct player position and sets the opponent of each client as the other client when there is enough clients in game.
-//    void PlaceClient(GameClient client) {     
-//        Race game = raceList.get(raceList.size()-1);
-//        switch (game.getNumberOfPlayersInGame()){
-//            case 0: game.setClient1(client);
-//                    //debugging
-//                    Log.printf("Setting first player in a Game.");
-//                    break;
-//            case 1: game.setClient2(client);
-//                    game.setOpponentsOfGame();
-//                    game.setStateOn();
-//                    //debugging
-//                    Log.printf("Setting second player in a Game and setting opponents.");
-//                    break;
-//        }
-//    }    
-//    
-//    // Checks to see if the last game in the list is full and if so creates a new one.
-//    void createNewGame() {
-//        if (raceList.get(raceList.size()-1).getNumberOfPlayersInGame() == MAX_NUMBER_OF_PLAYERS){
-//            raceList.add(new Race(null, null));
-//        }
-//    }
 }

@@ -17,12 +17,15 @@ import java.util.concurrent.Executors;
 import configuration.GameServerConf;
 import dataAccessLayer.DAO;
 import dataAccessLayer.SpeciesDAO;
+import dataAccessLayer.RunnerSpeciesDAO;
+import dataAccessLayer.RunnerItemsDAO;
 import metadata.Constants;
 import metadata.GameRequestTable;
 import model.AnimalType;
 import model.PlantType;
 import model.Player;
-import race.Race;
+import model.RunnerSpecies;
+import model.RunnerItems;
 import race.RaceManager;
 import model.SpeciesType;
 import utility.ConfFileParser;
@@ -46,6 +49,8 @@ public class GameServer {
     // Reference Tables
     private Map<String, GameClient> activeThreads = new HashMap<String, GameClient>(); // Session ID -> Client
     private Map<Integer, Player> activePlayers = new HashMap<Integer, Player>(); // Player ID -> Player
+    private Map<Integer, RunnerSpecies> runnerSpeciesMap = new HashMap<Integer, RunnerSpecies>(); // RunnerItems ID -> RunnerItems
+    private Map<Integer, RunnerItems> runnerItemsMap = new HashMap<Integer, RunnerItems>(); // RunnerItems ID -> RunnerItems
     private Map<Integer, AnimalType> animalTypes = new HashMap<Integer, AnimalType>(); // Species ID -> Animal
     private Map<Integer, PlantType> plantTypes = new HashMap<Integer, PlantType>(); // Species ID -> Plant
     // RaceManager that is responsible for setting up a single game.
@@ -100,6 +105,31 @@ public class GameServer {
      */
     public final void initialize() {
         setupSpeciesTypes();
+        
+        // load runner species
+        try
+        {
+            Log.println("Now loading list of RunnerSpecies to memory...");
+            runnerSpeciesMap = RunnerSpeciesDAO.getRunnerSpecies();
+        }
+        catch (SQLException e)
+        {
+            Log.println("Critical error. Failed to load list of RunnerSpecies.");
+        }
+        Log.println("RunnerSpecies list successfully loaded.");
+        
+        // load runner items
+        try
+        {
+            Log.println("Now loading list of RunnerItems to memory...");
+            runnerItemsMap = RunnerItemsDAO.getRunnerItems();
+        }
+        catch (SQLException e)
+        {
+            Log.println("Critical error. Failed to load list of RunnerItems.");
+        }
+        
+        Log.println("RunnerItems list successfully loaded.");
     }
 
     /**
@@ -193,6 +223,29 @@ public class GameServer {
         } catch (IOException ex) {
             Log.println_e(ex.getMessage());
         }
+    }
+    
+    public RunnerSpecies getRunnerSpecies(int runnerSpeciesID) {
+        RunnerSpecies rs = null;
+
+        if (runnerSpeciesMap.containsKey(runnerSpeciesID))
+        {
+            rs = runnerSpeciesMap.get(runnerSpeciesID);
+        }
+
+        return rs;
+    }
+    
+    public RunnerItems getRunnerItems(int runnerItemsID)
+    {
+        RunnerItems ri = null;
+        
+        if (runnerItemsMap.containsKey(runnerItemsID))
+        {
+            ri = runnerItemsMap.get(runnerItemsID);
+        }
+
+        return ri;
     }
 
     public static String createUniqueID() {
