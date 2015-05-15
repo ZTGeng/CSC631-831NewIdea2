@@ -15,7 +15,7 @@ import utility.GamePacket;
 public class ResponseRREndGame extends GameResponse {
 
     private boolean gameCompleted;
-    private float finalTime;
+    private String finalTime;
     private String fastestPlayer;
     private String highestPoint;
 
@@ -28,7 +28,7 @@ public class ResponseRREndGame extends GameResponse {
         GamePacket packet = new GamePacket(responseCode);
 
         packet.addBoolean(isGameCompleted());
-        packet.addFloat(getFinalTime());
+        packet.addString(getFinalTime());
         //packet.addString(getFastestPlayer());
         //packet.addString(getHighestPoint());
 
@@ -80,14 +80,14 @@ public class ResponseRREndGame extends GameResponse {
     /**
      * @return the finalTime
      */
-    public float getFinalTime() {
+    public String getFinalTime() {
         return finalTime;
     }
 
     /**
      * @param finalTime the finalTime to set
      */
-    public void setFinalTime(float finalTime) {
+    public void setFinalTime(String finalTime) {
         this.finalTime = finalTime;
     }
 

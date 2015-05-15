@@ -1,5 +1,5 @@
 // Info and data on players of race. Extends Player class.
-// @author: Mark Favis, Joseph Fernandez
+// @authors: Mark Favis, Joseph Fernandez
 
 package race;
 
@@ -10,7 +10,7 @@ import model.Player;
 public class RacePlayer extends Player {
 
     private int raceID, // race ID that player is currently in
-            runnerID, // ID of selected species
+            runnerSpeciesID, // ID of selected species
             health, // health of species
             status, // status of species (from items/boosts)
             itemID, // currently held item (0 if not holding anything)
@@ -20,7 +20,8 @@ public class RacePlayer extends Player {
     private float x, // x position of player
             y, // y position of player
             speed, // current speed of player
-            power; // current power of player
+            power, // current power of player
+            finalTime;
     private boolean right,
             left,
             jump;
@@ -44,12 +45,12 @@ public class RacePlayer extends Player {
         this.raceID = raceID;
     }
     
-    public int getRunnerID() {
-        return runnerID;
+    public int getRunnerSpeciesID() {
+        return runnerSpeciesID;
     }
     
-    public void setRunnerID(int runnerID) {
-        this.runnerID = runnerID;
+    public void setRunnerSpeciesID(int runnerSpeciesID) {
+        this.runnerSpeciesID = runnerSpeciesID;
     }
     
     public int getHealth() {
@@ -216,5 +217,13 @@ public class RacePlayer extends Player {
      */
     public void setOpponent(RacePlayer opponent) {
         this.opponent = opponent;
+    }
+    
+    public float getFinalTime() {
+        return finalTime;
+    }
+
+    public void setFinalTime(float finalTime) {
+        this.finalTime = finalTime;
     }
 }

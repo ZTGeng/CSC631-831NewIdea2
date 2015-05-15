@@ -31,7 +31,13 @@ public final class RunnerItemsDAO {
         
         try
         {
+            Log.println("Connecting to database...");
+            
             connection = DAO.getDataSource().getConnection(); // connect to DB
+            
+            Log.println("Successfully connected to database.\n"
+                    + "Loading RunnerItems data from database...");
+            
             pstmt = connection.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery(); // execute SQL
             
@@ -48,19 +54,22 @@ public final class RunnerItemsDAO {
                 }
             }
             
+            Log.println("Successfully loaded RunnerItems data from database.\n"
+                    + "Queries finished. Disconnecting from database...");
+            
             rs.close();
             pstmt.close();
         }
         catch (Exception e)
         {
-            System.err.println("Database error. Failed to load items.");
-            Log.println_e("Database error. Failed to load items.");
+            Log.println_e("Database error. Failed to load RunnerItems data.");
         }
         finally // close DB connection
         {
             if (connection != null)
             {
                 connection.close();
+                Log.println("Successfully disconnected from database.");
             }
         }
         

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import model.Player;
 import networking.response.ResponseRaceInit;
 
@@ -28,7 +29,7 @@ public class RaceManager {
 
     // Regerence Tables
     private Map<Integer, Race> raceList = new HashMap<Integer, Race>(); //RaceID -> race
-    private Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
+    public Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
     public Map<Integer, Integer> readyToRace = new HashMap<Integer, Integer>(); //GameID -> number of request
 
     private List<Player> players = new ArrayList<Player>(); //used to create a race
@@ -52,8 +53,11 @@ public class RaceManager {
             players.add(GameServer.getInstance().getActivePlayer(player_id));
         } else {
             if (player_id != players.get(0).getID()) {
+                Random randomGenerator = new Random();
                 players.add(GameServer.getInstance().getActivePlayer(player_id));
                 race = new Race(players, 1);  // fix 2nd parameter
+                race.setMapID(randomGenerator.nextInt(101));
+                System.out.println("Map ID:" + race.getMapID());
                 add(race);
                 // Respond to Players to load the Runner scene
                 ResponseRaceInit response = new ResponseRaceInit();

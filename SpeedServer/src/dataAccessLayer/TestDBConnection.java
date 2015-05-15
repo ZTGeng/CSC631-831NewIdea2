@@ -34,7 +34,7 @@ public class TestDBConnection
             r2 = new RacePlayer(2, 1);
             
             // race player 1
-            r1.setRunnerID(31);
+            r1.setRunnerSpeciesID(31);
             r1.setHealth(100);
             r1.setItemID(1);
             r1.setJump(false);
@@ -50,7 +50,7 @@ public class TestDBConnection
             r1.setY(5);
             
             // race player 2
-            r2.setRunnerID(88);
+            r2.setRunnerSpeciesID(88);
             r2.setHealth(75);
             r2.setItemID(2);
             r2.setJump(true);
@@ -90,20 +90,31 @@ public class TestDBConnection
             }
             
             // test race creation, joining, finishing, leaving logic
-            RaceDAO.findRace(r1.getID());
-            RaceDAO.findRace(r2.getID());
-            RaceDAO.leaveRace(r1.getID());
-            RaceDAO.leaveRace(r2.getID());
-            RaceDAO.findRace(r1.getID());
-            RaceDAO.findRace(r2.getID());
+            RaceDAO.createRace(r1.getRaceID());
+            RaceDAO.createPlayerRecord(r1.getID(), r1.getRaceID());
+            RaceDAO.createPlayerRecord(r2.getID(), r2.getRaceID());
+            RaceDAO.leaveRace(r1);
+            RaceDAO.leaveRace(r2);
+            
+            r1.setRaceID(101);
+            r1.setRunnerSpeciesID(47);
+            
+            r2.setRaceID(101);
+            r2.setRunnerSpeciesID(74);
+            
+            RaceDAO.createRace(r2.getRaceID());
+            RaceDAO.createPlayerRecord(r2.getID(), r2.getRaceID());
+            RaceDAO.createPlayerRecord(r1.getID(), r1.getRaceID());
+            
             RaceDAO.setPlayerSpecies(r1);
             RaceDAO.setPlayerSpecies(r2);
             RaceDAO.updateRace(r1);
             RaceDAO.updateRace(r2);
+            
             RaceDAO.finishRace(r1, 1, 50, 500);
             RaceDAO.finishRace(r2, 2, 100, 400);
-            RaceDAO.leaveRace(r1.getID());
-            RaceDAO.leaveRace(r2.getID());
+            RaceDAO.leaveRace(r1);
+            RaceDAO.leaveRace(r2);
         }
         
         // if any exceptions thrown...

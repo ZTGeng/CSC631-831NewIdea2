@@ -33,7 +33,13 @@ public final class RunnerSpeciesDAO {
         
         try
         {
+            Log.println("Connecting to database...");
+            
             connection = DAO.getDataSource().getConnection();
+            
+            Log.println("Successfully connected to database.\n"
+                    + "Loading RunnerSpecies data from database...");
+            
             pstmt = connection.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery(); // result of SQL execution
             
@@ -55,6 +61,9 @@ public final class RunnerSpeciesDAO {
                 // add defined species of map
                 runnerSpeciesMap.put(ID, rSpecies);
             }
+            
+            Log.println("Successfully loaded RunnerSpecies data from database.\n"
+                    + "Loading predators and prey data from database...");
             
             // all done with queries
             rs.close();
@@ -82,17 +91,20 @@ public final class RunnerSpeciesDAO {
                     }
                 }
             }
+            
+            Log.println("Successfully loaded predators and prey data from database.\n"
+                    + "Queries finished. Disconnecting from database...");
         }
         catch (Exception e)
         {
-            System.err.println("Database error. Failed to load species.");
-            Log.println_e("Database error. Failed to load species.");
+            Log.println_e("Database error. Failed to load RunnerSpecies data.");
         }
         finally // close connection
         {
             if (connection != null)
             {
                 connection.close();
+                Log.println("Successfully disconnected from database.");
             }
         }
         
