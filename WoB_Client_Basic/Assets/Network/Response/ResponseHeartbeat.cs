@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+namespace RR{
 public class ResponseHeartbeatEventArgs : ExtendedEventArgs {
 	public int opponentX { get; set; }
 	public int opponenty { get; set; }
@@ -13,7 +13,9 @@ public class ResponseHeartbeatEventArgs : ExtendedEventArgs {
 		event_id = Constants.SMSG_HEARTBEAT;
 	}
 }
+}
 
+namespace RR {
 public class ResponseHeartbeat : NetworkResponse {
 	private GameObject gameObject;
 	private Running running;
@@ -51,4 +53,5 @@ public class ResponseHeartbeat : NetworkResponse {
 
 
 
+}
 }

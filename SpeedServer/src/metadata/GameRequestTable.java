@@ -39,6 +39,8 @@ public class GameRequestTable {
         add(Constants.CMSG_RRSPECIES, "RequestRRSpecies");
         add(Constants.CMSG_RRBOOST, "RequestRRBoost");
         add(Constants.CMSG_RRSTARTGAME, "RequestRRStartGame");
+        add(Constants.CMSG_RRGETMAP, "RequestRRGetMap");
+        add(Constants.CMSG_RRENDSESSION, "RequestRREndSession");
 
     }
 

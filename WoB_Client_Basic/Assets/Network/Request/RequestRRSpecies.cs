@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace RR{
 public class RequestRRSpecies : NetworkRequest {
 	
 	// Use this for initialization
@@ -14,4 +14,5 @@ public class RequestRRSpecies : NetworkRequest {
 		packet.addInt32 (id);
 		
 	}
+}
 }

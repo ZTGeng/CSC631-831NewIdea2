@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+namespace RR{
 public class RequestKeyboard : NetworkRequest {
 
 	public RequestKeyboard() {
@@ -13,4 +13,5 @@ public class RequestKeyboard : NetworkRequest {
 		packet.addInt32 (key);
 	}
 
+}
 }

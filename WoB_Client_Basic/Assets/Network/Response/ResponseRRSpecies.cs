@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-
+namespace RR{
 public class ResponseRRSpeciesEventArgs : ExtendedEventArgs {
 	public int  id { get; set; }
 	
@@ -11,7 +11,9 @@ public class ResponseRRSpeciesEventArgs : ExtendedEventArgs {
 		event_id = Constants.SMSG_RRSPECIES;
 	}
 }
+}
 
+namespace RR {
 public class ResponseRRSpecies : NetworkResponse {
 	
 	private int id;
@@ -37,4 +39,5 @@ public class ResponseRRSpecies : NetworkResponse {
 	}
 	
 	
+}
 }

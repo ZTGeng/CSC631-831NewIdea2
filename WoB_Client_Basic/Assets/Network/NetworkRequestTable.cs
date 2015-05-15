@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
+namespace RR {
 public class NetworkRequestTable {
 
 	public static Dictionary<short, Type> requestTable { get; set; }
@@ -39,4 +40,5 @@ public class NetworkRequestTable {
 		
 		return request;
 	}
+}
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+namespace RR{
 
 public class ConnectionManager : MonoBehaviour {
 	
@@ -60,7 +61,8 @@ public class ConnectionManager : MonoBehaviour {
 			MemoryStream dataStream = new MemoryStream(buffer);
 
 			short response_id = DataReader.ReadShort(dataStream);
-			
+			Debug.Log("response_id: " + response_id);
+			Debug.Log(response_id.GetType().ToString());
 			NetworkResponse response = NetworkResponseTable.get(response_id);
 			
 			if (response != null) {
@@ -104,4 +106,5 @@ public class ConnectionManager : MonoBehaviour {
 	void Update () {
 		ReadSocket();
 	}
+}
 }

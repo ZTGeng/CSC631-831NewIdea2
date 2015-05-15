@@ -13,6 +13,7 @@ public class RacePlayer extends Player {
 
     private int raceID;
     private int status;
+    private float finalTime;
     private RacePlayer opponent;
 
     // For the database
@@ -68,30 +69,6 @@ public class RacePlayer extends Player {
     public int setY(int y) {
         return this.y = y;
     }
-    
-//    public int getDistanceTraveled() {
-//        return distanceTraveled;
-//    }
-//    
-//    public int setDistanceTraveled(int distanceTraveled) {
-//        return this.distanceTraveled = distanceTraveled;
-//    }
-//    
-//    public short getGameover() {
-//        return gameover;
-//    }
-//    
-//    public short setGameover(short gameover) {
-//        return this.gameover = gameover;
-//    }
-//    
-//    public short getGameState() {
-//        return gameState;
-//    }
-//    
-//    public short setGameState(short gameState) {
-//        return this.gameState = gameState;
-//    }
 
     /**
      * @return the speed
@@ -189,6 +166,14 @@ public class RacePlayer extends Player {
      */
     public void setOpponent(RacePlayer opponent) {
         this.opponent = opponent;
+    }
+    
+    public float getFinalTime() {
+        return finalTime;
+    }
+
+    public void setFinalTime(float finalTime) {
+        this.finalTime = finalTime;
     }
     
 }

@@ -1,6 +1,6 @@
 ﻿//using UnityEngine;
 //using System.Collections;
-//
+//namespace RR{
 //public class RequestInGameHeartbeat : MonoBehaviour {
 //
 //	// Use this for initialization
@@ -12,4 +12,4 @@
 //	void Update () {
 //	
 //	}
-//}
+//}}

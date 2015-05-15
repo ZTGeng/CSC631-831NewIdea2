@@ -7,6 +7,7 @@ using System.Collections;
 //public class RRResponsePositionEventArgs : ExtendedEventArgs {
 //<<<<<<< HEAD
 //=======
+namespace RR{
 public class ResponseRRPositionEventArgs : ExtendedEventArgs {
 //>>>>>>> start:WoB_Client_Basic/Assets/Network/Response/ResponseRRPostion.cs
 //	public int  x { get; set; }
@@ -20,7 +21,9 @@ public class ResponseRRPositionEventArgs : ExtendedEventArgs {
 		event_id = Constants.SMSG_RRPOSITION;
 	}
 }
+}
 
+namespace RR {
 public class ResponseRRPostion : NetworkResponse {
 
 //<<<<<<< HEAD
@@ -78,4 +81,5 @@ public class ResponseRRPostion : NetworkResponse {
 
 
 
+}
 }

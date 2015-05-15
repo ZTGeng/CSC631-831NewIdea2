@@ -1,7 +1,7 @@
 using UnityEngine;
 
 using System;
-
+namespace RR{
 public class RequestLogin : NetworkRequest {
 
 	public RequestLogin() {
@@ -16,4 +16,5 @@ public class RequestLogin : NetworkRequest {
 		packet.addString(password);
 		return this;
 	}
+}
 }
