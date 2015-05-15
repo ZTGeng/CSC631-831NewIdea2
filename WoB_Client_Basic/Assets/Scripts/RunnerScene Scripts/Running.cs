@@ -132,7 +132,7 @@ public class Running : MonoBehaviour {
 
 		if (cManager) {
 			RequestRRPostion rp = new RequestRRPostion ();
-			rp.send ((player1.transform.position.x).ToString(), (player1.transform.position.y).ToString());
+			rp.send ((player1.transform.position.x).ToString(), (player1.transform.position.y + 0.5f).ToString());
 			cManager.Send (rp);
 
 		}

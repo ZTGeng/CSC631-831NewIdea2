@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 		SpawnItem();
         SpawnPlayer();
 
-        player2 = Instantiate(player2, new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
+        player2 = Instantiate(player2, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
         player2.name = "Player_sprite_2(Clone)";
 
         raceTime = 0;
@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour {
         // items.Add (items);
 
         GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
+
+        GameObject.Find("GameLogic").GetComponent<Running>().RunOnce();
+        GameObject.Find("GameLogic").GetComponent<RunnerUI>().setStartandEndPoints(startPoint, endPoint);
+        GameObject.Find("GameLogic").GetComponent<RunnerUI>().setPlayer1(player1);
+        GameObject.Find("GameLogic").GetComponent<RunnerUI>().SetPlayer2(player2);
 
 		buildRelationship();
   
@@ -81,7 +86,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void SpawnPlayer() {
-        player1 = Instantiate(player1, new Vector3(0f, -5f, 0f), Quaternion.identity) as GameObject;
+        player1 = Instantiate(player1, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
         cam.SetTarget(player1.transform);
 
         player1.name = "Player_sprite(Clone)";
@@ -93,6 +98,7 @@ public class GameManager : MonoBehaviour {
 
         float tempEnd = -35f;
         int length = 6;
+        Random.seed = 3;
         for (int i = 0; i < length; i++)
         {
            
@@ -110,10 +116,11 @@ public class GameManager : MonoBehaviour {
 			map.name = "aMap" + i;
 			//(float)(20 + (i * 62.9))
 		    tempEnd += 50f;
+            endPoint = tempEnd - 24;
 
         }
 
-		Instantiate(endFlag, new Vector3(tempEnd - 24, -8.5f, 0), Quaternion.identity);
+		Instantiate(endFlag, new Vector3(endPoint, -8.5f, 0), Quaternion.identity);
     } 
 
 	private void PlaceItem(int speciesId, float x) {
