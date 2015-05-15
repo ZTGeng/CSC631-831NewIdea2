@@ -1,14 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Network/Response/ResponseRRSpecies.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RunnerScene Scripts/PlayerPhysics.cs">
     <Files>
-      <File FileName="Assets/Scripts/RunnerScene Scripts/Running.cs" Line="180" Column="3" />
-      <File FileName="Assets/Network/Response/ResponseRREndGame.cs" Line="37" Column="2" />
-      <File FileName="Assets/Network/Request/RequestRREndGame.cs" Line="18" Column="2" />
       <File FileName="Assets/Network/NetworkRequestTable.cs" Line="16" Column="20" />
-      <File FileName="Assets/Scripts/Constants.cs" Line="54" Column="52" />
-      <File FileName="Assets/Network/NetworkResponseTable.cs" Line="32" Column="3" />
-      <File FileName="Assets/Network/Response/ResponseRRSpecies.cs" Line="6" Column="1" />
+      <File FileName="Assets/Network/Request/RequestRREndGame.cs" Line="18" Column="2" />
+      <File FileName="Assets/Scripts/RunnerScene Scripts/PlayerPhysics.cs" Line="173" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

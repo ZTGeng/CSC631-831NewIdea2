@@ -75,28 +75,17 @@ public class RaceManager {
         return race;
     }
 
-    public void endRace(int raceID, int playerID) throws Exception {
+    public void endRace(int raceID, int playerID, String winningTime) throws Exception {
         Race race = raceList.get(raceID);
         int opponentID = race.getOpponentID(playerID);
-        Map<Integer, RacePlayer> racePlayer = race.getPlayers();
-        RacePlayer thisRacePlayer = racePlayer.get(playerID);
-        RacePlayer opponentRacePlayer = racePlayer.get(opponentID);
 
         ResponseRREndGame response = new ResponseRREndGame();
-        // determine who won
-        boolean playerWon = false;
-        if (thisRacePlayer.getFinalTime() > opponentRacePlayer.getFinalTime()) {
-            playerWon = true;
-            response.setWinningTime(String.valueOf(thisRacePlayer.getFinalTime()));
-        } else {
-            response.setWinningTime(String.valueOf(opponentRacePlayer.getFinalTime()));
-        }
-
+        response.setWinningTime(winningTime);
         for (int p_id : race.getPlayers().keySet()) {
             if (playerID == p_id) {
-                response.setWin(playerWon);
+                response.setWin(true);
             } else {
-                response.setWin(!playerWon);
+                response.setWin(false);
             }
             GameServer.getInstance().getThreadByPlayerID(p_id).send(response);
         }

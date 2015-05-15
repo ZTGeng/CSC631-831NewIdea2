@@ -37,15 +37,8 @@ public class RequestRREndGame extends GameRequest {
     @Override
     public void doBusiness() throws Exception {
         int thisPlayerID = this.client.getPlayer().getID();
-        Race temp = RaceManager.manager.playerRaceList.get(thisPlayerID);
-        temp.setFinalTime(thisPlayerID, Float.parseFloat(this.finalTime));
-        RaceManager.manager.playerRaceList.put(thisPlayerID, temp);
-        
         // end race
-        RaceManager.manager.endRace(RaceManager.manager.getRaceByPlayerID(thisPlayerID).getID(),thisPlayerID);
-
-        System.out.println("Player ID: " + thisPlayerID + " final time: " + finalTime + " completed?: " + gameCompleted);
-
+        RaceManager.manager.endRace(RaceManager.manager.getRaceByPlayerID(thisPlayerID).getID(),thisPlayerID,finalTime);
     }
     
 }

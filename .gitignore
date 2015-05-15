@@ -1,7 +1,53 @@
-/SpeedServer/build/
+SpeedServer/build/
 SpeedServer/nbproject/private/private.properties
 SpeedServer/.DS_Store
 SpeedServer/nbproject/private/private.properties
 SpeedServer/src/networking/request/RequestLogin.java
 WoB_Client_Basic/Assembly-CSharp.csproj
-/SpeedServer/dist/
+SpeedServer/dist/
+WoB_Client_Basic/Library/
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+
+#ant specific
+dist/
+build/
+ 
+#netbeans specific
+SpeedServer/core
+SpeedServer/nbproject/*
+SpeedServer/!nbproject/project.properties
+SpeedServer/!nbproject/project.xml
+ 
+#java specific
+*.class
+ 
+#general swap/backup files
+*.so
+*.log
+*.out
+*~
+*.swp
+*.lock
