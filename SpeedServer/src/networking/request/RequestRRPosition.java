@@ -6,9 +6,11 @@
 package networking.request;
 
 import core.GameServer;
+import dataAccessLayer.RaceDAO;
 import java.io.IOException;
 import networking.response.ResponseRRPosition;
 import race.RaceManager;
+import race.RacePlayer;
 import utility.DataReader;
 
 /**
@@ -34,7 +36,7 @@ public class RequestRRPosition extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
-
+        RacePlayer player; // the RacePlayer sending the request
         System.out.println("X:  " +  x + "Y :  " + y);
 //<<<<<<< HEAD:SpeedServer/src/networking/request/RRRequestPosition.java
 //
@@ -61,7 +63,14 @@ public class RequestRRPosition extends GameRequest {
                 
         //NetworkManager.addResponseForUser(p_id, responsekeyboard);
         
+        // get the player and define x and y at the time of request
+        player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers().get(p_id);
+        player.setX(x);
+        player.setY(y);
+        
         GameServer.getInstance().getThreadByPlayerID(p_id).send(responseRRPosition);
+        
+        RaceDAO.updateRace(player); // write to DB
     }
     
 }

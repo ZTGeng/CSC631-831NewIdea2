@@ -4,10 +4,13 @@ import core.GameServer;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.sql.SQLException;
 import model.Player;
 import networking.response.ResponseRRStartGame;
 import metadata.Constants;
 import java.io.IOException;
+import dataAccessLayer.RaceDAO;
+import utility.Log;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,10 +32,29 @@ public class Race {
     private short playersReadyToStart;
 
     public Race(List<Player> players, int raceID) {
-
         this.raceID = raceID;
+        
+        try
+        {
+            RaceDAO.createRace(raceID);
+        }
+        catch (SQLException e)
+        {
+            Log.println_e("Error in writing record of race " + raceID + " into database.");
+            Log.println_e(e.getMessage());
+        }
+        
         for (Player player : players) {
-            this.rPlayers.put(Integer.valueOf(player.getID()), new RacePlayer(player.getID(), raceID));
+            this.rPlayers.put(player.getID(), new RacePlayer(player.getID(), raceID));
+            try
+            {
+                RaceDAO.createPlayerRecord(player.getID(), raceID);
+            }
+            catch (SQLException e)
+            {
+                Log.println_e("Error in writing record of player ID " + player.getID() + " in race ID " + raceID + " into database.");
+                Log.println_e(e.getMessage());
+            }
         }
     }
 

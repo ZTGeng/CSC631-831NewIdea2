@@ -11,32 +11,47 @@ import model.Player;
  */
 public class RacePlayer extends Player {
 
-    private int raceID;
-    private int status;
-    private float finalTime;
+    private int raceID, // race ID that player is currently in
+            runnerSpeciesID, // ID of selected species
+            health, // health of species
+            status, // status of species (from items/boosts)
+            itemID, // currently held item (0 if not holding anything)
+            numItems, // number of items collected
+            time, // current time of player
+            score; // current score of player
+    private float x, // x position of player
+            y, // y position of player
+            speed, // current speed of player
+            power, // current power of player
+            finalTime;
+    private boolean right,
+            left,
+            jump,
+            usedItem; // player used item?
     private RacePlayer opponent;
-
-    // For the database
-    private int x;
-    private int y;
-    private int speed;
-    private int boosts; // Number of boosts (positive speed items) a user has.
-    
-//    private int distanceTraveled;
-//    private short gameover;
-//    private short gameState;
-    
-    //Key inputs
-    private boolean right;
-    private boolean left;
-    private boolean jump;
-    private boolean boost;
     
     
     public RacePlayer(int player_id, int raceID){
         super(player_id);
         this.raceID = raceID;
         
+        // set defaults
+        runnerSpeciesID = 31;
+        health = 100;
+        status = 0;
+        itemID = 1;
+        numItems = 0;
+        time = 0;
+        score = 0;
+        x = 0;
+        y = 0;
+        speed = 1.0f;
+        power = 1.0f;
+        finalTime = 0.0f;
+        right = false;
+        left = false;
+        jump = false;
+        usedItem = false;
     }
 
     public int getRaceID() {
@@ -46,6 +61,55 @@ public class RacePlayer extends Player {
     public void setRaceID(int raceID){
         this.raceID = raceID;
     }
+    
+    public int getRunnerSpeciesID() {
+        return runnerSpeciesID;
+    }
+    
+    public void setRunnerSpeciesID(int runnerSpeciesID) {
+        this.runnerSpeciesID = runnerSpeciesID;
+    }
+    
+    public int getHealth() {
+        return health;
+    }
+    
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    
+    public int getStatus() {
+        return status;
+    }
+    
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    public int getItemID() {
+        return itemID;
+    }
+    
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
+    
+    public int getTime() {
+        return time;
+    }
+    
+    public void setTime(int time) {
+        this.time = time;
+    }
+    
+    public int getScore() {
+        return score;
+    }
+    
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
 //    public RacePlayer getOpponent() {
 //        return opponent;
 //    }
@@ -54,106 +118,114 @@ public class RacePlayer extends Player {
 //        return this.opponent = opponent;
 //    }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
     
-    public int setX(int x) {
+    public float setX(float x) {
         return this.x = x;
     }
 
-    public int setY(int y) {
+    public float setY(float y) {
         return this.y = y;
     }
 
     /**
      * @return the speed
      */
-    public int getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 
     /**
      * @param speed the speed to set
      */
-    public void setSpeed(int speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
+    }
+    
+    public float getPower() {
+        return power;
+    }
+    
+    public void setPower(float power) {
+        this.power = power;
     }
 
     /**
-     * @return the right
+     * @return if player is going right
      */
     public boolean isRight() {
         return right;
     }
 
     /**
-     * @param right the right to set
+     * @param right is player going right?
      */
     public void setRight(boolean right) {
         this.right = right;
     }
 
     /**
-     * @return the left
+     * @return if player is going left
      */
     public boolean isLeft() {
         return left;
     }
 
     /**
-     * @param left the left to set
+     * @param left is player going left?
      */
     public void setLeft(boolean left) {
         this.left = left;
     }
 
     /**
-     * @return the jump
+     * @return if player jumped
      */
     public boolean isJump() {
         return jump;
     }
 
     /**
-     * @param jump the jump to set
+     * @param jump is player jumping?
      */
     public void setJump(boolean jump) {
         this.jump = jump;
     }
 
     /**
-     * @return the boost
+     * @return usedItem
      */
-    public boolean isBoost() {
-        return boost;
+    public boolean usedItem() {
+        return usedItem;
     }
 
     /**
-     * @param boost the boost to set
+     * @param usedItem used item
      */
-    public void setBoost(boolean boost) {
-        this.boost = boost;
+    public void setUsedItem(boolean usedItem) {
+        this.usedItem = usedItem;
+    }
+    
+    /**
+     * @return number of collected items
+     */
+    public int getNumItems() {
+        return numItems;
     }
 
     /**
-     * @return the boosts
+     * @param numItems number of collected items
      */
-    public int getBoosts() {
-        return boosts;
+    public void setNumItems(int numItems) {
+        this.numItems = numItems;
     }
-
-    /**
-     * @param boosts the boosts to set
-     */
-    public void setBoosts(int boosts) {
-        this.boosts = boosts;
-    }
-
+    
     /**
      * @return the opponent
      */

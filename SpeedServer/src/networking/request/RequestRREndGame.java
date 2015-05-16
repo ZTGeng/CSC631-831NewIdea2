@@ -9,6 +9,8 @@ import java.io.IOException;
 import networking.response.ResponseRREndGame;
 import race.Race;
 import race.RaceManager;
+// import race.RacePlayer;
+// import dataAccessLayer.RaceDAO;
 import utility.DataReader;
 
 /**
@@ -35,12 +37,17 @@ public class RequestRREndGame extends GameRequest {
 
     @Override
     public void doBusiness() throws Exception {
+        // RacePlayer player; // the RacePlayer sending the request
         int thisPlayerID = this.client.getPlayer().getID();
         // end race
         Race race = RaceManager.manager.getRaceByPlayerID(thisPlayerID);
         if (race != null) {
             RaceManager.manager.endRace(race.getID(), thisPlayerID, finalTime);
         }
+        
+        // get player and load final time
+        // player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers().get(p_id);
+        // player.setFinalTime(finalTime);
     }
 
 }
