@@ -380,6 +380,7 @@ public final class RaceDAO {
         }
     }
     
+    /*
     // update player record in DB after end of race
     // @param: player - the player,
     //         earnedLevel - level up,
@@ -471,6 +472,7 @@ public final class RaceDAO {
             }
         }
     }
+    */
     
     // records to DB for player leaving races
     // @param: player - the leaving player

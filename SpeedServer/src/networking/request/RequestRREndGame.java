@@ -45,9 +45,8 @@ public class RequestRREndGame extends GameRequest {
             RaceManager.manager.endRace(race.getID(), thisPlayerID, finalTime);
         }
         
-        // get player and load final time
+        // get player, and load final time
         // player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers().get(p_id);
         // player.setFinalTime(finalTime);
     }
-
 }

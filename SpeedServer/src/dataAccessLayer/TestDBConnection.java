@@ -111,8 +111,8 @@ public class TestDBConnection
             RaceDAO.updateRace(r1);
             RaceDAO.updateRace(r2);
             
-            RaceDAO.finishRace(r1, 1, 50, 500);
-            RaceDAO.finishRace(r2, 2, 100, 400);
+            // RaceDAO.finishRace(r1, 1, 50, 500);
+            // RaceDAO.finishRace(r2, 2, 100, 400);
             RaceDAO.leaveRace(r1);
             RaceDAO.leaveRace(r2);
         }

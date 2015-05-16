@@ -23,11 +23,6 @@
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestKeyboard.java</file>
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRRPosition.java</file>
         </group>
-        <group>
-            <file>file:/C:/Users/Geng/unity%20workspace/CSC631-831NewIdea2/SpeedServer/src/core/GameServer.java</file>
-            <file>file:/C:/Users/Geng/unity%20workspace/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRGetMap.java</file>
-            <file>file:/C:/Users/Geng/unity%20workspace/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRaceInit.java</file>
-            <file>file:/C:/Users/Geng/unity%20workspace/CSC631-831NewIdea2/SpeedServer/src/race/RaceManager.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

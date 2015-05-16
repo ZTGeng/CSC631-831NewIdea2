@@ -1,6 +1,7 @@
 package core;
 
 // Java Imports
+import dataAccessLayer.RaceDAO;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,6 +17,7 @@ import java.util.Queue;
 import metadata.Constants;
 import metadata.GameRequestTable;
 import model.Player;
+import race.RacePlayer;
 import networking.request.GameRequest;
 import networking.response.GameResponse;
 import utility.DataReader;
@@ -140,11 +143,24 @@ public class GameClient implements Runnable {
     }
 
     /**
-     * Used whenever a player exits from the game. The most recent information
-     * stored for the player will be saved into the database and any ties with
+     * Used whenever a player exits from the game. Race records of the player
+     * in the database will be removed and any ties of the player with
      * the server will be removed as well.
      */
     public void removePlayerData() {
+        int rPlayerID = player.getID();
+        RacePlayer rPlayer = GameServer.getInstance().gameManager.getRaceByPlayerID(rPlayerID).getPlayers().get(rPlayerID);
+        
+        // remove record of leaving player in the database
+        try
+        {
+            RaceDAO.leaveRace(rPlayer);
+        }
+        catch (SQLException e)
+        {
+            Log.println_e("Database error. Unable to remove race record of player ID " + rPlayerID + " from the database.");
+        }
+        
         GameServer.getInstance().removeActivePlayer(player.getID());
         Log.printf("User '%s' has logged off.", player.getUsername());
     }
