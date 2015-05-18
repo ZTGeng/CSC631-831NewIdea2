@@ -22,10 +22,15 @@ namespace RR {
 			GUIStyle myStyle = new GUIStyle();
 			myStyle.normal.textColor = Color.blue;
 			myStyle.fontSize = 50;
+			myStyle.alignment = TextAnchor.UpperCenter;
 		
 			if(show)
 			{
-			GUI.Label (new Rect (Screen.width - 350, 200, 200, 100), text, myStyle);
+			GUI.Label (new Rect (Screen.width/2- 50, Screen.height / 2-50, 200, 100), text, myStyle);
+				myStyle.normal.textColor = Color.red;
+				myStyle.fontSize = 20;
+				myStyle.alignment = TextAnchor.UpperCenter;
+				GUI.Label (new Rect (Screen.width/2, Screen.height/ 2, 200, 100),"Winning Time is: " + PlayerPrefs.GetString ("Winning Time") , myStyle);
 			}
 			
 		}
