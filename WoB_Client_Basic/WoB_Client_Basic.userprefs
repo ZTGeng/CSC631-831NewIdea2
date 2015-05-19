@@ -1,15 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EndScene\EndGameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Constants.cs">
     <Files>
-      <File FileName="Assets\Scripts\RunnerScene Scripts\Running.cs" Line="1" Column="1" />
-      <File FileName="Assets\Network\Response\ResponseKeyboard.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Constants.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EndScene\EndGameManager.cs" Line="36" Column="4" />
-      <File FileName="Assets\Network\NetworkRequestTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Network\Request\RequestRREndGame.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\PlayerPhysics.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RunnerScene Scripts\GameManager.cs" Line="74" Column="51" />
+      <File FileName="Assets\Scripts\Constants.cs" Line="6" Column="61" />
+      <File FileName="..\..\WoB_Client\Assets\Scripts\Constants.cs" Line="10" Column="2" />
+      <File FileName="Assets\Scripts\RunnerScene Scripts\GameManager.cs" Line="143" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

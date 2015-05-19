@@ -102,7 +102,7 @@ namespace RR {
 	    {
 	
 	        float tempEnd = -35f;
-	        mapLength = 6;
+	        mapLength = 20;
 			if (mapSeed != null) {
 				Debug.Log("Map seed is " + mapSeed);
 				Random.seed = mapSeed;

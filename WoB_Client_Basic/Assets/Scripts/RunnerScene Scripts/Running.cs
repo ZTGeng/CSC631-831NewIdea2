@@ -22,20 +22,36 @@ namespace RR {
 		//public static string hitItem = "";
 	
 		private const float SPEED_INCREASE = 5f;
-		private const float SPEED_DECREASE = -5f;
+		private const float SPEED_DECREASE = -10f;
 		public const float BASE_SPEED = 15f;
 		public const float HIGH_SPEED = 25f;
 		public const float MAX_SPEED = 30f;
-		public const float MIN_SPEED = 10f;
+		public const float MIN_SPEED = 5f;
 	
 		// Change player1's speed. boost can be positive or negative.
 		// speed won'r increase if it's already the MAX_SPEED, won't decrease if already MIN_SPEED
 		void ChangeSpeed(float boost) {
 			PlayerController[] pcontroller = player1.GetComponents<PlayerController>();
 			float originalSpeed = pcontroller[0].speed;
-			if (boost > 0 && originalSpeed >= MAX_SPEED) return;
-			if (boost < 0 && originalSpeed <= MIN_SPEED) return;
-			pcontroller[0].speed = originalSpeed + boost;
+			if (boost > 0) {
+				pcontroller[0].speed = originalSpeed + boost;
+				if (pcontroller[0].speed > MAX_SPEED) {
+					pcontroller[0].speed = MAX_SPEED;
+				}
+				return;
+			}
+			if (boost < 0) {
+				if (pcontroller[0].speed > BASE_SPEED) {
+					pcontroller[0].speed = BASE_SPEED;
+				} else {
+					pcontroller[0].speed = originalSpeed + boost;
+					if (pcontroller[0].speed <= 0) {
+						pcontroller[0].speed = MIN_SPEED;
+					}
+				}
+				return;
+			}
+			
 		}
 	
 		// When collider happens, check if player1 can eat item (hunt it or be hunted by it)
