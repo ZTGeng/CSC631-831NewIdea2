@@ -13,7 +13,6 @@ import utility.GamePacket;
  */
 public class ResponseRRPosition extends GameResponse {
     
-//    private int x, y;
     private float x, y;
     
     public ResponseRRPosition(){
@@ -23,27 +22,6 @@ public class ResponseRRPosition extends GameResponse {
     @Override
     public byte[] constructResponseInBytes() {
         GamePacket packet = new GamePacket(responseCode);
-//
-//        packet.addInt32(x);
-//        packet.addInt32(y);
-//        return packet.getBytes();
-//    }
-//
-//    public int getX() {
-//        return x;
-//    }
-//
-//    public void setX(int x) {
-//        this.x = x;
-//    }
-//
-//    public int getY() {
-//        return y;
-//    }
-//
-//    public void setY(int y) {
-//        this.y = y;
-//    }
 
         packet.addFloat(x);
         packet.addFloat(y);

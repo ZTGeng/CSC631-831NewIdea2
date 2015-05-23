@@ -18,17 +18,13 @@ public class RRResponseSpecies extends GameResponse {
     public RRResponseSpecies() {
          responseCode = Constants.SMSG_RRSPECIES;
     }
-
-    
     
     @Override
     public byte[] constructResponseInBytes() {
          GamePacket packet = new GamePacket(responseCode);
          packet.addInt32(id);
-         return packet.getBytes();
-       
+         return packet.getBytes();  
     }
-
     
     public int getId() {
         return id;
@@ -37,8 +33,4 @@ public class RRResponseSpecies extends GameResponse {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
-    
-    
 }

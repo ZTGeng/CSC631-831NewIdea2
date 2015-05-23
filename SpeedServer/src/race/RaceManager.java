@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package race;
 
 import java.util.HashMap;
@@ -16,16 +12,13 @@ import networking.response.ResponseRaceInit;
 import java.util.Random;
 import networking.response.ResponseRREndGame;
 
-/**
- *
- * @author markfavis
- */
+
 public class RaceManager {
 
     // Singleton Instance
     public static RaceManager manager;
 
-    // Regerence Tables
+    // Reference Tables
     private Map<Integer, Race> raceList = new HashMap<Integer, Race>(); //RaceID -> race
     public Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
 

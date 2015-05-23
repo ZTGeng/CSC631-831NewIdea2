@@ -23,12 +23,9 @@ import utility.Log;
  */
 public class Race {
 
-//    private 
     private Map<Integer, RacePlayer> rPlayers = new HashMap<Integer, RacePlayer>();
-
     private int raceID;
     private int mapID;
-
     private short playersReadyToStart;
 
     public Race(List<Player> players, int raceID) {
