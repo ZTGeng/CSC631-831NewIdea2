@@ -77,9 +77,6 @@ public class GameServer {
         
         // Instantiate the RaceManager
         gameManager = new RaceManager();
-        
-        //Hardcoded for testing a protype of a game
-//        game = new Race();
     }
 
     public static GameServer getInstance() {
