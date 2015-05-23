@@ -9,12 +9,9 @@ import core.GameServer;
 import java.io.IOException;
 import networking.response.ResponseKeyboard;
 import utility.DataReader;
-// import race.Race;
 import race.RaceManager;
 import race.RacePlayer;
-// import core.NetworkManager;
 import dataAccessLayer.RaceDAO;
-// import utility.Log;
 
 /**
  *
@@ -37,24 +34,16 @@ public class RequestKeyboard extends  GameRequest{
     
     public void doBusiness() throws Exception {
         RacePlayer player;
-      //  System.out.println("key type:  " +  keytype + "key :  " + key);
         
         responsekeyboard = new ResponseKeyboard();
         responsekeyboard.setKeytype(keytype);
         responsekeyboard.setKey(key);
         
-//        RaceManager.getInstance();
-//        client.getPlayer().getID();
-        
-        //Debugging
-//        Log.println(Integer.toString(RaceManager.getInstance().getRaceByPlayerID(client.getPlayer().getID()).getID()));        
-//        Log.println(Integer.toString(RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID()).getOpponent(client.getPlayer()).getID()));
-   
-        //The playerID of the oppenet of the player who sent the request
         p_id = RaceManager.manager.getRaceByPlayerID(client.getPlayer().getID())
                 .getOpponent(client.getPlayer()).getID();
         
-        player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers().get(p_id);
+        player = RaceManager.manager.getRaceByPlayerID(p_id).getPlayers()
+                .get(p_id);
         
         
         // keytype
@@ -65,8 +54,7 @@ public class RequestKeyboard extends  GameRequest{
         // if keytype = 1
         // - -1 = left, 1 = right, 0 = no press
         //
-        // if keytype = 2, 1 = jump, 0 = no press
-        
+        // if keytype = 2, 1 = jump, 0 = no press        
         // left or right
         if (keytype == 1)
         {
@@ -92,16 +80,12 @@ public class RequestKeyboard extends  GameRequest{
             player.setLeft(false);
             player.setRight(false);
             player.setJump(false);
-        }
-        
+        }        
         
         //NetworkManager.addResponseForUser(p_id, responsekeyboard);
         
-        GameServer.getInstance().getThreadByPlayerID(p_id).send(responsekeyboard);
+        GameServer.getInstance().getThreadByPlayerID(p_id)
+                .send(responsekeyboard);
         RaceDAO.updateRace(player); // write to DB
     }
-    
-    
-    
-    
 }

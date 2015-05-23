@@ -23,20 +23,12 @@
             <file>file:/C:/Users/Dong/Documents/GitHub/CSC631-831NewIdea2/SpeedServer/src/race/Race.java</file>
         </group>
         <group name="Group 20150422-02:41:29">
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRREndGame.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRGetMap.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/RacePlayer.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/metadata/GameRequestTable.java</file>
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRRStartGame.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/metadata/Constants.java</file>
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/Race.java</file>
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestRaceInit.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRREndGame.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseLogin.java</file>
             <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/RaceManager.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/response/ResponseRRGetMap.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/networking/request/RequestKeyboard.java</file>
-            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/utility/GamePacket.java</file>
+            <file>file:/Users/michaelsimon/CSC631-831NewIdea2/SpeedServer/src/race/RacePlayer.java</file>
         </group>
     </open-files>
 </project-private>

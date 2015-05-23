@@ -39,7 +39,8 @@ public class RequestRaceInit extends GameRequest {
                 NetworkManager.addResponseForUser(p_id, response);
             }
             
-            Log.println("Race created with players: " + race.getPlayers().keySet().toString());
+            Log.println("Race created with players: " + race.getPlayers()
+                    .keySet().toString());
         }
     }
     

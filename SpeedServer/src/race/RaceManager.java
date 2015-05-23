@@ -1,4 +1,3 @@
-
 package race;
 
 import java.util.HashMap;
@@ -12,17 +11,19 @@ import networking.response.ResponseRaceInit;
 import java.util.Random;
 import networking.response.ResponseRREndGame;
 
-
 public class RaceManager {
 
     // Singleton Instance
     public static RaceManager manager;
 
     // Reference Tables
-    private Map<Integer, Race> raceList = new HashMap<Integer, Race>(); //RaceID -> race
-    public Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); //PlayerID -> race
-
-    private List<Player> players = new ArrayList<Player>(); //used to create a race
+    
+    //RaceID -> race
+    private Map<Integer, Race> raceList = new HashMap<Integer, Race>();
+    //PlayerID -> race
+    public Map<Integer, Race> playerRaceList = new HashMap<Integer, Race>(); 
+    //Only used in the creation of a race
+    private List<Player> players = new ArrayList<Player>(); 
 
     public static RaceManager getInstance() {
         if (manager == null) {
@@ -48,7 +49,8 @@ public class RaceManager {
                     System.out.println("Race ID:" + raceID);
                 }
                 System.out.println("Race ID:" + raceID);
-                players.add(GameServer.getInstance().getActivePlayer(player_id));
+                players.add(GameServer.getInstance()
+                        .getActivePlayer(player_id));
                 race = new Race(players, raceID);  // fix 2nd parameter
                 race.setMapID(randomGenerator.nextInt(101));
                 //System.out.println("Map ID:" + race.getMapID());
@@ -60,7 +62,6 @@ public class RaceManager {
                 }
                 players.clear();
             }
-
         }
         return race;
     }
